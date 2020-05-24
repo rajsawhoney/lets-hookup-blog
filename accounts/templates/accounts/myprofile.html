@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+<!-- Custom Filter loaded -->
+{% load account_tags %}
+{% block title %}
+<title>My Profile</title>
+{% endblock  %}
+{% block bodyblock %}
+
+<div style="padding-top: 50px; box-sizing:content-box; box-shadow:2px 6px 9px rgb(149, 34, 153);" class="card">
+    <img src="{{object.profile_pic.url}}" alt="Profile-pic">
+    <h3 style="box-shadow:.5px 3px 10px rgb(51, 21, 218);">{{object.user.username|capfirst}}</h3>
+    <p class="title">{{object.qualifications|slice:250}}</p> <!-- Custom filter used here -->
+    <p>Tribhuvan University</p>
+    <div style="margin: 24px;">
+        <a href="https://twitter.com/rajsahani1819"><i class="fa fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/razz-sawhoney-2b1a05190/"><i class="fa fa-linkedin"></i></a>
+        <a href="https://www.facebook.com/ex.fbuser.5"><i class="fa fa-facebook"></i></a>
+    </div>
+    <p>
+        <form action="." userid="{{object.id}}" class="follow-profile" method="post">
+            {% csrf_token %}
+            <button type="submit" id="follow-my-btn{{object.id}}" class=" btn-md btn-primary" style="color:white">
+                <i class="fa fa-link" aria-hidden="true"></i>
+                {% if object in user_object.followed_by.all %}
+                Following {% else %}Follow
+                {% endif %}
+            </button>
+        </form>
+    </p>
+
+</div>
+<div style="text-shadow: .5px 1px rgb(32, 32, 28); text-align: center;" class="container">
+    <p>{{object.about_me}}</p>
+</div>
+
+
+<style>
+    .card {
+        box-shadow: 2px 7px 12px 0 rgba(32, 18, 18, 0.2);
+        max-width: 450px;
+        margin: auto;
+        text-align: center;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .title {
+        color: grey;
+        font-size: 12px;
+    }
+
+    button {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        padding: 8px;
+        color: white;
+        background-color: #000;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        font-size: 18px;
+    }
+
+    a {
+        text-decoration: none;
+        /* font-size: 15px; */
+        color: black;
+    }
+
+    button:hover,
+    a:hover {
+        opacity: 0.7;
+    }
+
+</style>
+
+
+{% endblock %}

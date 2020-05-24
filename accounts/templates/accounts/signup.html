@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block titile %}
+<title>Registration Page</title>
+{% endblock  %}
+{% block bodyblock %}
+<div class='container'>
+    {% if registered %}
+    <h1>Congratulations! You are successfully registered...</h1>
+    {% endif %}
+    {% if not registered %}
+    <h3 class="text-muted text-center display-5 my-3">Registration Form</h3>
+    <p class="text-info text-center">* Please fill the correct details.</p>
+    <form class='site-form' enctype="multipart/form-data" action="{% url 'accounts:signup' %}" method="post">
+        {% csrf_token %}
+        {{user_form|crispy}}
+        {{user_profile_form|crispy}}
+        <input class="btn btn-lg btn-primary" type="submit" value='Sign up'>
+    </form>
+    {% else %}
+    <a href="{% url 'accounts:login' %}">
+        <h4>Login Here</h4>
+    </a>
+    {% endif %}
+
+</div>
+
+<style>
+    li {
+        padding: 10px;
+        color: orangered;
+    }
+
+    .helptext {
+        color: orange;
+        border: 0.5px solid white;
+        margin: 2px;
+        padding: 2px;
+    }
+
+    .btn-primary {
+        margin-bottom: 8px;
+        box-shadow: 1px 3px 3px 1px red;
+    }
+
+</style>
+{% endblock %}

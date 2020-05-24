@@ -1,0 +1,97 @@
+{% extends "base.html" %} {% block title %}
+<title>Article Category Archives</title>
+{% endblock %} {% block bodyblock %}
+
+<div class="list-type my-3 mx-3 text-center">
+    <span class="text-center">WelCome Mr./Mrs. @Superuser {{user|capfirst}} To Blog Category List Page</span>
+</div>
+
+<div class="row mt-5">
+    {% if object_list %}
+    <div class="col-lg-8 col-md-6 col-sm-12" style="float: left;">
+        {% include "includes/article_update_alert.html" %} {% if messages %}
+        <script>
+            $("#updatestatus-modal").modal("show");
+            setTimeout(() => {
+                $("#updatestatus-modal").modal("hide");
+            }, 5000);
+        </script>
+        {% endif %}
+        <!-- start of list view -->
+
+        <div class="container">
+            <h4 class="display-5 text-muted text-center mb-5">Blog Category List</h4>
+            {% for category in object_list %}
+            <div class="row">
+
+                <div class="col col-lg-5 col-md-6 col-sm-12 text-center" style="height: 200px; background-image: linear-gradient(rgba(39, 39, 44, 0.534),rgba(128, 128, 128, 0.411),rgba(0, 128, 0, 0.452)),url({{category.cat_thumbnail.url}});background-position: center;background-size: cover;background-repeat: no-repeat;">
+                    <a href="{{category.get_absolute_url}}">
+                        <h3 style="position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);color:white;font-weight: bolder;background-color: rgba(41, 39, 39, 0.336);">
+                            {{category.title}} <br> <span style="font-size: 15px;">{{category.blog_type.all.count}}  Article{{category.blog_type.all.count|pluralize}} so far</span>
+                        </h3>
+                    </a>
+                </div>
+
+
+                <div class="col col-lg-7 col-md-6 col-sm-12">
+                    <div class="category-desc text-center display-4">
+                        <p>{{category.description|slice:350|safe}}...</p><br>
+
+                    </div>
+                    <div class="float-right mt-2">
+                        <a href="{{category.get_absolute_url}}">
+                            <span class="text-primary" style="cursor: pointer;">Read More
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <hr> {% endfor %}
+        </div>
+        <div class="my-2">
+            {% include "includes/pagination.html" %}
+        </div>
+
+    </div>
+
+
+    {% else %}
+    <div class="row text-center">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <h3 class="display-5 text-center text-info mx-3"> Dear {{user.username}}! You have not added any blog category so far. <br>
+            </h3>
+            <a href="{% url 'testapp:category-create' %}">
+                <span class="display-5 text-primary">Click here to add a Blog Category</span>
+            </a>
+        </div>
+    </div>
+    {% endif %}
+    <div class="col-lg-4 col-md-6 col-sm-12 my-4" style="float: right;">
+        <!-- ****** Trending article section ****** -->
+        {% include "includes/trending_posts_component.html" %}
+
+        <!-- ************WHO TO FOLLOW SECTION ******** -->
+        {% include "includes/who-to-follow-component.html" %}
+
+    </div>
+
+</div>
+
+
+<style>
+    .list-type span {
+        border: 1px solid rgb(145, 226, 145);
+        box-shadow: 2px 3px 6px rgb(92, 88, 88);
+        font-size: larger;
+    }
+    
+    .list-type span:hover {
+        transform: translateZ(5px);
+        font-size: x-large;
+    }
+</style>
+{% endblock %}

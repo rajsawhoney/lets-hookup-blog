@@ -1,0 +1,68 @@
+<div class="modal fade" id="delete-post-confirm-modal" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="box-shadow: 2px 4px 10px lawngreen;">
+            <div class="modal-header">
+                <h4 class="modal-title" style="box-shadow: 2px 3px 7px rgb(252, 0, 197); text-align:center;">Confirmation</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- modal content -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="mx-2 my-2 col col-12">
+                            <span class="">
+                                <img src="{{post.thumbnail.url}}" width="300px" height="200px" alt="Missing">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-lg-12 col-md-12 col-sm-12">
+                            <h6 class="card-subtitle my-3 ">Title: <a
+                                    href="{{post.get_absolute_url}}">{{post.title}}</a>(
+                                <b>{{post.views_count}}</b> View{{post.views_count|pluralize}} )</h6>
+                            <p class="card-text text-muted my-1">{{post.content|slice:150|safe}} <a
+                                    href="{{post.get_absolute_url}}"><span
+                                        style="color:rgb(19, 19, 235);cursor: pointer;">...Read
+                                        More</span></a>
+                            </p>
+                            <span class="card-title my-2"><a href="{{post.author.get_absolute_url}}"
+                                    style="box-shadow:1px 2px 3px rgb(223, 59, 30);font-style: oblique;">
+                                    By: @{{post.author.user.username|capfirst}}</a>
+                            </span>
+                        </div>
+
+                    </div>
+                    <br>
+                    <span class="text-danger text-center confirm-box">Are you sure you want to delete??</span>
+                </div>
+            </div>
+            <!-- end of modal content -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <form method='post' class="delete-post" post-id="{{post.id}}">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-danger" name="confirmation" value="Delete">
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<style>
+    .confirm-box{
+        border: 1px solid rgba(0, 0, 255, 0.514);
+        border-radius: 5px;
+        box-shadow: 2px 4px 7px rgb(58, 55, 55);
+        font-size: larger;
+        padding: 2px 1px;
+    }
+    .confirm-box:hover{
+        transform: translateZ(5px);
+        font-size: x-large;
+    }
+</style>

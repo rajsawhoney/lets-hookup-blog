@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% load static %}
+{% block titile %}
+<title>Create Category</title>
+{% endblock  %}
+{% load crispy_forms_tags %}
+{% block bodyblock %}
+<div class="mx-3 my-2">
+  <h3 class="display-5 text-muted text-center">Create your brand new Article Category here!!!</h3>
+
+  <form class="create-article" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form|crispy}}
+    <input type="submit" class='float-left btn btn-md btn-block btn-outline-primary' value='Create'>
+  </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block bodyblock %}
+
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container-fluid">
+        <!-- row -->
+        <div class="row">
+            <!-- section title -->
+            <div class="col-md-12">
+                <div class="section-title">
+                    <br>
+                    {% include "includes/message-alert-snippet.html" %}
+
+                </div>
+                <hr>
+            </div>
+
+            <!-- /section title -->
+            <!-- Products tab & slick -->
+            <div class="col-md-12">
+                <div class="col col-md-pull-4">
+                    <div class="card-columns">
+                        {% for article in search_result %}
+                        <div style="border: 1px solid rgb(104, 67, 139); box-shadow: 7px 4px rgb(180, 155, 204);"
+                            class="card">
+                            <img class="card-img-top" height="300" src="{{article.thumbnail.url}}" alt="">
+                            <a href="{{article.get_absolute_url}}">
+                                <div style="box-shadow: 2.3px solid rgb(24, 21, 61);border-bottom: 2px solid rgb(163, 132, 132);"
+                                    class="card-body">
+                                    <h4 class="card-title text-primary">{{article.title}}</h4>
+                                    <p style="color: black;" class="card-text">{{article.content|slice:400|striptags}}</p>
+                                    <h7 class="card-text">Published on: {{article.pub_date}} <span style="color:gray;">
+                                            <br> --by:
+                                            {{article.author}}</span></h7>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+            <!-- Products tab & slick -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /SECTION -->
+
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% if user.is_authenticated %}
+
+<span data-toggle="tooltip" title="<div class='alert alert-success text-left' role='alert'>
+
+    <ul>
+        {% for liker in post.has_liked.all %}
+        <li>{{liker}}</li>
+        {% endfor %}
+    </ul>
+    </div>" data-html="true" style="border: blueviolet;cursor: pointer;">{{post.has_liked.all.count}}
+    Like{{post.has_liked.all.count|pluralize}}
+</span>
+
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+</script>
+
+<form action="." method="post">
+    {% csrf_token %}
+    {% if user in post.has_liked.all %}
+
+    <button class="likebutton" id="like{{post.id}}" data-catid="{{ post.id }}">
+        <i style="color: blue;" class="fa fa-thumbs-up" aria-hidden="true">Liked</i>
+    </button>
+    {% else %}
+    <button class="likebutton" id="like{{post.id}}" data-catid="{{ post.id }}">
+        <i style="color: black;" class="fa fa-thumbs-up" aria-hidden="true">Like</i>
+    </button>
+    {% endif %}
+</form>
+{% else %}
+<span style="border: blueviolet;margin-top: 100px;">{{post.has_liked.all.count}}
+    Like{{post.has_liked.all.count|pluralize}}
+
+</span>
+{% endif %}
+
+<style>
+    .likebutton:hover {
+        color: rgb(26, 224, 132);
+    }
+
+    .likebutton:active {
+        color: rgb(223, 39, 223);
+    }
+
+</style>

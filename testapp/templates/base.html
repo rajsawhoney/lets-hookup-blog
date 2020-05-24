@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% block title %}
+        <title>HomePage</title>
+        {% endblock  %}
+
+
+        {% include "includes/loadstaticfiles.html" %}
+
+    </head>
+
+    <body class="jumbotron jumbotron-fluid">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark mynav fixed-top">
+            <a class="navbar-brand list-view-trigger" method='post' href="{% url 'testapp:article-list' %}"><i
+                    class="App-logo" style="color: rgba(42, 220, 226, 0.767);">Let's HookUp</i>
+            </a>
+
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation"><i class="fa fa-home" aria-hidden="true"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="background: none !important;">
+                    <li class="nav-item {% if 'testapp/articles/' in request.path %} active {% endif %}">
+                        <a class="nav-link" href="{% url 'testapp:article-list' %}">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {% if 'your/articles/' in request.path %} active {% endif %}">
+                        {% if user.is_authenticated %}
+                        <a class="nav-link" href="{% url 'testapp:related-article-list' %}">Your
+                            Posts
+                        </a>
+                        {% else %}
+
+                        <a class="nav-link" href="{% url 'testapp:article-list' %}"><i class="fa fa-newspaper-o"
+                                aria-hidden="true"></i> All
+                            Posts
+                        </a>
+
+                        {% endif %}
+                    </li>
+                    {% if user.is_superuser %}
+                    <li class="nav-item {% if '/articles/category' in request.path %} active {% endif %}">
+                        <a class="nav-link" href="{% url 'testapp:article-category-list' %}">Blog Categories
+                        </a>
+                    </li>
+                    {% endif %}
+
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Profile</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="{% url 'testapp:article-create' %}"><i
+                                    class="opt fa fa-paper-plane" aria-hidden="true"> New post</i>
+                            </a>
+                            {% if user.is_superuser %}
+                            <a class="dropdown-item" href="{% url 'testapp:category-create' %}"><i
+                                    class="opt fa fa-hashtag" aria-hidden="true"> Add a Blog Category</i>
+                            </a>
+                            {% endif %}
+
+                            <a class="dropdown-item" href="{% url 'testapp:related-article-list' %}"><i
+                                    class="opt fa fa-hacker-news" aria-hidden="true"> My posts</i>
+                            </a>
+
+
+                            <a class="dropdown-item" href="{% url 'testapp:fav-article-list' %}"><i
+                                    class="opt fa fa-heart" aria-hidden="true"> My Favourites</i>
+                            </a>
+
+
+                            <a class="dropdown-item" href="{{user_object.get_absolute_url}}"><i class="opt fa fa-user"
+                                    aria-hidden="true"> My Profile</i>
+                            </a>
+                            <a class="dropdown-item" href="{% url 'accounts:password-change' %}"><i
+                                    class="opt fa fa-pencil" aria-hidden="true"> Change Password</i>
+                            </a>
+                            <a class="dropdown-item" href="{{user_object.get_update_url}}">
+                                <i class="opt fa fa-pencil-square-o" aria-hidden="true"> Edit Profile</i>
+                            </a>
+                        </div>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>
+                    </li>
+                    {% if user_object %}
+                    <li>
+                        <p class="nav-link" style="float: right;">Loginned as:
+                            <a href="{{user_object.get_absolute_url}}"> <img
+                                    style="width: 30px;; height:30px; border-radius:50%;"
+                                    src="{{user_object.profile_pic.url}}" alt="">
+                                <span style="color: blue;background-color: yellow;">
+                                    @{{user_object.user.username|capfirst}}
+                                </span>
+                            </a>
+                        </p>
+                    </li>
+                    {% endif %}
+
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" style="cursor: pointer;" onclick="$('#signup-modal').modal('show')"
+                            method="post">SignUp</a>
+                    </li>
+                    {% include "accounts/includes/signup_popup.html" %}
+
+                    <li class="nav-item">
+                        <a class="nav-link" style="cursor: pointer;" onclick="$('#login-modal').modal('show')">Login</a>
+                    </li>
+                    {% include "accounts/includes/login_popup.html" %}
+
+                    {% endif %}
+                </ul>
+
+
+
+
+                <form action="{% url 'search:result_list' %}" class="form-inline my-2 my-lg-0">
+                    <div class="form-group">
+                        <select name="search_by" class="form-control">
+                            <option>Search By</option>
+                            <option {% if request.GET.search_by == 'Author' %} selected {% endif %}>Author</option>
+                            <option {% if request.GET.search_by == 'Category' %} selected {% endif %}>Category</option>
+                            <option {% if request.GET.search_by == 'Article Tags' %} selected {% endif %}>Article Tags
+                            </option>
+                        </select>
+                    </div>
+
+                    <input class="form-control mr-sm-2" value="{{request.GET.q}}" id="myInput" name="q" type="text"
+                        placeholder="Search" />
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                        Search
+                    </button>
+                </form>
+
+            </div>
+        </nav>
+
+        <script>
+            $(document).ready(function () {
+                $("#myInput").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#myDiv *").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                    });
+                });
+            });
+
+        </script>
+
+        <div class="container-fluid pt-4 px-4 mt-2">
+            {% block bodyblock %}
+            {% endblock  %}
+        </div>
+
+
+        <!-- Footer Section -->
+
+        <!-- ********Scripts sections ********** -->
+
+        <div id="fb-root"></div>
+
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-dark">
+                    <tbody>
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th><i class="fa fa-copyright" aria-hidden="true"> @2020</i></th>
+                        </tr>
+                    </tfoot>
+
+                </table>
+            </div>
+        </div>
+
+        {% include "includes/loadscripts.html" %}
+    </body>
+
+</html>
+
+
+
+<style>
+    body {
+        margin: 0px;
+        padding: 0px;
+        text-align: justify;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .App-logo {
+            animation: App-logo-spin infinite 8s linear;
+        }
+    }
+
+
+
+    @keyframes App-logo-spin {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .opt:hover {
+        color: white;
+        font-size: larger;
+    }
+
+    .opt:active {
+        color: red;
+    }
+
+    .content {
+        padding: 16px;
+    }
+
+    .sticky {
+        position: fixed;
+        top: 20;
+        width: 100%;
+    }
+
+    .sticky+.content {
+        padding-top: 60px;
+    }
+
+    .mynav a:hover {
+        background-color: rgb(68, 60, 179);
+        font-size: larger;
+    }
+
+    .mynav {
+        text-align: center;
+
+    }
+
+</style>

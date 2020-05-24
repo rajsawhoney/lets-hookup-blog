@@ -1,0 +1,37 @@
+<h3 class="my-8 text-info text-center mb-2">Top 5 Trending Posts</h3>
+<div class="container mb-2" style="background-color: rgb(214, 232, 233);
+        align-items: center;text-align: center;">
+    {% for article in popular_articles %}
+    <div class="card-body">
+        <div class="row">
+            <div class="col col-8">
+            </div>
+            <div class="col col-4">
+                <span class="badge badge-pill badge-primary">
+                    <h5 style="color: cornsilk;">#No.{{forloop.counter}}</h5>
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-12">
+                <h6 class="card-subtitle my-3">Title: <a href="{{article.get_absolute_url}}">{{article.title}}</a>(
+                    <b>{{article.views_count}}</b>
+                    View{{article.views_count|pluralize}} )</h6>
+                <p class="card-text text-muted my-1">{{article.content|slice:150|safe}}
+                    <a href="{{article.get_absolute_url}}">...Read More
+                    </a>
+                </p>
+                <span class="card-title my-2"><a href="{{article.author.get_absolute_url}}" style="box-shadow:1px 2px 3px rgb(223, 59,
+                            30);font-style: oblique;">
+                        By: @{{article.author.user.username|capfirst}}</a>
+                </span>
+            </div>
+
+        </div>
+    </div>
+    <hr>
+    <br>
+    {% endfor %}
+
+
+</div>

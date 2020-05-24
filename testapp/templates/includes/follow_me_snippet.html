@@ -1,0 +1,64 @@
+{% load static %}
+
+<div id='follow-me-modal{{post.id}}' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='my-modal-title'
+    aria-hidden='true'>
+    <div class='modal-dialog' role='document'>
+        <div class='modal-content' style="box-shadow:1px 6px 9px rgb(235, 155, 7);">
+            <div class='modal-header'>
+
+                <span class='modal-title' id='my-modal-title'>
+                    <img src="{{post.author.profile_pic.url}}" style="height: 60px;width:60px;border-radius: 50%;"
+                        alt="">
+                    <br>
+                    <span style="color:blue"> @{{post.author.user.username|capfirst}}</span>
+
+                    <div style="float: right; margin-left: 120px; margin-bottom: 10px;">
+                        {% if user.is_authenticated %}
+                        <!-- Follow User Section -->
+                        <form action="." userid="{{post.author.id}}" postid="{{post.id}}" class="follow-profile"
+                            style="float: right;" method="post">
+                            {% csrf_token %}
+                            <button type="submit" id="follow-my-btn{{post.id}}" class=" btn-md btn"
+                                style="box-shadow:1px 3px 4px rgb(205, 218, 21);background-color: blueviolet;color: white; border: 1px solid white; border-top-left-radius: 15px;border-top-right-radius: 15px;border-bottom-left-radius: 15px;border-bottom-right-radius: 15px;border-bottom-style:solid;">
+                                <i class="fa fa-link" aria-hidden="true"></i>
+                                {% if post.author in user_object.followed_by.all %}
+                                Following
+                                {% else %} Follow {% endif %}
+                            </button>
+                        </form>
+                        {% else %}
+                        <a href="{% url 'accounts:login' %}"><span class="badge badge-pill badge-warning">Login to
+                                follow
+                                me</span>
+                        </a>
+                        {% endif %}
+                    </div>
+
+                </span>
+
+                <button class='close' data-dismiss='modal' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                </button>
+            </div>
+            <div class='modal-body'>
+                <p>
+                    <h3 class='card-subtitle'>{{post.author.qualifications|slice:50}}</h3>
+                    {{post.author.about_me|slice:150}}... <span style="color: blue;cursor: pointer;"><a
+                            href="{{post.author.get_absolute_url}}">Read More</a></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).on('mouseover', '.follow-me-btn', function (e) {
+        var roughid = 'follow-me-modal' + $(this).attr('postid');
+        const id = get_correct_id(roughid);
+        $(`#${id}`).modal('show');
+        setTimeout(() => {
+            $(`#${id}`).modal('hide');
+        }, 8000);
+    });
+
+</script>

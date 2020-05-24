@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+  
+
+	<h1>This is a test Page</h1>
+	<img src="{% static 'images/pic1.jpg' %}" alt="Picture not found!!">
+	<p> I am working on Django Project</p>
+    <h2> Data received {{data1}}</h2>
+	<img src="{% static 'images/pic2.jpg' %}" alt="Pc not found!!!">
+	<p>Ok good its working!!!</p>
+	<h2> Data received {{data2}}</h2>
+	
+{% endblock body %}

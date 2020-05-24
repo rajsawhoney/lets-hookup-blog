@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block titleblock %}
+<title>About Blog Category</title>
+{% endblock  %}
+{% block bodyblock %}
+{% if object %}
+<div class="container">
+    <div class="cat-name">
+        <h3 class="display-5 text-msg text-center my-4 mx-5">{{object.title}}</h3>
+    </div>
+    <div class="cat-thumbnail">
+        <img src="{{object.cat_thumbnail.url}}" class="align-center" alt="Missing">
+    </div>
+    <div class="cat-desc">
+        <p class="px-3 text-center">{{object.description|safe}}</p>
+    </div>
+</div>
+{% endif %}
+
+
+<style>
+    .cat-thumbnail img {
+        border: 1px solid white;
+        border-radius: 10px;
+        box-shadow: 2px 4px 8px gray;
+    }
+
+    .cat-desc p {
+        font-size: large;
+        color: rgb(37, 34, 34);
+        border: 1px solid rgb(165, 165, 184);
+        border-radius: 10px;
+        margin-left: 20px;
+    }
+
+</style>
+{% endblock  %}

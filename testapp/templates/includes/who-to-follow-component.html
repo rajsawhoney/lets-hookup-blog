@@ -1,0 +1,50 @@
+<h3 class="mt-5 text-info text-center mb-1">Who To Follow?
+</h3>
+<div class="card mb-2" style="background-color: rgb(214, 232, 233);">
+    {% for author in who_to_follow %}
+    <div class="card-body">
+        <div class="row">
+            <div class="col col-4">
+
+                <img src="{{author.profile_pic.url}}" style="width:100px;height: 100px; border-radius:
+                50%;box-shadow: 1px 2px 3px rgb(230, 17, 17);" alt="No profile Pic">
+                <span class="card-title"><a href="{{author.get_absolute_url}}" style="box-shadow:1px 2px 3px rgb(223, 59,
+                    30);margin-top: 5%; font-style: oblique;">
+                        @{{author.user.username|capfirst}}</a>
+                </span>
+
+            </div>
+
+
+            <div class="col col-8">
+                <form action="." userid="{{author.id}}" class="follow-profile" method="post">
+                    {% csrf_token %}
+
+                    <button type="submit" id="follow-my-btn{{author.id}}" class="btn-sm" style="background-color: rgb(218, 30,
+                    171);color: white; box-shadow:2px 1px 10px 3px
+                    rgb(30, 49, 223);margin-top: 4%;margin-left:20%;
+                    border-top-left-radius:
+                    15px;border-top-right-radius:
+                    15px;border-bottom-left-radius:
+                    15px;border-bottom-right-radius:
+                    15px;border-bottom-style:solid;">
+                        <i class="fa fa-link" aria-hidden="true"></i>
+                        {% if user.is_authenticated %}
+                        Follow
+                        {% else %} <a href="{% url 'accounts:login' %}" style="color: white;"> Login to
+                            Follow</a>
+                        {% endif %}
+                    </button>
+                </form>
+                <h6 class="card-subtitle my-2">{{author.qualifications|slice:44}}</h6>
+                <p class="card-text text-muted">{{author.about_me|slice:100}}
+                    <a href="{{author.get_absolute_url}}"><span style="color:rgb(122, 122, 204);cursor:
+                        pointer;">...Read
+                            More</span></a> </p>
+            </div>
+
+        </div>
+    </div>
+    <hr>
+    {% endfor %}
+</div>

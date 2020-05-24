@@ -1,0 +1,184 @@
+{% extends "base.html" %} {% load static %}
+{% block title %}
+<title>Article Detail Page</title>
+{% endblock  %}
+
+{% block bodyblock %}
+<div class="delete-div">
+    {% include "includes/delete_confirm_prompt.html" %}
+</div>
+
+<div class="mt-5">
+    <span style="font-size: x-large;">Title: {{post.title}}</span>
+    <h6>
+        <span style="color: red;">Ratings:</span> [{{post.ratings}} out of 5] <span>(<b>{{post.views_count}}</b>
+            View{{post.views_count|pluralize}})</span>
+    </h6>
+
+    {% if request.user == post.author.user %}
+    <button style="font-size: x-large; float:right" class="imp-btn mx-2 badge badge-danger delete-post-btn"
+        post-id="{{post.id}}">Delete
+        Post
+    </button>
+
+    <a style="font-size: x-large; float:right" href="{{post.get_update_url}}"
+        class="imp-btn btn badge badge-success">Edit
+        Post
+    </a>
+    {% endif %}
+
+    <p>Published On: {{post.pub_date}}</p>
+    <p>Last Updated: {{post.last_updated|timesince}} ago.</p>
+</div>
+
+
+<!-- Gallary show section -->
+<div class="gallary-section">
+    <h3 class="display-5 text-muted mb-2"
+        style="box-shadow: 2px 3px 5px rgb(218, 30, 171);justify-content:center;text-align: center;">Article Contents
+    </h3>
+
+    <div class="row"
+        style="background-image:linear-gradient(rgba(30, 255, 16, -5.644),rgba(-18, 12, 255, 0.556),rgba(120, 77, 255, 19.356),rgba(12, 220, 255, 3.356)),url({{post.thumbnail.url}});background-repeat: no-repeat;background-size: cover; background-blend-mode: darken;">
+        {% for img in post.assets.all %}
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <a href="{{img.get_absolute_url}}">
+                <img src="{{img.file.url}}" class="my-1 img-pop" alt="">
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    .gallary-section {
+        box-shadow: 3px 5px 15px rgb(42, 175, 236);
+        justify-content: center;
+        border-radius: 4px;
+    }
+
+    .img-pop {
+        height: 180px;
+        width: 350px;
+        box-shadow: 1px 4px 7px rgb(42, 213, 236);
+    }
+
+
+    .textarea:focus {
+        cursor: vertical-text;
+    }
+
+    .textarea::spelling-error {
+        color: rgb(219, 35, 11);
+    }
+
+    .textarea::grammar-error {
+        color: rgb(228, 228, 38);
+        text-decoration: underline wavy blueviolet;
+    }
+
+    .textarea {
+        padding: 10px 2px;
+        margin-right: 20px;
+        color: black;
+    }
+
+    .reply-div textarea::-webkit-input-placeholder::after {
+        color: #666;
+        content: "Line 1\A Line 2\A Line 3\A";
+    }
+
+    .imp-btn {
+        box-shadow: 1px 5px 7px rgb(138, 135, 135);
+        border: .5px solid white;
+    }
+
+    .imp-btn:hover {
+        transform: translate3d(6px, 10px, 4px);
+    }
+
+</style>
+
+
+
+<!-- Article Description section   -->
+<div class="row my-4">
+    <div class="col col-lg-8 col-md-6 col-sm-12 my-3">
+
+        <div class="intro-text">
+            <h2 class="display-3">My name is {{post.author.user.username}}</h2>
+            <hr>
+            {{post.content|safe}}
+            <div class="mt-4">
+                <a href="{% if object %}
+                            {{object.get_absolute_url}} {% else %}#{% endif %}" class="sp-link text-primary">Take a
+                    look @my
+                    portfolio
+                </a>
+            </div>
+        </div>
+        <div id="fav-error-div"></div>
+        <div style="float: right;" class="intro-text mt-3">
+            {% if request.user.is_authenticated %}
+            <div id="fav-div">
+                {% include "includes/toggle-fav-article-snippet.html" %}
+            </div>
+            {% endif %}
+            <br><br>
+            <span class="sp-link">Share Article:</span>
+
+            <button class="btn btn-md"
+                onclick="shareArticle(`https://www.facebook.com/sharer/sharer.php?u=http%3A//127.0.0.1%3A8000/testapp/article/{{post.id}}/`)"><i
+                    style="color: rgb(20, 20, 189);" class="fa fa-facebook" aria-hidden="true">
+                    Facebook</i></button>
+            <button class="btn btn-md"
+                onclick="shareArticle(`https://twitter.com/intent/tweet?text=http%3A//127.0.0.1%3A8000/testapp/article/{{post.id}}/`)"><i
+                    style="color: rgb(20, 20, 189);" class="fa fa-twitter" aria-hidden="true">
+                    Twitter</i></button>
+            <button class="btn btn-md"
+                onclick="shareArticle(`https://www.linkedin.com/shareArticle?mini=true&url=http%3A//127.0.0.1%3A8000/testapp/article/%7B%7B{{post.id}}%7D%7D/&title=%7B%7B{{post.id}}%7D%7D&summary=Have%20a%20look%20at%20this%20Article.%20It's%20an%20amazing%20Article.&source=Djython%20Blogger`)"><i
+                    style="color: rgb(20, 20, 189);" class="fa fa-linkedin" aria-hidden="true">
+                    LinkedIn</i></button>
+        </div>
+        <br><br>
+
+
+        <div class="my-5 comment_div" id="reply_comment_div{{post.id}}">
+            {% include "includes/comment_section.html" %}
+        </div>
+    </div>
+
+
+
+
+    <div class="col col-lg-4 col-md-6 col-sm-12 my-3">
+        <!-- **********Trending Posts SECTION************ -->
+        {% include "includes/trending_posts_component.html" %}
+
+
+        <!-- **********WHO TO FOLLOW SECTION************ -->
+        {% include "includes/who-to-follow-component.html" %}
+
+
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+{% block js %}
+<!--====== Javascripts & Jquery ======-->
+<script src='{% static "js/jquery-3.2.1.min.js" %}'></script>
+<script src='{% static "js/bootstrap.min.js" %}'></script>
+<script src='{% static "js/jquery.slicknav.min.js" %}'></script>
+<script src='{% static "js/owl.carousel.min.js" %}'></script>
+<script src='{% static "js/jquery.magnific-popup.min.js" %}'></script>
+<script src='{% static "js/circle-progress.min.js" %}'></script>
+<script src='{% static "js/mixitup.min.js" %}'></script>
+<script src='{% static "js/instafeed.min.js" %}'></script>
+<script src='{% static "js/masonry.pkgd.min.js" %}'></script>
+<script src='{% static "js/main.js" %}'></script>
+
+
+{% endblock  %}

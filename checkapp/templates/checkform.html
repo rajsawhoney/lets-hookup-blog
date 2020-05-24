@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block bodyblock %}
+
+<div class="container">
+    <form action="." method="post">
+        {% csrf_token %}
+        {{form1.as_p}}
+        {{form2.as_p}}
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+{% endblock  %}

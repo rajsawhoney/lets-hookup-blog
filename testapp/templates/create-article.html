@@ -1,0 +1,34 @@
+{% extends "base.html" %} {% load static %}
+{% block titile %}
+<title>Create Article</title>
+{% endblock  %}
+{% load crispy_forms_tags %}
+{% block bodyblock %}
+<div class="mx-3 my-2">
+  <h3 class="display-5 text-muted text-center">Create your brand new Article here!!!</h3>
+
+  <form class="create-article" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form|crispy}}
+    <input type="submit" class='float-left btn btn-md btn-block btn-outline-primary' value=' Submit'>
+  </form>
+
+  <div class="File-Upload float-right">
+    <button id="upload-file" style="margin-top:5px; margin-bottom: 10px;"
+      class="btn btn-lg btn-outline-success float-left">Upload
+      More Files Here</button>
+  </div>
+
+  {% include "includes/file_upload_snippet.html" %}
+
+</div>
+{% block javascript %}
+{# JQUERY FILE UPLOAD SCRIPTS #}
+<script src="{% static 'js/file_upload/jquery.ui.widget.js' %}"></script>
+<script src="{% static 'js/file_upload/jquery.iframe-transport.js' %}"></script>
+<script src="{% static 'js/file_upload/jquery.fileupload.js' %}"></script>
+
+{# PHOTOS PAGE SCRIPTS #}
+<script src="{% static 'photos/js/progress-bar-upload.js' %}"></script>
+{% endblock %}
+{% endblock %}

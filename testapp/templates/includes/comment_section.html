@@ -1,0 +1,178 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<div style="text-align: center;" class="row">
+    <div class="col col-sm-6" id='like-section{{post.id}}'>
+        {% include "includes/like_section.html" %}
+    </div>
+
+    <div class="col col-sm-6">
+        <br>
+        <h4 class="text-primary" style="cursor: pointer;padding-right: 2px;" id='scroller'
+            onclick="scroll_to_comment()">
+            Comments</h4>
+    </div>
+</div>
+<hr />
+<div id="error-div"></div>
+{% for comment in comments %}
+<div style="margin-left: 40px;" class="media">
+    <img class="align-self-start" src="" alt="" />
+    <div class="media-body">
+
+        <span style="font-size: 11px; font-weight: lighter;">{{comment.commented_at|timesince}}
+            ago</span><br />
+        <span style="margin-left: 25px; font-weight: lighter;">
+            {% autoescape off %} {{comment.comment_txt}} {% endautoescape %}
+        </span>
+        <h5 class="mb-0">
+            <footer class="blockquote-footer">By:
+                <a href="{{comment.user.get_absolute_url}}"><span style="border: grey; font-weight: bold; font-size:
+                        small;"><i class="fa" aria-hidden="true">
+                            <img src="{{comment.user.profile_pic.url}}" width='20px' height="20px"
+                                style='border-radius: 50%;' alt=""></i>
+                        @{{comment.user.user}}
+                    </span>
+                </a>
+            </footer>
+        </h5>
+
+
+        <!-- reply btn attached to each comment-->
+        <p>
+            <div class="row">
+                {% if request.user.is_authenticated %}
+                <span class="replybtn" id="reply{{comment.id}}" comment_id="{{comment.id}}"
+                    style="color: blue; cursor: pointer; margin-left: 40px;">
+                    <i class="fa fa-reply" aria-hidden="true"></i> Reply
+                </span>
+
+                {% endif %}
+
+                {% if request.user == comment.user.user %}
+                <span class="editbtn" id="edit{{comment.id}}" comment_id="{{comment.id}}" style="color: blue; cursor:
+                    pointer; margin-left: 10px;">
+                    <i class="fa fa-pencil" aria-hidden="true">Edit</i>
+                </span>
+
+                {% endif %}
+
+                &nbsp
+
+                <div id="clap-div{{comment.id}}">
+                    {% include "includes/clapping_snippet.html" %}
+                </div>
+
+
+                <audio id='clapping-music{{comment.id}}' style="display: none;" controls>
+                    <source src="{% static 'media/clap.wav' %}">
+                </audio>
+            </div>
+
+            <div class="row">
+                {% if request.user == comment.user.user %}
+                <div class="mt-4" id="edit-comment-sec{{comment.id}}" style="display: none;">
+                    {% include "includes/edit_comment_snippet.html" %}
+                </div>
+                {% endif %}
+            </div>
+
+        </p>
+        {% if request.user.is_authenticated %}
+        <!-- hidden reply form sections -->
+        <div class="my-2 reply-div" style="display: none; margin-left: 40px;" id="reply_div{{comment.id}}">
+            <form class="reply_comment_form" action="." auth-status="{{user.is_authenticated}}"
+                url="{{post.get_absolute_url}}" article_id="{{post.id}}" method="post">
+                {% csrf_token %}
+                <reply_section>{{cmtform|crispy}}</reply_section>
+
+                <button class="btn btn-outline-primary">
+                    Reply
+                </button>
+                <input type="hidden" name="cmt_id" value="{{comment.id}}">
+            </form>
+        </div>
+        <!-- end of reply form section -->
+        {% endif %}
+    </div>
+</div>
+
+<!-- reply display section -->
+{% for reply in comment.replies.all %}
+<div style="padding-left: 100px;" class="media">
+    <div class="media-body">
+        <span style="font-size: 11px; font-weight: lighter;">{{reply.commented_at|timesince}}
+            ago</span>
+        <br />
+        <span style="margin-left: 25px; font-weight: lighter;">
+            {% autoescape off %} {{reply.comment_txt|safe}} {% endautoescape %}
+        </span>
+        <h5 class="mb-0"><span style="font-weight: lighter;font-size:
+                smaller;color:gray"><i class="fa fa-reply-all" aria-hidden="true"></i> replied_by:</span>
+            <a href="{{reply.user.get_absolute_url}}"> <span
+                    style="border: grey; font-weight: bold; font-size: small;"><i class="fa" aria-hidden="true"> <img
+                            src="{{reply.user.profile_pic.url}}" width='20px' height="20px" style='border-radius: 50%;'
+                            alt=""></i>
+                    @{{reply.user.user}}
+                </span>
+            </a>
+        </h5>
+    </div>
+    <img class="align-self-start" src="" alt="" />
+</div>
+{% endfor %}
+<!-- end of reply disply section -->
+
+{% endfor %}
+<!-- end of comment display section -->
+
+<div class="error-div"></div>
+
+{% if request.user.is_authenticated %}
+<!-- comment form -->
+<div style="margin-left: 20px;" id="scrolled_to" class="form mt-4">
+    <form class="reply_comment_form" action="." url="{{post.get_absolute_url}}" article_id="{{post.id}}"
+        auth-status="{{user.is_authenticated}}" method="post">
+        {% csrf_token %}
+        {{cmtform|crispy}}
+
+        <button type="submit" class="btn btn-outline-primary">
+            Comment as <span class="text-primary">@{{user}}</span>
+        </button>
+
+        <div style="display: none;" id="login-alert">
+            <br>
+            <a href="{% url 'accounts:login' %}">
+                <button type="button" class="btn btn-warning btn-block" data-toggle="tooltip" role="alert"
+                    data-placement="top" title="">
+                    <span style="color: red;">Warning! </span> Sir, Please
+                    Login First!
+                </button>
+            </a>
+        </div>
+    </form>
+</div>
+<!-- end of comment form -->
+{% else %}
+<p class="my-2 mx-2 display-6 text-warning text-center info-para">Please SignUp and Login to leave your comment and
+    reply here! <br> Thank You!</p>
+{% endif %}
+
+<style>
+    .info-para {
+        border: 1px solid rgba(140, 197, 54, 0.795);
+        border-radius: 5px;
+        box-shadow: 1px 3px 4px rgb(177, 167, 167);
+
+    }
+
+    .info-para:hover {
+        transform: translateY(5px);
+        font-size: larger;
+    }
+
+</style>
+
+<script>
+    $("reply_section > div > div > textarea").attr('placeholder', 'Write your reply here...');
+
+</script>

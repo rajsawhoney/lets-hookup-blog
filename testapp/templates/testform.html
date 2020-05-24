@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% load dajaxice_templatetags %}
+
+
+{% block bodyblock %}
+
+
+<form action="" method="post" id="my_form" accept-charset="utf-8">
+    {{ form.as_p }}
+    <p><input type="button" value="Send" onclick="send_form();"></p>
+</form>
+
+{% dajaxice_js_import %}
+<script>
+    function send_form() {
+        console.log("I am called!")
+        Dajaxice.testapp.send_form(Dajax.process, {
+            'form': $('#my_form').serialize(true)
+        });
+    }
+
+</script>
+
+{% endblock %}

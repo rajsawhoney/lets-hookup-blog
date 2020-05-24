@@ -1,0 +1,7 @@
+{% load static %}
+<form class="clap" action="{% url 'testapp:clapping' %}" method="POST" comment_id="{{comment.id}}">
+    {% csrf_token %}
+
+    <button class="btn btn-sm btn-outline-success" type="submit"><img src="{% static "images/clapping.png" %}" width="30px" alt="">Clap<sup>
+            {{comment.clapped}}+</sup></button>
+</form>

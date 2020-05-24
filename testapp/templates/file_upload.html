@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+{% block bodyblock %}
+
+<div class="container">
+    <div class="modal fade" id="modal-progress" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Uploading...</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 0%;">0%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {# 1. BUTTON TO TRIGGER THE ACTION #}
+    <button type="button" class="btn btn-primary js-upload-photos">
+        <span class="glyphicon glyphicon-cloud-upload"></span> Upload photos
+    </button>
+
+    {# 2. FILE INPUT TO BE USED BY THE PLUG-IN #}
+    <input id="fileupload" type="file" name="file" multiple style="display: none;"
+        data-url="{% url 'testapp:file_upload' %}" data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
+
+    <div id='upload_file'>
+        {% include "includes/file_upload_snippet.html" %}
+    </div>
+
+    {# 3. TABLE TO DISPLAY THE UPLOADED PHOTOS #}
+    <table id="gallery" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Photo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if photos %}
+            {% for photo in photos %}
+            <tr>
+                <td><a href="{% if photo.gallery_content %}
+                {{ photo.gallery_content.url }} {% else %} # {% endif %}">{{photo.gallery_content.name}}</a></td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <h1>No photos Found!</h1>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% block script %}
+<script src="{% static 'js/file_upload/file_upload.js' %}"></script>
+{% endblock %}
+{% endblock  %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}
+<title>Article Archives</title>
+{% endblock %}
+
+{% block bodyblock %}
+<div class="article-list-view-div">
+    {% include "includes/article-list-view-handler.html" %}
+</div>
+{% endblock %}
+
+<!-- elements styling section -->
+
+<style>
+    p {
+        color: rgb(8, 8, 8);
+    }
+
+    .container {
+        background-color: white;
+        color: black;
+        size: initial;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        font-family: Georgia, "Times New Roman", Times, serif;
+    }
+
+</style>
+<!-- end of styling section -->

@@ -1,0 +1,57 @@
+<div class="modal fade" id="modal-progress1" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Upload Files Here</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- modal content -->
+                <div style="margin-bottom: 20px;">
+                    <button type="button" class="btn btn-primary js-upload-photos">
+                        <span class="glyphicon glyphicon-cloud-upload"></span>Choose Your Files
+                    </button>
+                    <input id="fileupload" type="file" name="file" multiple style="display: none;"
+                        data-url="{% url 'photos:progress_bar_upload' %}"
+                        data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
+                </div>
+
+                <table id="gallery" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Uploaded Photos:</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for photo in photos %}
+                        <tr>
+                            <td><a href="{{ photo.file.url }}">{{ photo.file.name }}</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <div class="modal fade" id="modal-progress" data-backdrop="static" data-keyboard="false">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Uploading...</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 0%;">0%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end of modal content -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>
+            </div>
+        </div>
+    </div>
+</div>

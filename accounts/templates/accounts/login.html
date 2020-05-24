@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% block titile %}
+<title>Login Page</title>
+{% endblock  %}
+
+{% block bodyblock %}
+
+<div class="row my-3 mx-2 px-3">
+    <div class="col col-lg-12 col-md-12 col-sm-12 text-center">
+        <h3 class="text-muted display-5 text-center my-4">{% trans 'Login Page' %}</h3>
+        {% if not request.user.is_authenticated %}
+        <form class='site-form' action="{% url 'accounts:login' %}" method="post">
+            {% csrf_token %}
+            {{form|crispy}}
+            <div class="checkbox">
+                <label><input type="checkbox" name="remember"> {% trans "Remember me" %}</label>
+            </div>
+            {% if request.GET.next %}
+            <input type="hidden" name='next' value="{{request.GET.next}}">
+            {% endif %}
+            <input class="btn btn-sm btn-block btn-primary text-uppercase" type="submit" value='Login'>
+        </form>
+        {% else %}
+        <span class="text-msg text-center display-5 my-3"
+            style="border: 1px solid rgb(255, 215, 0);box-shadow: 2px 4px 7px gray;font-size: large;">Sorry for the
+            inconvience!! <br><br>
+            But, Sir you are already loginned as <a
+                href="{{user_object.get_absolute_url}}">{{request.user|capfirst}}</a></span>
+        {% endif %}
+    </div>
+
+</div>
+{% if not request.user.is_authenticated %}
+<div class="row">
+    <div class="col col-lg-6 col-md-6 col-sm-12 my-2">
+        <u>
+            <a href="{% url 'accounts:password_reset' %}"><button class="btn btn-sm btn-block btn-danger custom">Forgot
+                    Password?</button>
+            </a>
+        </u>
+    </div>
+    <div class="col col-lg-6 col-md-6 col-sm-12 my-2">
+        <u>
+            <a href="{% url 'accounts:signup' %}"><button class="btn btn-sm btn-block btn-warning custom">Not
+                    Registered?</button>
+            </a>
+        </u>
+    </div>
+</div>
+{% endif %}
+
+
+
+
+<style>
+    .btn-primary {
+        margin-bottom: 8px;
+        box-shadow: 1px 3px 3px 1px black;
+    }
+
+    .custom {
+        border: 1px solid white;
+        box-shadow: 1px 3px 6px gray;
+    }
+
+    .custom:hover {
+        transform: translateX(-8px);
+        font-size: larger;
+    }
+
+</style>
+
+{% endblock  %}

@@ -1,0 +1,76 @@
+<head>
+    {% include "includes/loadstatics.html" %}
+    {% include "includes/scripts.html" %}
+</head>
+
+<style>
+    li {
+        padding: 5px;
+        color: grey;
+        display: list-item;
+        text-align: -webkit-match-parent;
+
+    }
+
+    .helptext {
+        color: orange;
+        margin: 2px;
+        padding: 2px;
+        text-shadow: 2px;
+    }
+
+    .btn-primary {
+        margin-bottom: 8px;
+        box-shadow: 1px 3px 3px 1px black;
+    }
+
+</style>
+
+
+<script>
+    function popup() {
+        $(document).ready(function () {
+            // Show the Modal on load
+            $("#myModal").modal("show");
+
+        });
+    }
+
+</script>
+
+<div class="container mt-3">
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-dialog-centered modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Sign Up Form</h4>
+                    <button type="button" class="close " style="font-size: 55px; color:black;"
+                        data-dismiss="modal">×</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class='container'>
+                        <form class='site-form' enctype="multipart/form-data" action="{% url 'accounts:signup' %}"
+                            method="post">
+                            {% csrf_token %}
+                            {{form.as_p}}
+                            <input class="btn btn-lg btn-primary" type="submit" value='Sign up'>
+                        </form>
+
+                    </div>
+
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
