@@ -23,7 +23,7 @@ def set_Image_name(instance, filename):
 
 
 def set_category_thumbnail_name(instance, filename):
-    title = instance.name
+    title = instance.title
     slug = slugify(title)
     return f"article_category_thumbnail/{slug}-{filename}"
 
