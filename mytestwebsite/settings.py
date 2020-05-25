@@ -46,8 +46,8 @@ INSTALLED_APPS = [
     'accounts',
     'likecomment',
     'tinymce',
-    'dajaxice',
-    'dajax',
+#     'dajaxice',
+#     'dajax',
     'search',
     'crispy_forms',
     'photos',
@@ -90,7 +90,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'dajaxice.finders.DajaxiceFinder',
+#     'dajaxice.finders.DajaxiceFinder',
 )
 
 TEMPLATES = [
