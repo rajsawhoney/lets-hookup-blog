@@ -493,10 +493,10 @@ def article_detail_view(request, slug):
             print("But visiting this post for the first time!")
     else:
         print("New IP caught!")
-        IPAddress.objects.create(ip=client_ip_addr)
+        ip_ins = IPAddress.objects.create(ip=client_ip_addr)
         current_article.views_count += 1
         current_article.save(updatelasttime=True)
-        current_article.client_ip.add(ip_instance)
+        current_article.client_ip.add(ip_ins)
 
     popular_articles = Article.objects.all().order_by('-views_count')[:5]
     comments = Comment.objects.filter(
