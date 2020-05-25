@@ -23,10 +23,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-from dajaxice.core import dajaxice_autodiscover, dajaxice_config
+# from dajaxice.core import dajaxice_autodiscover, dajaxice_config
 from django.views.generic import TemplateView
 
-dajaxice_autodiscover()
+# dajaxice_autodiscover()
 
 urlpatterns = [
 
@@ -38,7 +38,7 @@ urlpatterns = [
     url(r'^accounts/', include('accounts.urls')),
     url(r'^article_search/', include('search.urls')),
     url(r'^tinymce/', include('tinymce.urls')),
-    url(r'^dajaxice/', include('dajaxice.urls')),
+#     url(r'^dajaxice/', include('dajaxice.urls')),
     url(r'^photo-upload/', include('photos.urls')),
     url(r'^test/', include('checkapp.urls')),
     url(r'^$', TemplateView.as_view(
