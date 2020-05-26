@@ -30,7 +30,7 @@ class Photo(models.Model):
             imageTemproaryResized = imageTemproary.resize(
                 (int(w/2), int(h/2)), Image.ANTIALIAS)
             imageTemproaryResized.save(
-                outputIoStream, format='JPEG', quality=150)
+                outputIoStream, format='JPEG', quality=95)
             outputIoStream.seek(0)
             self.file = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % self.file.name.split('.')[
                 0], 'image/jpeg', sys.getsizeof(outputIoStream), None)

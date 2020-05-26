@@ -1,37 +1,66 @@
-
-
 // Toggle Fav Article Functionality
-$(document).on('submit', 'form.add-remove-fav', (event) => {
+$(document).on("click", ".fav_btn", function (event) {
 	event.preventDefault();
-	console.log("I am cliked to add or remove article to or from MyFav List... ");
-	console.log("Target Url ", $(this).attr('action'));
-	const post_id = $(this).attr('post-id')
-	console.log("Post ID", post_id);
+	var pk = $(this).attr("post-id");
+	txtid = "fav-div" + pk;
+	var id = get_correct_id(txtid);
+	console.log("ID ", pk);
+	var csrftoken = getCookie("csrftoken");
+	console.log(csrftoken);
+	console.log(id);
+
 
 
 	$.ajax({
-		type: "get",
-		url: $(this).attr('action'),
-		// data: {
-		//     'csrfmiddlewaretoken': getCookie('csrftoken'),
-		// },
+		type: "POST",
+		url: $(this).attr('url'),
+		data: {
+			csrfmiddlewaretoken: csrftoken,
+		},
 		dataType: "json",
 		success: function (response) {
-			$('#fav-div').html(response['fav_data']);
-			// console.log(response['fav_data']);
-
+			$(`#${id}`).html(response["fav_data"]);
 			console.log("Fav article toggled!");
-
 		},
-		error: (err) => {
-			console.log("Facing Problems:");
-
-			console.log(err.responseText);
-			$('#fav-error-div').html(err.responseText);
-
-		}
+		error: function (rs, e) {
+			console.error(rs.responseText);
+		},
 	});
 });
+
+
+// $(document).on('click', '.fav_btn', (event) => {
+// 	event.preventDefault();
+// 	console.log("I am cliked to add or remove article to or from MyFav List... ");
+// 	console.log("Target Url ", $('form.add-remove-fav').attr('action'));
+// 	const post_id = $(this).attr('post-id')
+// 	console.log("Post ID new", post_id);
+// 	console.log("Url:", $('.fav_btn').attr('url'));
+
+
+// 	$.ajax({
+// 		type: "post",
+// 		url: $(this).attr('url'),
+// 		data: {
+// 			'csrfmiddlewaretoken': getCookie('csrftoken'),
+// 		},
+// 		dataType: "json",
+// 		success: function (response) {
+// 			$('.fav-div1').html(response['fav_data']);
+// 			// console.log(response['fav_data']);
+
+// 			console.log("Fav article toggled!");
+
+// 		},
+// 		error: (err) => {
+// 			console.log("Facing Problems:");
+
+// 			console.log(err.responseText);
+// 			$('#fav-error-div').html(err.responseText);
+
+// 		}
+// 	});
+// });
 
 // Confirmation PopUp
 $(document).on('click', '.delete-post-btn', function (env) {
@@ -386,6 +415,8 @@ $(document).on("click", ".likebutton", function (event) {
 	var csrftoken = getCookie("csrftoken");
 	console.log(csrftoken);
 	console.log(id);
+
+
 
 	$.ajax({
 		type: "POST",

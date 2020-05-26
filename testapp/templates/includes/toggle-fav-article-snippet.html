@@ -1,6 +1,6 @@
-<form action="{{post.get_fav_article_url}}" post-id="{{post.id}}" class="add-remove-fav" method="post">
-    <!-- {% csrf_token %} -->
-    <button type="submit" id="add2fav">
+<form action="{{post.get_fav_article_url}}"  class="add-remove-fav" method="post">
+    {% csrf_token %}
+    <button class="fav_btn" post-id="{{post.id}}" id="add2fav{{post.id}}" url="{{post.get_fav_article_url}}">
         {% if post in user_object.favourites.all  %}Added To <i class="fa fa-heart text-danger" aria-hidden="true"></i>
         {% else %}
         Add To <i class="fa fa-heart-o" aria-hidden="true"></i>
@@ -12,9 +12,10 @@
     #add2fav {
         box-shadow: 2px 4px 7px gray;
     }
-    
+
     #add2fav:hover {
         transform: translateZ(5px);
         transform: scale(1.3);
     }
+
 </style>

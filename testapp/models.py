@@ -52,16 +52,21 @@ class Category(models.Model):
         verbose_name = ("Category")
         verbose_name_plural = ("Categories")
 
-
     def save(self, *args, **kwargs):
         if self.cat_thumbnail:
+            baseSize = 500
             imageTemproary = Image.open(self.cat_thumbnail)
             outputIoStream = BytesIO()
             w, h = imageTemproary.size
+            if (baseSize / w < baseSize / h):
+                factor = baseSize / h
+            else:
+                factor = baseSize / w
+            size = (int(w / factor), int(h / factor))
             imageTemproaryResized = imageTemproary.resize(
-                (int(w/2), int(h/2)), Image.ANTIALIAS)
+                size, Image.ANTIALIAS)
             imageTemproaryResized.save(
-                outputIoStream, format='JPEG', quality=150)
+                outputIoStream, format='JPEG', quality=95)
             outputIoStream.seek(0)
             self.cat_thumbnail = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % self.cat_thumbnail.name.split('.')[
                 0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
@@ -122,18 +127,23 @@ class Article(models.Model):
             print("Last time field updated!!!")
 
         if self.thumbnail:
+            baseSize = 500
             imageTemproary = Image.open(self.thumbnail)
             outputIoStream = BytesIO()
             w, h = imageTemproary.size
+            if (baseSize / w < baseSize / h):
+                factor = baseSize / h
+            else:
+                factor = baseSize / w
+            size = (w / factor, h / factor)
             imageTemproaryResized = imageTemproary.resize(
-                (int(w/2), int(h/2)), Image.ANTIALIAS)
+                size, Image.ANTIALIAS)
             imageTemproaryResized.save(
-                outputIoStream, format='JPEG', quality=150)
+                outputIoStream, format='JPEG', quality=95)
             outputIoStream.seek(0)
             self.thumbnail = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % self.thumbnail.name.split('.')[
                 0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
         super(Article, self).save(*args, **kwargs)
-
 
 
     def __str__(self):
