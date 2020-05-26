@@ -23,14 +23,20 @@ class Photo(models.Model):
 
     def save(self, *args, **kwargs):
         if self.file:
+            baseSize = 300
             print("Save method called!!")
             imageTemproary = Image.open(self.file)
             outputIoStream = BytesIO()
             w, h = imageTemproary.size
+            if (baseSize / w < baseSize / h):
+                factor = baseSize / h
+            else:
+                factor = baseSize / w
+            size = (int(w / factor), int(h / factor))
             imageTemproaryResized = imageTemproary.resize(
-                (int(w/2), int(h/2)), Image.ANTIALIAS)
+                size, Image.ANTIALIAS)
             imageTemproaryResized.save(
-                outputIoStream, format='JPEG', quality=95)
+                outputIoStream, format='JPEG', quality=70)
             outputIoStream.seek(0)
             self.file = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % self.file.name.split('.')[
                 0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
