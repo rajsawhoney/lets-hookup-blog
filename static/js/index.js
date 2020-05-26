@@ -1,24 +1,4 @@
-// *****Your Article Section Functionality*****
-// function onclickFunction(evn) {
-//   console.log("List trigger iniated for the end point:>>> ", evn);
-//   $.ajax({
-//     type: "GET",
-//     url: '/testapp/your/articles/',
-//     data: {
-//       'data': "I am working! Damm but he isn't...",
-//     },
-//     dataType: "json",
-//     success: function (response) {
-//       console.log("Request sent successfully", response['list_data']);
-//       history.pushState('data to be passed', 'Your Article Page', 'http://127.0.0.1:8000/testapp/your/articles');
-//       $('.article-list-view-div').html(response['list_data']);
 
-//     },
-//     error: (err) => {
-//       console.log("ERR in sending request!!! ", err.responseText);
-//     }
-//   });
-// }
 
 // Toggle Fav Article Functionality
 $(document).on('submit', 'form.add-remove-fav', (event) => {
