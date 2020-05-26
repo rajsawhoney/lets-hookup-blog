@@ -13,6 +13,13 @@ from accounts.models import UserModel
 import datetime
 from django.utils import timezone
 
+
+from PIL import Image
+from io import BytesIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
+import sys
+
+
 # Create your models here.
 
 
@@ -44,6 +51,21 @@ class Category(models.Model):
     class Meta:
         verbose_name = ("Category")
         verbose_name_plural = ("Categories")
+
+
+    def save(self, *args, **kwargs):
+        if self.cat_thumbnail:
+            imageTemproary = Image.open(self.cat_thumbnail)
+            outputIoStream = BytesIO()
+            w, h = imageTemproary.size
+            imageTemproaryResized = imageTemproary.resize(
+                (int(w/2), int(h/2)), Image.ANTIALIAS)
+            imageTemproaryResized.save(
+                outputIoStream, format='JPEG', quality=150)
+            outputIoStream.seek(0)
+            self.cat_thumbnail = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % self.cat_thumbnail.name.split('.')[
+                0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
+        super(Category, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
@@ -98,7 +120,21 @@ class Article(models.Model):
         if not kwargs.pop('updatelasttime', False):
             self.last_updated = timezone.now()
             print("Last time field updated!!!")
+
+        if self.thumbnail:
+            imageTemproary = Image.open(self.thumbnail)
+            outputIoStream = BytesIO()
+            w, h = imageTemproary.size
+            imageTemproaryResized = imageTemproary.resize(
+                (int(w/2), int(h/2)), Image.ANTIALIAS)
+            imageTemproaryResized.save(
+                outputIoStream, format='JPEG', quality=150)
+            outputIoStream.seek(0)
+            self.thumbnail = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % self.thumbnail.name.split('.')[
+                0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
         super(Article, self).save(*args, **kwargs)
+
+
 
     def __str__(self):
         return self.title
