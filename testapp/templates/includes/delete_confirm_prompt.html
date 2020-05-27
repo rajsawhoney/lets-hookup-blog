@@ -2,7 +2,8 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" style="box-shadow: 2px 4px 10px lawngreen;">
             <div class="modal-header">
-                <h4 class="modal-title" style="box-shadow: 2px 3px 7px rgb(252, 0, 197); text-align:center;">Confirmation</h4>
+                <h4 class="modal-title" style="box-shadow: 2px 3px 7px rgb(252, 0, 197); text-align:center;">
+                    Confirmation</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -13,7 +14,8 @@
                     <div class="row">
                         <div class="mx-2 my-2 col col-12">
                             <span class="">
-                                <img src="{{post.thumbnail.url}}" width="300px" height="200px" alt="Missing">
+                                <img src="{% if post.thumbnail %}{{post.thumbnail.url}} {% else %}#{% endif %}"
+                                    width="300px" height="200px" alt="Missing">
                             </span>
                         </div>
                     </div>
@@ -54,15 +56,17 @@
 
 
 <style>
-    .confirm-box{
+    .confirm-box {
         border: 1px solid rgba(0, 0, 255, 0.514);
         border-radius: 5px;
         box-shadow: 2px 4px 7px rgb(58, 55, 55);
         font-size: larger;
         padding: 2px 1px;
     }
-    .confirm-box:hover{
+
+    .confirm-box:hover {
         transform: translateZ(5px);
         font-size: x-large;
     }
+
 </style>

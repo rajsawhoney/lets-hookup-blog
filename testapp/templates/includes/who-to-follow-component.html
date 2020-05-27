@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col col-4">
 
-                <img src="{{author.profile_pic.url}}" style="width:100px;height: 100px; border-radius:
+                <img src="{% if author.profile_pic %} {{author.profile_pic.url}} {% else %}# {% endif %}" style="width:100px;height: 100px; border-radius:
                 50%;box-shadow: 1px 2px 3px rgb(230, 17, 17);" alt="No profile Pic">
                 <span class="card-title"><a href="{{author.get_absolute_url}}" style="box-shadow:1px 2px 3px rgb(223, 59,
                     30);margin-top: 5%; font-style: oblique;">

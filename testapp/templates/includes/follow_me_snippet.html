@@ -7,8 +7,8 @@
             <div class='modal-header'>
 
                 <span class='modal-title' id='my-modal-title'>
-                    <img src="{{post.author.profile_pic.url}}" style="height: 60px;width:60px;border-radius: 50%;"
-                        alt="">
+                    <img src="{% if post.author.profile_pic %}{{post.author.profile_pic.url}} {% else %}#{% endif %}"
+                        style="height: 60px;width:60px;border-radius: 50%;" alt="">
                     <br>
                     <span style="color:blue"> @{{post.author.user.username|capfirst}}</span>
 
