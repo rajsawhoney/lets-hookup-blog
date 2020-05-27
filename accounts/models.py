@@ -20,7 +20,7 @@ class UserModel(models.Model):
     user = models.OneToOneField(User, verbose_name=(
         "user"), on_delete=models.CASCADE, null=True, related_name='users')
     about_me = models.TextField(
-        ("About me:"), default="I am a good person!", blank=True)
+        ("About me:"), default="I am a good person! I am this and that", blank=True)
     qualifications = models.TextField(
         ("Your Qualifications"), default="Bachelor's in Engineering", blank=True)
 
@@ -44,7 +44,7 @@ class UserModel(models.Model):
 
     def save(self, *args, **kwargs):
         if self.profile_pic:
-            baseSize = 300
+            baseSize = 500
             print("Save method called!!")
             imageTemproary = Image.open(self.profile_pic)
             outputIoStream = BytesIO()
@@ -59,7 +59,7 @@ class UserModel(models.Model):
             imageTemproaryResized.save(
                 outputIoStream, format='JPEG', quality=70)
             outputIoStream.seek(0)
-            self.file = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % self.profile_pic.name.split('.')[
+            self.profile_pic = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % self.profile_pic.name.split('.')[
                 0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
         super(UserModel, self).save(*args, **kwargs)
 
