@@ -1,10 +1,11 @@
 <!-- Modal -->
 {% load i18n %}
-<div class="modal fade open" data-backdrop="false" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade open" data-backdrop="false" id="login-modal" tabindex="-1" role="dialog"
+    aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">LOGIN</h5>
+                <h5 class="modal-title">LOGIN HERE</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -44,14 +45,19 @@
                     </form>
 
                     <div class="row">
-                        <a class="custom" href="{% url 'accounts:password_reset' %}"><button
-                                class="btn btn-sm btn-block btn-danger">Forgot
-                                Password?</button></a>
+                        <div class="col-lg-8 col-md-6 col-sm-12">
+                            <a class="custom" href="{% url 'accounts:password_reset' %}"><button
+                                    class="btn btn-sm btn-block btn-danger">Forgot
+                                    Password?</button>
+                            </a>
+                        </div>
 
-
-                        <a class="custom" href="{% url 'accounts:signup' %}"><button
-                                class="btn btn-sm btn-block btn-warning">Not
-                                Registered?</button></a>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <a class="custom" href="{% url 'accounts:signup' %}"><button
+                                    class="btn btn-sm btn-block btn-warning">Not
+                                    Registered?</button>
+                            </a>
+                        </div>
 
                     </div>
                 </div>
@@ -70,7 +76,7 @@
 
 <style>
     modal-backdrop {
-        transition: opacity .15s linear!important;
+        transition: opacity .15s linear !important;
     }
 
 </style>
