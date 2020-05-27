@@ -40,6 +40,24 @@ def set_category_thumbnail_name(instance, filename):
 def set_thumbnail_name(instance, filename):
     title = instance.title
     slug = slugify(title)
+    if instance.thumbnail:
+        print("Article Thumnail Resizing....")
+        baseSize = 350
+        imageTemproary = Image.open(instance.thumbnail)
+        outputIoStream = BytesIO()
+        w, h = imageTemproary.size
+        if (baseSize / w < baseSize / h):
+            factor = baseSize / h
+        else:
+            factor = baseSize / w
+        size = (int(w * factor), int(h * factor))
+        imageTemproaryResized = imageTemproary.resize(
+            size, Image.ANTIALIAS)
+        imageTemproaryResized.save(
+            outputIoStream, format='JPEG', quality=50)
+        outputIoStream.seek(0)
+        instance.thumbnail = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % instance.thumbnail.name.split('.')[
+            0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
     return f"user_article_thumbnail/{slug}-{filename}"
 
 
@@ -118,7 +136,7 @@ class Article(models.Model):
     author = models.ForeignKey(
         UserModel, on_delete=models.CASCADE, blank=True, null=True, related_name='articles')
     thumbnail = models.FileField(
-        ("Thumbnail"), upload_to="article_thumbnail", storage=gdstorage, null=True, blank=True)
+        ("Thumbnail"), upload_to=set_thumbnail_name, storage=gdstorage, null=True, blank=True)
     assets = models.ManyToManyField("photos.Photo")
     slug = models.SlugField(null=True, blank=True)
     views_count = models.IntegerField(("Viewed"), default=0)
@@ -130,23 +148,23 @@ class Article(models.Model):
             self.last_updated = timezone.now()
             print("Last time field updated!!!")
 
-        if self.thumbnail:
-            baseSize = 350
-            imageTemproary = Image.open(self.thumbnail)
-            outputIoStream = BytesIO()
-            w, h = imageTemproary.size
-            if (baseSize / w < baseSize / h):
-                factor = baseSize / h
-            else:
-                factor = baseSize / w
-            size = (int(w * factor), int(h * factor))
-            imageTemproaryResized = imageTemproary.resize(
-                size, Image.ANTIALIAS)
-            imageTemproaryResized.save(
-                outputIoStream, format='JPEG', quality=50)
-            outputIoStream.seek(0)
-            self.thumbnail = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % self.thumbnail.name.split('.')[
-                0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
+        # if self.thumbnail:
+        #     baseSize = 350
+        #     imageTemproary = Image.open(self.thumbnail)
+        #     outputIoStream = BytesIO()
+        #     w, h = imageTemproary.size
+        #     if (baseSize / w < baseSize / h):
+        #         factor = baseSize / h
+        #     else:
+        #         factor = baseSize / w
+        #     size = (int(w * factor), int(h * factor))
+        #     imageTemproaryResized = imageTemproary.resize(
+        #         size, Image.ANTIALIAS)
+        #     imageTemproaryResized.save(
+        #         outputIoStream, format='JPEG', quality=50)
+        #     outputIoStream.seek(0)
+        #     self.thumbnail = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % self.thumbnail.name.split('.')[
+        #         0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
         super(Article, self).save(*args, **kwargs)
 
     def __str__(self):
