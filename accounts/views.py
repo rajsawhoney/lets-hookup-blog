@@ -253,11 +253,11 @@ def add_remove_frm2fav(request, slug):
     author = get_object_or_404(UserModel, user=request.user)
     if article in author.favourites.all():
         author.favourites.remove(article)
-        author.save()
+        # author.save()
         print("Removed from ur FavList")
     else:
         author.favourites.add(article)
-        author.save()
+        # author.save()
         print("Added to ur FavList")
     context = {'post': article, 'user_object': author}
 

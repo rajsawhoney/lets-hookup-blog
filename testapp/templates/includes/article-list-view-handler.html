@@ -1,7 +1,9 @@
 <div class="list-type my-3 mx-3 text-center">
     {% if all_list %}
-    <span class="text-center">WelCome Mr./Mrs. {{user|capfirst}} To Blog Home Page</span> {% endif %} {% if personal_list %}
-    <span class="text-center">WelCome Mr./Mrs. {{user|capfirst}} To Your Article Section </span> {% endif %} {% if fav_list %}
+    <span class="text-center">WelCome Mr./Mrs. {{user|capfirst}} To Blog Home Page</span> {% endif %}
+    {% if personal_list %}
+    <span class="text-center">WelCome Mr./Mrs. {{user|capfirst}} To Your Article Section </span> {% endif %}
+    {% if fav_list %}
     <span class="text-center">WelCome Mr./Mrs. {{user|capfirst}} To Your Favourite Article Section</span> {% endif %}
 </div>
 
@@ -27,11 +29,14 @@ box-shadow: 1px 3px 4px rgb(177, 167, 167);">
 
             </div>
 
-            <div class="row mt-2" style="border:1.5px solid rgb(88, 79, 85);background-image: linear-gradient(rgba(42, 238, 16, 0.356),rgba(204, 60, 34, 0.356),rgba(51, 192, 214, 0.356));">
+            <div class="row mt-2"
+                style="border:1.5px solid rgb(88, 79, 85);background-image: linear-gradient(rgba(42, 238, 16, 0.356),rgba(204, 60, 34, 0.356),rgba(51, 192, 214, 0.356));">
                 {% for img in object_list.0.assets.all|slice:4 %}
                 <div class="col-lg-3 col-md-4 col-6 my-1">
                     <div class="img-responsive">
-                        <img class="rotate-effect mfp-zoom" src=" {% if img.file %} {{img.file.url}} {% else %} # {% endif %}" height="120px" width="170px" alt="Missing">
+                        <img class="rotate-effect mfp-zoom"
+                            src=" {% if img.file %} {{img.file.url}} {% else %} # {% endif %}" height="120px"
+                            width="170px" alt="Missing">
                     </div>
                 </div>
                 {% endfor %}
@@ -53,6 +58,7 @@ box-shadow: 1px 3px 4px rgb(177, 167, 167);">
             setTimeout(() => {
                 $("#updatestatus-modal").modal("hide");
             }, 5000);
+
         </script>
         {% endif %}
         <!-- start of list view -->
@@ -65,7 +71,9 @@ box-shadow: 1px 3px 4px rgb(177, 167, 167);">
                     <div class="card mx-1" style="width: fit-content;">
                         <a href="{{post.get_absolute_url}}">
                             <img class="card-img-top" style="border: 1px solid rgb(8, 12, 240);
-                            border-bottom-color: rgb(248, 247, 247);" src=" {% if post.thumbnail %} {{post.thumbnail.url}} {% else %} # {% endif %}" height="300px" alt='Missing..'>
+                            border-bottom-color: rgb(248, 247, 247);"
+                                src=" {% if post.thumbnail %} {{post.thumbnail.url}} {% else %} # {% endif %}"
+                                height="300px" alt='Missing..'>
                         </a>
 
                         <div class="card-body px-3" style="padding-bottom: 5px;">
@@ -78,7 +86,8 @@ box-shadow: 1px 3px 4px rgb(177, 167, 167);">
                                     class="display-5 text-info">{{cat.title}},</span></a> {% endfor %} {% else %}
                             <span class="display-5 text-info"> Not Assigned</span> {% endif %}
 
-                            <p style="color: rgb(15, 14, 15); font-weight: bold;"> Posted by: <span class="follow-me-btn" postid="{{post.id}}" style="cursor: pointer;color:rgb(8, 12,
+                            <p style="color: rgb(15, 14, 15); font-weight: bold;"> Posted by: <span
+                                    class="follow-me-btn" postid="{{post.id}}" style="cursor: pointer;color:rgb(8, 12,
                                 240)">@{{post.author.user.username|capfirst}}
                                     <div class="follow-me-div">
                                         {% include "includes/follow_me_snippet.html" %}
@@ -87,14 +96,17 @@ box-shadow: 1px 3px 4px rgb(177, 167, 167);">
                             </p>
 
                             <p style="color: rgb(128, 125, 125);font-size:
-                            small;"><span style="color: rgb(14, 12, 14);font-weight: bold;">Last Updated:</span> {{post.last_updated|timesince}} ago.
+                            small;"><span style="color: rgb(14, 12, 14);font-weight: bold;">Last Updated:</span>
+                                {{post.last_updated|timesince}} ago.
                             </p>
                             <p><span style="color: rgb(148, 134, 134);font-size:
-                                small;"><span style="color: rgb(14, 12, 14);font-weight: bold;">Published:</span> {{post.pub_date|timesince}} ago
+                                small;"><span style="color: rgb(14, 12, 14);font-weight: bold;">Published:</span>
+                                    {{post.pub_date|timesince}} ago
                                 </span>
                             </p>
                             <p class="card-text text-center">{{post.content|slice:200|striptags}}...
-                                <span class="mt-2 float-right" style="font-size: larger;float:right;font-weight: bold;"><a
+                                <span class="mt-2 float-right"
+                                    style="font-size: larger;float:right;font-weight: bold;"><a
                                         href="{{post.get_absolute_url}}">Continue
                                         Reading...</a>
                                 </span>
@@ -134,7 +146,9 @@ box-shadow: 1px 3px 4px rgb(177, 167, 167);">
                                     <br><br>
                                     <p class="text-muted my-3">Have a Fb comment here.
                                     </p>
-                                    <div class="fb-comments" data-href="http://127.0.0.1:8000/testapp/articles/{{post.id}}" data-numposts="3" data-width="150px">
+                                    <div class="fb-comments"
+                                        data-href="http://127.0.0.1:8000/testapp/articles/{{post.id}}" data-numposts="3"
+                                        data-width="150px">
                                     </div>
                                 </div>
                             </p>
@@ -147,7 +161,8 @@ box-shadow: 1px 3px 4px rgb(177, 167, 167);">
         {% else %}
         <div class="row text-center">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <h3 class="display-5 text-center text-info mx-3"> Dear {{user.username}}! You have not followed any bloggers so far. <br>
+                <h3 class="display-5 text-center text-info mx-3"> Dear {{user.username}}! You have not followed any
+                    bloggers so far. <br>
                 </h3>
                 <h3 class="badge badge-warning display-4 mb-2">Please follow bloggers to see their posts here! </h3><br>
                 <a href="{% url 'testapp:authors-list' %}">
@@ -202,6 +217,7 @@ box-shadow: 1px 3px 4px rgb(177, 167, 167);">
             transform: rotate(0deg);
             /* transform: translateZ(5px); */
         }
+
         to {
             transform: rotate(360deg);
             /* transform: translateZ(-5px); */
@@ -218,4 +234,5 @@ box-shadow: 1px 3px 4px rgb(177, 167, 167);">
         transform: translateZ(5px);
         font-size: x-large;
     }
+
 </style>
