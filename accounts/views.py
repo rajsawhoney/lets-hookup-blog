@@ -73,32 +73,6 @@ class MyProfileView(TemplateView):
         return context
 
 
-# def registerUser(request):
-#     registered = False
-#     cart_obj, new_obj = Cart.objects.get_create_cartId(request)
-#     cartItems = cart_obj.product.all()
-#     wishItems = cart_obj.wishedProduct.all()
-#     subTotal = cart_obj.subTotal
-#     total = cart_obj.totalSum
-#     if request.method == "POST":
-#         user_form = UserForm(request.POST)
-#         user_profile_form = UserProfileForm(request.POST, request.FILES)
-#         if user_form.is_valid() and user_profile_form.is_valid():
-#             user = user_form.save()
-#             profile = user_profile_form.save(commit=False)
-#             profile.user = user
-#             profile.save()
-#             registered = True
-#             login(request, user)
-#             return redirect('product:product_list')
-#         else:
-#             print(user_form.errors, user_profile_form.errors)
-#     else:
-#         user_form = UserForm()
-#         user_profile_form = UserProfileForm()
-
-#     return render(request, 'accounts/signupform.html', {'user_form': user_form, 'user_profile_form': user_profile_form, 'registered': registered, 'cartItems': cartItems, 'wishItems': wishItems, 'subTotal': subTotal, 'maincategory': Category.objects.all(), })
-
 
 def login_user(request):
     if request.method == 'POST':
@@ -253,11 +227,9 @@ def add_remove_frm2fav(request, slug):
     author = get_object_or_404(UserModel, user=request.user)
     if article in author.favourites.all():
         author.favourites.remove(article)
-        # author.save()
         print("Removed from ur FavList")
     else:
         author.favourites.add(article)
-        # author.save()
         print("Added to ur FavList")
     context = {'post': article, 'user_object': author}
 

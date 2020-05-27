@@ -11,9 +11,14 @@ from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys
 
+from gdstorage.storage import GoogleDriveStorage
+from mytestwebsite import settings
+# Define Google Drive Storage
+
 
 class Photo(models.Model):
-    file = models.FileField(upload_to='ArticleAssets/')
+    gd_storage = GoogleDriveStorage()
+    file = models.FileField(upload_to='ArticleAssets', storage=gd_storage)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -24,7 +29,10 @@ class Photo(models.Model):
     def save(self, *args, **kwargs):
         if self.file:
             baseSize = 300
+
             print("Save method called!!")
+            print("Something cool gonna happen!")
+            print("File upld,", self.file)
             imageTemproary = Image.open(self.file)
             outputIoStream = BytesIO()
             w, h = imageTemproary.size
@@ -36,7 +44,7 @@ class Photo(models.Model):
             imageTemproaryResized = imageTemproary.resize(
                 size, Image.ANTIALIAS)
             imageTemproaryResized.save(
-                outputIoStream, format='JPEG', quality=70)
+                outputIoStream, format='JPEG', quality=60)
             outputIoStream.seek(0)
             self.file = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % self.file.name.split('.')[
                 0], 'image/jpeg', sys.getsizeof(outputIoStream), None)

@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'gdstorage',
     'rest_framework',
     'corsheaders',
     # local apps
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'photos',
     'checkapp',
+
 ]
 
 
@@ -190,12 +192,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.2/howto/static-files/
-# DAJAXICE_MEDIA_PREFIX = 'dajaxice'
-# STATIC_URL = '/static/'
-# STATIC_DIRS = os.path.join(BASE_DIR, 'static')
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -210,6 +206,14 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+
+# Google Drive Storage Settings
+
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = 'mytestwebsite\\lets-hookup-278508-96bb0dec9ef3.json'
+
+GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = 'https://drive.google.com/drive/u/2/folders/1-SePn8sDkW90MZpCnlV9-53RA0K24M7Z'  # OPTIONAL
+
 
 CORS_ORIGIN_ALLOW_ALL = True
 

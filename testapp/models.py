@@ -14,6 +14,8 @@ import datetime
 from django.utils import timezone
 
 
+from gdstorage.storage import GoogleDriveStorage
+
 from PIL import Image
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
@@ -42,10 +44,11 @@ def set_thumbnail_name(instance, filename):
 
 
 class Category(models.Model):
+    gdstorage = GoogleDriveStorage()
     title = models.CharField(("Blog Type"), max_length=100)
     description = models.TextField(("About Category"))
-    cat_thumbnail = models.ImageField(("CategoryImage"),
-                                      upload_to=set_category_thumbnail_name, null=True, blank=True)
+    cat_thumbnail = models.FileField(("CategoryImage"),
+                                     upload_to=set_category_thumbnail_name, storage=gdstorage, null=True, blank=True)
     slug = models.SlugField(("Slug"), blank=True, null=True)
 
     class Meta:
@@ -86,6 +89,7 @@ def category_pre_save_receiver(sender, instance, **kwargs):
 
 
 class Article(models.Model):
+    gdstorage = GoogleDriveStorage()
     ONE_STAR = '1'
     TWO_STAR = '2'
     THREE_STAR = '3'
@@ -113,8 +117,8 @@ class Article(models.Model):
         'ratings', max_length=2, choices=RATINGS, default=ONE_STAR)
     author = models.ForeignKey(
         UserModel, on_delete=models.CASCADE, blank=True, null=True, related_name='articles')
-    thumbnail = models.ImageField(
-        ("Thumbnail"), upload_to=set_thumbnail_name, null=True, blank=True)
+    thumbnail = models.FileField(
+        ("Thumbnail"), upload_to=set_thumbnail_name, storage=gdstorage, null=True, blank=True)
     assets = models.ManyToManyField("photos.Photo")
     slug = models.SlugField(null=True, blank=True)
     views_count = models.IntegerField(("Viewed"), default=0)
@@ -127,7 +131,7 @@ class Article(models.Model):
             print("Last time field updated!!!")
 
         if self.thumbnail:
-            baseSize = 500
+            baseSize = 350
             imageTemproary = Image.open(self.thumbnail)
             outputIoStream = BytesIO()
             w, h = imageTemproary.size
