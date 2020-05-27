@@ -1,3 +1,4 @@
+from gdstorage.storage import GoogleDriveStorage
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
@@ -17,6 +18,7 @@ def set_profile_Image_name(instance, filename):
 
 
 class UserModel(models.Model):
+    gdStorage = GoogleDriveStorage()
     user = models.OneToOneField(User, verbose_name=(
         "user"), on_delete=models.CASCADE, null=True, related_name='users')
     about_me = models.TextField(
@@ -24,8 +26,8 @@ class UserModel(models.Model):
     qualifications = models.TextField(
         ("Your Qualifications"), default="Bachelor's in Engineering", blank=True)
 
-    profile_pic = models.ImageField(
-        ("profile photo"), upload_to=set_profile_Image_name, blank=True)
+    profile_pic = models.FileField(
+        ("profile photo"), upload_to=set_profile_Image_name, blank=True, storage=gdStorage)
     followed_by = models.ManyToManyField(
         "self", verbose_name=("Followed by"), blank=True, related_name='followers')
 
@@ -44,7 +46,7 @@ class UserModel(models.Model):
 
     def save(self, *args, **kwargs):
         if self.profile_pic:
-            baseSize = 500
+            baseSize = 350
             print("Save method called!!")
             imageTemproary = Image.open(self.profile_pic)
             outputIoStream = BytesIO()
