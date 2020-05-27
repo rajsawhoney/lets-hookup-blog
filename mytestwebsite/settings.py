@@ -210,7 +210,7 @@ REST_FRAMEWORK = {
 
 # Google Drive Storage Settings
 
-GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = 'mytestwebsite\\lets-hookup-278508-96bb0dec9ef3.json'
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = 'lets-hookup-278508-96bb0dec9ef3.json'
 
 GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = 'https://drive.google.com/drive/u/2/folders/1-SePn8sDkW90MZpCnlV9-53RA0K24M7Z'  # OPTIONAL
 

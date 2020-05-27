@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "lets-hookup-278508",
+  "private_key_id": "96bb0dec9ef36293adc45af41d4a1119d2d8ada5",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCQ28uMuMzvXVtj\neihJT3ysWrDXydfT274rijHuJXZ9hxW9hoHsfYCYysxeI8/YqibHHoq2SGNPQS2Q\nRr+jf14yQ8SwmTjxvV74Ry0Je8YhLgPP5Ih35zxF7J6pxX1Jtw5QtglNk09OjK0R\nmtj6rcyj/quTlPY7jEx9CgHSwwmw91vbnm0GEBMhJw3sgV0/eAZ0xsEoBe5QQTcu\nBef6SRJKltzvmrODAK1H7GiWKMLN+XCtCNE3yJ41ZGmwdsuYvx+QzQN8eJnJtSVN\nYWgWUxd8z+7T5DcJYjcJgZtlZVeR5dTtU0fSRBdNI21CJYIFlaUP778SMO3AdYSp\nLfwLSc+fAgMBAAECggEARgVoxBIEReQrq889sAozKqEAAJ75q9f5edRoRERpnU3x\n7VYacXVM9w54cT0AWCwPaIrT5D7jekj4PFhmhCKqJsPpTLAT/Y5bXMoS9BWXdSxn\n/VLrwIHO+cHiBBCJelt5GPyVTKFbYY3QjsT6A1qFo/QTfdgwmiI8SujObtGGWrrM\nwLGjIH/0hyHvRzOuybJy3ID/bzNpYoxC+wojIPtKg1Yp1vbGoxvgI9bvfElDPOV2\nWME6p9gLTwOEL0+WrVWwRI4spYqWuzfM1T0EG8Y+9rTMB+eSxxoI+xyYAANOAgbt\nE0Bs3kWHcsajofup7UNAj89cNx3AFL7Puvs+KRLp8QKBgQDERGOPMg+7LkeAMpEl\nN2xBJ8GsioplkVfjbCY4cWT9/m+zdxlCrMJPnA41ITZ2aQ63qNwEkSXRgEyDszNu\nZg6wS9LM6MrdjcO8up2cD4v0hQmlR5c5z/oU11n819W6M7oNeTFRcPxDGwT9ozdb\nYQKxhLT3QNuInJ2x7buyQkQM9wKBgQC88gzD97X9TX+m/qTUqeIuWNPRoS9XVqTy\n86sXv0XpqB47IojIFsyQ/QiXdUvGmlO54RUWFTxc46ZXeRt1uYK9TFgAGL1SSwB2\njaBiCXU6oz+ieXeL7ixwJxpyQXmuuzuqaKtvvm2DXdQiqvwdohFEknqc1rlS69mp\nbGnyih5wmQKBgDAOis4yNNXhVBKYzx9sva4KfQqxdYe/GeUOwyEI6vCiT1mDLQU9\nZeq2TGhH9Jzzxm3EA/N+UuNEZffNdidvB+O0/S29RocPQkFA9HyU9fDublkw+V9n\nhFV8EYWul5+bMNBBv4iwgKQxxnwQbeqLC2zKEMGF+PsvVhGOI2pXfXArAoGAElbI\nCGlNn7Va84F5zC5lBqyWep1Tc/2z6uTdsWNeTMyFiqXScuFLn7L/l3vKDA/EmqEP\nI+KRxk5OQeU+VhHYb7kuPWwpTAh9lgQvEfTrDPL1ZTa29Lz8UTJqbbaPMfd4VhTs\ntt7b0ElWIrtH1zR4ypgREJIC0NqVeM1OBz2CsNkCgYAFbymRK24yf2H+3gNjTtFh\nMBsKohvYF2ISoSrmnAGxV8XdXWRgpREDi+PmEgDT+DQj8D00bc3BjmBzGBT5M3EA\neNrvdj9zwVgjCPs30uBmGtx3gyzZVRZOVMzRCyWA4WJm4D5NHcBiUBSnf3LP7yve\nR1oIM7dBxtVvJhTvrnlAIQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "lets-hookup-file-storage@lets-hookup-278508.iam.gserviceaccount.com",
+  "client_id": "101399812575135330739",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/lets-hookup-file-storage%40lets-hookup-278508.iam.gserviceaccount.com"
+}
