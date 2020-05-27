@@ -27,12 +27,9 @@ class Photo(models.Model):
         ordering = ('-uploaded_at',)
 
     def save(self, *args, **kwargs):
-        if self.file:
+        try:
             baseSize = 300
-
-            print("Save method called!!")
-            print("Something cool gonna happen!")
-            print("File upld,", self.file)
+            print("Photo resing....")
             imageTemproary = Image.open(self.file)
             outputIoStream = BytesIO()
             w, h = imageTemproary.size
@@ -48,6 +45,8 @@ class Photo(models.Model):
             outputIoStream.seek(0)
             self.file = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % self.file.name.split('.')[
                 0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
+        except:
+            print("Unable to open file...")
         super(Photo, self).save(*args, **kwargs)
 
     def __str__(self):

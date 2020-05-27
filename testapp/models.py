@@ -40,24 +40,6 @@ def set_category_thumbnail_name(instance, filename):
 def set_thumbnail_name(instance, filename):
     title = instance.title
     slug = slugify(title)
-    if instance.thumbnail:
-        print("Article Thumnail Resizing....")
-        baseSize = 350
-        imageTemproary = Image.open(instance.thumbnail)
-        outputIoStream = BytesIO()
-        w, h = imageTemproary.size
-        if (baseSize / w < baseSize / h):
-            factor = baseSize / h
-        else:
-            factor = baseSize / w
-        size = (int(w * factor), int(h * factor))
-        imageTemproaryResized = imageTemproary.resize(
-            size, Image.ANTIALIAS)
-        imageTemproaryResized.save(
-            outputIoStream, format='JPEG', quality=50)
-        outputIoStream.seek(0)
-        instance.thumbnail = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % instance.thumbnail.name.split('.')[
-            0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
     return f"user_article_thumbnail/{slug}-{filename}"
 
 
@@ -66,7 +48,7 @@ class Category(models.Model):
     title = models.CharField(("Blog Type"), max_length=100)
     description = models.TextField(("About Category"))
     cat_thumbnail = models.FileField(("CategoryImage"),
-                                     upload_to="category_thumbnail", storage=gdstorage, null=True, blank=True)
+                                     upload_to=set_category_thumbnail_name, storage=gdstorage, null=True, blank=True)
     slug = models.SlugField(("Slug"), blank=True, null=True)
 
     class Meta:
@@ -74,7 +56,7 @@ class Category(models.Model):
         verbose_name_plural = ("Categories")
 
     def save(self, *args, **kwargs):
-        if self.cat_thumbnail:
+        try:
             baseSize = 300
             imageTemproary = Image.open(self.cat_thumbnail)
             outputIoStream = BytesIO()
@@ -91,6 +73,8 @@ class Category(models.Model):
             outputIoStream.seek(0)
             self.cat_thumbnail = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % self.cat_thumbnail.name.split('.')[
                 0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
+        except:
+            print("Unable open the file...")
         super(Category, self).save(*args, **kwargs)
 
     def __str__(self):
@@ -148,23 +132,28 @@ class Article(models.Model):
             self.last_updated = timezone.now()
             print("Last time field updated!!!")
 
-        # if self.thumbnail:
-        #     baseSize = 350
-        #     imageTemproary = Image.open(self.thumbnail)
-        #     outputIoStream = BytesIO()
-        #     w, h = imageTemproary.size
-        #     if (baseSize / w < baseSize / h):
-        #         factor = baseSize / h
-        #     else:
-        #         factor = baseSize / w
-        #     size = (int(w * factor), int(h * factor))
-        #     imageTemproaryResized = imageTemproary.resize(
-        #         size, Image.ANTIALIAS)
-        #     imageTemproaryResized.save(
-        #         outputIoStream, format='JPEG', quality=50)
-        #     outputIoStream.seek(0)
-        #     self.thumbnail = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % self.thumbnail.name.split('.')[
-        #         0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
+        try:
+            print("Photo resizing...")
+            baseSize = 350
+            imageTemproary = Image.open(self.thumbnail)
+            outputIoStream = BytesIO()
+            w, h = imageTemproary.size
+            if (baseSize / w < baseSize / h):
+                factor = baseSize / h
+            else:
+                factor = baseSize / w
+            size = (int(w * factor), int(h * factor))
+            imageTemproaryResized = imageTemproary.resize(
+                size, Image.ANTIALIAS)
+            imageTemproaryResized.save(
+                outputIoStream, format='JPEG', quality=50)
+            outputIoStream.seek(0)
+            self.thumbnail = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % self.thumbnail.name.split('.')[
+                0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
+
+        except:
+            print("Error in opening file")
+
         super(Article, self).save(*args, **kwargs)
 
     def __str__(self):
