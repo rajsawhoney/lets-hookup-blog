@@ -48,7 +48,7 @@ class Category(models.Model):
     title = models.CharField(("Blog Type"), max_length=100)
     description = models.TextField(("About Category"))
     cat_thumbnail = models.FileField(("CategoryImage"),
-                                     upload_to=set_category_thumbnail_name, storage=gdstorage, null=True, blank=True)
+                                     upload_to="category_thumbnail", storage=gdstorage, null=True, blank=True)
     slug = models.SlugField(("Slug"), blank=True, null=True)
 
     class Meta:
@@ -118,7 +118,7 @@ class Article(models.Model):
     author = models.ForeignKey(
         UserModel, on_delete=models.CASCADE, blank=True, null=True, related_name='articles')
     thumbnail = models.FileField(
-        ("Thumbnail"), upload_to=set_thumbnail_name, storage=gdstorage, null=True, blank=True)
+        ("Thumbnail"), upload_to="article_thumbnail", storage=gdstorage, null=True, blank=True)
     assets = models.ManyToManyField("photos.Photo")
     slug = models.SlugField(null=True, blank=True)
     views_count = models.IntegerField(("Viewed"), default=0)

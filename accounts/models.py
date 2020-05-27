@@ -27,7 +27,7 @@ class UserModel(models.Model):
         ("Your Qualifications"), default="Bachelor's in Engineering", blank=True)
 
     profile_pic = models.FileField(
-        ("profile photo"), upload_to=set_profile_Image_name, blank=True, storage=gdStorage)
+        ("profile photo"), upload_to="user_profile_pic", blank=True, storage=gdStorage)
     followed_by = models.ManyToManyField(
         "self", verbose_name=("Followed by"), blank=True, related_name='followers')
 
