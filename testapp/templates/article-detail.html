@@ -31,7 +31,6 @@
     <p>Last Updated: {{post.last_updated|timesince}} ago.</p>
 </div>
 
-
 <!-- Gallary show section -->
 <div class="gallary-section">
     <h3 class="display-5 text-muted mb-2"
@@ -42,7 +41,7 @@
         style="background-image:linear-gradient(rgba(30, 255, 16, -5.644),rgba(-18, 12, 255, 0.556),rgba(120, 77, 255, 19.356),rgba(12, 220, 255, 3.356)),url({{post.thumbnail.url}});background-repeat: no-repeat;background-size: cover; background-blend-mode: darken;">
         {% for img in post.assets.all %}
         <div class="col-lg-3 col-md-6 col-sm-12">
-            <a href="{{img.get_absolute_url}}">
+            <a href="{% if img %} {{img.get_absolute_url}} {% else %} # {% endif %}">
                 <img src="{{img.file.url}}" class="my-1 img-pop" alt="">
             </a>
         </div>

@@ -98,7 +98,8 @@
                         <p class="nav-link" style="float: right;">Loginned as:
                             <a href="{{user_object.get_absolute_url}}"> <img
                                     style="width: 30px;; height:30px; border-radius:50%;"
-                                    src="{{user_object.profile_pic.url}}" alt="">
+                                    src="{% if user_object.profile_pic %} {{user_object.profile_pic.url}} {% else %} # {% endif %}"
+                                    alt="">
                                 <span style="color: blue;background-color: yellow;">
                                     @{{user_object.user.username|capfirst}}
                                 </span>

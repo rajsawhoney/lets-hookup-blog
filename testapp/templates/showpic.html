@@ -7,7 +7,8 @@
 
 <div class="container mt-5">
     <div class="card mt-2">
-        <img class="card-img-top" src="{{gallery_obj.file.url}}" alt="img">
+        <img class="card-img-top" src="{% if gallery_obj.file %}{{gallery_obj.file.url}} {% else %} # {% endif %}"
+            alt="img">
         <span style="float: right;font-size: small;color:blue;text-align: center;margin-top: 5px;">Photo Capt:
             {{gallery_obj.file.name}}</span>
         <div class="card-body">

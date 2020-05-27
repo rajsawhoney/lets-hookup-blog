@@ -28,8 +28,8 @@
             <footer class="blockquote-footer">By:
                 <a href="{{comment.user.get_absolute_url}}"><span style="border: grey; font-weight: bold; font-size:
                         small;"><i class="fa" aria-hidden="true">
-                            <img src="{{comment.user.profile_pic.url}}" width='20px' height="20px"
-                                style='border-radius: 50%;' alt=""></i>
+                            <img src="{% if comment.user.profile_pic %}{{comment.user.profile_pic.url}} {% else %} # {% endif %}"
+                                width='20px' height="20px" style='border-radius: 50%;' alt=""></i>
                         @{{comment.user.user}}
                     </span>
                 </a>
@@ -110,8 +110,8 @@
                 smaller;color:gray"><i class="fa fa-reply-all" aria-hidden="true"></i> replied_by:</span>
             <a href="{{reply.user.get_absolute_url}}"> <span
                     style="border: grey; font-weight: bold; font-size: small;"><i class="fa" aria-hidden="true"> <img
-                            src="{{reply.user.profile_pic.url}}" width='20px' height="20px" style='border-radius: 50%;'
-                            alt=""></i>
+                            src="{% if reply.user.profile_pic %}{{reply.user.profile_pic.url}} {% else %} # {% endif %}"
+                            width='20px' height="20px" style='border-radius: 50%;' alt=""></i>
                     @{{reply.user.user}}
                 </span>
             </a>

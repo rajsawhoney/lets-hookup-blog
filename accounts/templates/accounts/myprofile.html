@@ -8,7 +8,7 @@
 {% block bodyblock %}
 
 <div style="padding-top: 50px; box-sizing:content-box; box-shadow:2px 6px 9px rgb(149, 34, 153);" class="card">
-    <img src="{{object.profile_pic.url}}" alt="Profile-pic">
+    <img src="{% if object.profile_pic %}{{object.profile_pic.url}} {% else %} # {% endif %}" alt="Profile-pic">
     <h3 style="box-shadow:.5px 3px 10px rgb(51, 21, 218);">{{object.user.username|capfirst}}</h3>
     <p class="title">{{object.qualifications|slice:250}}</p> <!-- Custom filter used here -->
     <p>Tribhuvan University</p>

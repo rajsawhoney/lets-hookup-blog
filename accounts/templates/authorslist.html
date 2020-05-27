@@ -20,11 +20,11 @@
                             style="background-color: rgb(218, 30, 171);color: white; box-shadow:2px 1px 10px 3px rgb(30, 49, 223);border-radius: 50px;">
                             <i class="fa fa-link" aria-hidden="true"></i>
                             {% if author in user_object.followed_by.all %}
-                                Following {% else %}Follow
-                                {% endif %}
+                            Following {% else %}Follow
+                            {% endif %}
                         </button>
                     </form>
-                    <img src="{{author.profile_pic.url}}"
+                    <img src="{% if author.profile_pic %}{{author.profile_pic.url}} {% else %} # {% endif %}"
                         style="width:160px;height: 160px; border-radius: 50%;box-shadow: 1px 2px 3px rgb(230, 17, 17);"
                         alt="No profile Pic">
 
@@ -35,7 +35,9 @@
                 <div class="col col-12" style="margin-top: 3%;">
                     <h3 class="card-title"><a href="{{author.get_absolute_url}}"
                             style="box-shadow:1px 2px 3px rgb(223, 59, 30);margin-top: 5%; font-style: oblique;">
-                            @{{author.user.username|capfirst}} &nbsp <span class="display-6 text-muted">({{author.how_much_articles}} Article{{author.how_much_articles|pluralize}})</span></a>
+                            @{{author.user.username|capfirst}} &nbsp <span
+                                class="display-6 text-muted">({{author.how_much_articles}}
+                                Article{{author.how_much_articles|pluralize}})</span></a>
                     </h3>
                     <h4 class="card-subtitle mt-2">{{author.qualifications}}</h4>
                     <p class="card-text">{{author.about_me|slice:150}} <a href="{{author.get_absolute_url}}"><span
