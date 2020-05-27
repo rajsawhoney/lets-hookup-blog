@@ -57,7 +57,7 @@ class Category(models.Model):
 
     def save(self, *args, **kwargs):
         if self.cat_thumbnail:
-            baseSize = 500
+            baseSize = 300
             imageTemproary = Image.open(self.cat_thumbnail)
             outputIoStream = BytesIO()
             w, h = imageTemproary.size
@@ -65,7 +65,7 @@ class Category(models.Model):
                 factor = baseSize / h
             else:
                 factor = baseSize / w
-            size = (int(w / factor), int(h / factor))
+            size = (int(w * factor), int(h * factor))
             imageTemproaryResized = imageTemproary.resize(
                 size, Image.ANTIALIAS)
             imageTemproaryResized.save(
@@ -139,11 +139,11 @@ class Article(models.Model):
                 factor = baseSize / h
             else:
                 factor = baseSize / w
-            size = (int(w / factor), int(h / factor))
+            size = (int(w * factor), int(h * factor))
             imageTemproaryResized = imageTemproary.resize(
                 size, Image.ANTIALIAS)
             imageTemproaryResized.save(
-                outputIoStream, format='JPEG', quality=70)
+                outputIoStream, format='JPEG', quality=50)
             outputIoStream.seek(0)
             self.thumbnail = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % self.thumbnail.name.split('.')[
                 0], 'image/jpeg', sys.getsizeof(outputIoStream), None)

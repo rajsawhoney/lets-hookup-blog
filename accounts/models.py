@@ -55,11 +55,11 @@ class UserModel(models.Model):
                 factor = baseSize / h
             else:
                 factor = baseSize / w
-            size = (int(w / factor), int(h / factor))
+            size = (int(w * factor), int(h * factor))
             imageTemproaryResized = imageTemproary.resize(
                 size, Image.ANTIALIAS)
             imageTemproaryResized.save(
-                outputIoStream, format='JPEG', quality=70)
+                outputIoStream, format='JPEG', quality=80)
             outputIoStream.seek(0)
             self.profile_pic = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % self.profile_pic.name.split('.')[
                 0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
