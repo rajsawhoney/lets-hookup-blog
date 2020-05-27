@@ -3,6 +3,10 @@ from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from django.shortcuts import render, reverse
 
+from PIL import Image
+from io import BytesIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
+import sys
 # Create your models here.
 
 
@@ -37,6 +41,27 @@ class UserModel(models.Model):
     class Meta:
         verbose_name = ("UserModel")
         verbose_name_plural = ("UserModels")
+
+    def save(self, *args, **kwargs):
+        if self.profile_pic:
+            baseSize = 300
+            print("Save method called!!")
+            imageTemproary = Image.open(self.profile_pic)
+            outputIoStream = BytesIO()
+            w, h = imageTemproary.size
+            if (baseSize / w < baseSize / h):
+                factor = baseSize / h
+            else:
+                factor = baseSize / w
+            size = (int(w / factor), int(h / factor))
+            imageTemproaryResized = imageTemproary.resize(
+                size, Image.ANTIALIAS)
+            imageTemproaryResized.save(
+                outputIoStream, format='JPEG', quality=70)
+            outputIoStream.seek(0)
+            self.file = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % self.profile_pic.name.split('.')[
+                0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
+        super(UserModel, self).save(*args, **kwargs)
 
     def get_update_url(self):
         return reverse("accounts:update-profile", kwargs={"pk": self.pk})
