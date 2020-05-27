@@ -152,6 +152,9 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
+    def updateViewCount(self):
+        self.views_count += 1
+
     def get_absolute_url(self):
         return reverse("testapp:article-detail", kwargs={"slug": self.slug})
 
