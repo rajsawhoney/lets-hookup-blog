@@ -110,13 +110,13 @@
 
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" style="cursor: pointer;" onclick="$('#signup-modal').modal('show')"
+                        <a class="nav-link" style="cursor: pointer;" onclick="$('#signup-modal').modal('toggle')"
                             method="post">SignUp</a>
                     </li>
                     {% include "accounts/includes/signup_popup.html" %}
 
                     <li class="nav-item">
-                        <a class="nav-link" style="cursor: pointer;" onclick="$('#login-modal').modal('show')">Login</a>
+                        <a class="nav-link" style="cursor: pointer;" onclick="$('#login-modal').modal('toggle')">Login</a>
                     </li>
                     {% include "accounts/includes/login_popup.html" %}
 
