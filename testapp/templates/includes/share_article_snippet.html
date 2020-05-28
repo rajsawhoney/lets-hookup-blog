@@ -57,19 +57,3 @@
 </div>
 </div>
 
-<script>
-    // Share Article Functionality
-    function shareArticle(url) {
-        location.assign(url);
-    }
-
-    $(document).on('click', '.share-class', function () {
-        var roughid = 'share-article-modal' + $(this).attr('postid');
-        const id = get_correct_id(roughid);
-        $(`#${id}`).modal('show');
-        setTimeout(() => {
-            $(`#${id}`).modal('hide');
-        }, 10000);
-    });
-
-</script>
