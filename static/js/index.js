@@ -173,7 +173,7 @@ $(document).on("submit", ".updateform", function (event) {
 	event.preventDefault();
 	console.log("Udpate form submitted!");
 	var url = $(this).attr("action");
-	$('#update-spinner').html('<span class="spinner-border spinner-border-md" role="status"></span> <span class="sr-only">Updating...</span>')
+	$('#update-spinner').html('<span class="spinner-border spinner-border-md" role="status"></span> <span class="light">Updating...</span>')
 	$.ajax({
 		type: "POST",
 		url: url,
