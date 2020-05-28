@@ -107,6 +107,7 @@
         <div class="intro-text">
             <h2 class="display-3">My name is {{post.author.user.username}}</h2>
             <hr>
+            <h3 class="display-4 text-center">{{post.title}}</h3>
             {{post.content|safe}}
             <div class="mt-4">
                 <a href="{% if object %}
