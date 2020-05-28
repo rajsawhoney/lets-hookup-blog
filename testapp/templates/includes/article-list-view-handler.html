@@ -1,4 +1,4 @@
-<div class="list-type my-3 mx-3 text-center">
+<div class="list-type my-3 mx-3 pt-4 text-center">
     {% if all_list %}
     <span class="text-center">WelCome Mr./Mrs. {{user|capfirst}} To Blog Home Page</span> {% endif %}
     {% if personal_list %}
@@ -11,7 +11,7 @@
 <div class="pr-4" style="border: 1px solid rgba(15, 29, 37, 0.609);border-radius: 5px;
 box-shadow: 1px 3px 4px rgb(177, 167, 167);">
     {% include "includes/message-alert-snippet.html" %}
-    <div class="row my-2" style="clear: both;">
+    <div class="row mt-4 mb-2" style="clear: both;">
         <div class="col col-lg-4 col-md-12 col-sm-12">
             <img class="ml-2" src=" {% if object_list.0.thumbnail %}
 
@@ -198,7 +198,7 @@ box-shadow: 1px 3px 4px rgb(177, 167, 167);">
 
 <style>
     p {
-        color: rgb(14, 12, 12);
+        color: rgba(14, 12, 12, 0.822);
         font-family: 'Merienda', cursive;
     }
 
