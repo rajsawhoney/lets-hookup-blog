@@ -14,7 +14,9 @@
     <form class="updateform" action='.' method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{form|crispy}}
-        <input type="submit" class='btn btn-md btn-primary btn-block' value=' Update'>
+        <input type="submit" class='btn btn-md btn-primary btn-block spinner-border spinner-border-sm' role="status" value=' Update...'>
+        <!-- <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        <span class="sr-only">Loading...</span> -->
     </form>
     <div class="File-Upload float-right">
         <button id="upload-file" style="margin-top:5px; margin-bottom: 10px;"
