@@ -6,6 +6,9 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="twitter:image" content="{% static 'images/HookUp.png' %}">
+        <meta property="og:image" content="{% static 'images/HookUp.png' %}">
+
         {% block title %}
         <title>HomePage</title>
         {% endblock  %}
@@ -116,7 +119,8 @@
                     {% include "accounts/includes/signup_popup.html" %}
 
                     <li class="nav-item">
-                        <a class="nav-link" style="cursor: pointer;" onclick="$('#login-modal').modal('toggle')">Login</a>
+                        <a class="nav-link" style="cursor: pointer;"
+                            onclick="$('#login-modal').modal('toggle')">Login</a>
                     </li>
                     {% include "accounts/includes/login_popup.html" %}
 

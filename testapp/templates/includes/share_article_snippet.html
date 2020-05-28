@@ -13,21 +13,25 @@
                 <div class="row">
                     <div class="col-xl-3 col-lg-3 p-0">
                         <button class="btn btn-md"
-                            onclick="shareArticle(`https://www.facebook.com/sharer/sharer.php?u=http%3A//127.0.0.1%3A8000/testapp/article/{{post.id}}/`)"><i
+                            onclick="shareArticle(`https://www.facebook.com/sharer/sharer.php?u=https://lets-hookup.herokuapp.com/testapp/article/detail/{{post.slug}}/`)"><i
                                 style="color: rgb(20, 20, 189); box-shadow: 1px 3px 7px rgb(233, 176, 21);"
                                 class="fa fa-facebook" aria-hidden="true">
-                                Facebook</i></button>
+                                Facebook</i>
+                        </button>
+
                     </div>
                     <div class="col-xl-3 col-lg-3 p-0">
                         <button class="btn btn-md"
-                            onclick="shareArticle(`https://twitter.com/intent/tweet?text=http%3A//127.0.0.1%3A8000/testapp/article/{{post.id}}/`)"><i
+                            onclick="shareArticle(`http://twitter.com/share?text={{post.content|slice:200}}&url=https://lets-hookup.herokuapp.com/testapp/article/detail/{{post.slug}}/&hashtags=best_article,knowledgeable,useful`)"><i
                                 style="color: rgb(20, 20, 189);box-shadow: 1px 3px 7px rgb(233, 176, 21);"
                                 class="fa fa-twitter" aria-hidden="true">
-                                Twitter</i></button>
+                                Twitter</i>
+                        </button>
                     </div>
+
                     <div class="col-xl-3 col-lg-3 p-0">
                         <button class="btn btn-md"
-                            onclick="shareArticle(`https://www.linkedin.com/shareArticle?mini=true&url=http%3A//127.0.0.1%3A8000/testapp/article/%7B%7B{{post.id}}%7D%7D/&title=%7B%7B{{post.id}}%7D%7D&summary=Have%20a%20look%20at%20this%20Article.%20It's%20an%20amazing%20Article.&source=Djython%20Blogger`)"><i
+                            onclick="shareArticle(`https://www.linkedin.com/shareArticle?mini=true&url=https://lets-hookup.herokuapp.com/testapp/article/detail/{{post.slug}}/&title={{post.title}}&summary={{post.content|slice:200}}&source=Lets-HookUp`)"><i
                                 style="color: rgb(20, 20, 189);box-shadow: 1px 3px 7px rgb(233, 176, 21);"
                                 class="fa fa-linkedin" aria-hidden="true">
                                 LinkedIn</i></button>
@@ -35,7 +39,7 @@
 
                     <div class="col-xl-3 col-lg-3 p-0">
                         <button class="btn btn-md fa"
-                            onclick="shareArticle('https://web.whatsapp.com/send?phone=+9779817859093&text=http%3A%2F%2F127.0.0.1%3A8000%2Ftestapp%2Farticle%2Fdetail%2F{{post.id}}%2F')"><i
+                            onclick="shareArticle('https://web.whatsapp.com/send?phone=+9779817859093&text=https://lets-hookup.herokuapp.com/testapp/article/detail/{{post.slug}}/')"><i
                                 style="color: rgb(20, 189, 34);font-size: large;" class="fa fa-whatsapp"
                                 aria-hidden="true">
                             </i><span style="color: blue;box-shadow: 1px 3px 7px rgb(233, 176, 21);">
