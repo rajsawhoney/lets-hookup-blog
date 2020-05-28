@@ -173,7 +173,7 @@ $(document).on("submit", ".updateform", function (event) {
 	event.preventDefault();
 	console.log("Udpate form submitted!");
 	var url = $(this).attr("action");
-	$('#update-spinner').html = '<span class="spinner-border spinner-border-md" role="status"></span> <span class="sr-only">Updating...</span>'
+	$('#update-spinner').html('<span class="spinner-border spinner-border-md" role="status"></span> <span class="sr-only">Updating...</span>')
 	$.ajax({
 		type: "POST",
 		url: url,
@@ -182,10 +182,11 @@ $(document).on("submit", ".updateform", function (event) {
 		success: function (response) {
 			console.log("Update OK!!!");
 			$("#alert-area").html(response["form"]);
-			$('#update-spinner').html='Updated'
+			$('#update-spinner').html('Updated')
 			$("#updatestatus-modal").modal("show");
 			setTimeout(() => {
 				$("#updatestatus-modal").modal("hide");
+				$('#update-spinner').html('Update')
 			}, 4000);
 		},
 		error: function (e) {
