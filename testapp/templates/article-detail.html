@@ -127,11 +127,11 @@
             <span class="sp-link">Share Article:</span>
 
             <button class="btn btn-md"
-                onclick="shareArticle(`https://www.facebook.com/sharer/sharer.php?u=https://lets-hookup.herokuapp.com/testapp/article/detail/{{post.slug}}//`)"><i
+                onclick="shareArticle(`https://www.facebook.com/sharer/sharer.php?u=https://lets-hookup.herokuapp.com/testapp/article/detail/{{post.slug}}/`)"><i
                     style="color: rgb(20, 20, 189);" class="fa fa-facebook" aria-hidden="true">
                     Facebook</i></button>
             <button class="btn btn-md"
-                onclick="shareArticle(`http://twitter.com/share?text={{post.content|slice:200}}&url=https://lets-hookup.herokuapp.com/testapp/article/detail/{{post.slug}}/&hashtags=best_article,knowledgeable,useful`)"><i
+                onclick="shareArticle(`http://twitter.com/share?text={{post.title}}&url=https://lets-hookup.herokuapp.com/testapp/article/detail/{{post.slug}}/&hashtags=best_article,knowledgeable,useful`)"><i
                     style="color: rgb(20, 20, 189);" class="fa fa-twitter" aria-hidden="true">
                     Twitter</i></button>
             <button class="btn btn-md"
