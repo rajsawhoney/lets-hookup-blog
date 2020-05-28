@@ -2,7 +2,7 @@ from django.conf.urls import url
 from . import views
 from django.contrib.auth import views as auth_views
 from django.urls import path
-from accounts.views import add_remove_frm2fav
+from accounts.views import add_remove_frm2fav, LogOutUser
 
 app_name = 'accounts'
 
@@ -11,8 +11,7 @@ urlpatterns = [
 
     url(r'^login/$', views.login_user, name='login'),
 
-    url(r'^logout/$', auth_views.LogoutView.as_view(
-        template_name='accounts/logged_out.html'), name='logout'),
+    url(r'^logout/$', LogOutUser.as_view(), name='logout'),
 
     url(r'^passwordchange/$', views.ChangePassword.as_view(), name='password-change'),
 

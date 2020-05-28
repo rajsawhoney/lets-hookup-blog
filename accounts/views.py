@@ -73,7 +73,6 @@ class MyProfileView(TemplateView):
         return context
 
 
-
 def login_user(request):
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST or None)
@@ -111,6 +110,12 @@ def login_user(request):
 
     return render(request, 'accounts/login.html', context)
 
+class LogOutUser(auth_views.LogoutView):
+    template_name = 'accounts/logged_out.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form"] = AuthenticationForm()
+        return context
 
 def logout_user(request):
     if request.method == 'POST':
