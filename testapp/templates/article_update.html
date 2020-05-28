@@ -6,37 +6,37 @@
 {% load crispy_forms_tags %}
 
 <div class="mt-2 pl-2 myclass">
-    <div id="alert-area">
-        {% include "includes/article_update_alert.html" %}
-    </div>
-    <h3 class="display-6 text-muted text-center mt-4">Update Your Article Here...</h3>
+	<div id="alert-area">
+		{% include "includes/article_update_alert.html" %}
+	</div>
+	<h3 class="display-6 text-muted text-center mt-4">Update Your Article Here...</h3>
 
-    <form class="updateform" action='.' method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{form|crispy}}
-        <input type="submit" class='btn btn-md btn-primary btn-block spinner-border spinner-border-sm' role="status" value=' Update...'>
-        <!-- <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-        <span class="sr-only">Loading...</span> -->
-    </form>
-    <div class="File-Upload float-right">
-        <button id="upload-file" style="margin-top:5px; margin-bottom: 10px;"
-            class="btn btn-lg btn-outline-success float-left">Upload
-            More Files Here</button>
-    </div>
+	<form class="updateform" action='.' method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{form|crispy}}
+		<button id="update-spinner" type="submit" class='btn btn-md btn-primary btn-block'>Update
+		</button>
 
-    {% include "includes/file_upload_snippet.html" %}
+	</form>
+	<div class="File-Upload float-right">
+		<button id="upload-file" style="margin-top:5px; margin-bottom: 10px;"
+			class="btn btn-lg btn-outline-success float-left">Upload
+			More Files Here</button>
+	</div>
+
+	{% include "includes/file_upload_snippet.html" %}
 
 
 </div>
 
 
 <style>
-    .myclass {
-        background-color: azure;
-        color: black;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
+	.myclass {
+		background-color: azure;
+		color: black;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
 
 </style>
 
