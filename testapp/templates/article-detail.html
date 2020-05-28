@@ -105,9 +105,9 @@
     <div class="col col-lg-8 col-md-6 col-sm-12 my-3">
 
         <div class="intro-text">
-            <h4 class="display-4 text-muted">My name is {{post.author.user.username}}</h4>
+            <h4 class="display-5 text-muted">My name is {{post.author.user.username}}</h4>
             <hr>
-            <span style="color: rgb(37, 36, 36);">{{post.content|safe}}</span>
+            <span style="color: rgb(17, 16, 16);">{{post.content|safe}}</span>
             <div class="mt-4">
                 <a href="{% if object %}
                             {{object.get_absolute_url}} {% else %}#{% endif %}" class="sp-link text-primary">Take a
