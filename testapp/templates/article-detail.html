@@ -42,7 +42,7 @@
         {% for img in post.assets.all %}
         <div class="col-lg-3 col-md-6 col-sm-12">
             <a href="{% if img %} {{img.get_absolute_url}} {% else %} # {% endif %}">
-                <img src="{{img.file.url}}" class="my-1 img-pop" alt="">
+                <img src="{{img.file.url}}" class="my-1 img-pop rotate-effect" alt="">
             </a>
         </div>
         {% endfor %}
@@ -100,6 +100,25 @@
     .imp-btn:hover {
         transform: translate3d(6px, 10px, 4px);
     }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .rotate-effect:hover {
+            animation: rotate-effect-spin infinite 5s linear;
+        }
+    }
+
+    @keyframes rotate-effect-spin {
+        from {
+            transform: rotate(0deg);
+            /* transform: translateZ(5px); */
+        }
+
+        to {
+            transform: rotate(360deg);
+            /* transform: translateZ(-5px); */
+        }
+    }
+
 
 </style>
 
