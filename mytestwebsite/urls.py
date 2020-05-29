@@ -36,6 +36,8 @@ sitemaps = {
 urlpatterns = [
 
     path('admin/', admin.site.urls),
+    path('google6cebc7472dd08059.html', TemplateView.as_view(
+        template_name='google6cebc7472dd08059.html')),
     path('sitemap.xml/', sitemap, {'sitemaps': sitemaps},
          name='django.contrib.sitemaps.views.sitemap'),
     url(r'^$', views.ArticleListView.as_view(), name='home'),
