@@ -9,7 +9,7 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic import TemplateView
 from django.contrib.sitemaps.views import sitemap
-from .sitemaps import StaticViewSitemap,ArticleSiteMap
+from .sitemaps import StaticViewSitemap, ArticleSiteMap, ArticleCategorySiteMap, UserModelSiteMap
 from testapp.models import Article
 from django.contrib import admin
 from django.contrib.sites.models import Site
@@ -31,7 +31,9 @@ admin.site.register(Site, SiteAdmin)
 
 sitemaps = {
     'static': StaticViewSitemap,
-    'articles':ArticleSiteMap
+    'articles': ArticleSiteMap,
+    'categories': ArticleCategorySiteMap,
+    'users': UserModelSiteMap,
 }
 
 
@@ -51,8 +53,6 @@ urlpatterns = [
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^photo-upload/', include('photos.urls')),
     url(r'^test/', include('checkapp.urls')),
-    url(r'^$', TemplateView.as_view(
-        template_name="index.html"), name='home'),
     url(r'^', include('django.contrib.auth.urls')),
 
 ]
