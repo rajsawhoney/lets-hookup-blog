@@ -9,8 +9,7 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic import TemplateView
 from django.contrib.sitemaps.views import sitemap
-from .sitemaps import StaticViewSitemap, ArticleSiteMap, ArticleCategorySiteMap, UserModelSiteMap
-from testapp.models import Article
+from .sitemaps import StaticViewSitemap, ArticleSiteMap, ArticleCategorySiteMap
 from django.contrib import admin
 from django.contrib.sites.models import Site
 
