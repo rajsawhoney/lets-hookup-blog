@@ -9,10 +9,11 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic import TemplateView
 from django.contrib.sitemaps.views import sitemap
-from .sitemaps import StaticViewSitemap
+from .sitemaps import StaticViewSitemap,ArticleSiteMap
 from testapp.models import Article
 from django.contrib import admin
 from django.contrib.sites.models import Site
+
 
 admin.site.unregister(Site)
 
@@ -30,6 +31,7 @@ admin.site.register(Site, SiteAdmin)
 
 sitemaps = {
     'static': StaticViewSitemap,
+    'articles':ArticleSiteMap
 }
 
 

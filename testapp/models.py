@@ -1,3 +1,4 @@
+from django.contrib.sitemaps import ping_google
 from django.dispatch import receiver
 from django.db.models.signals import pre_save
 from utils.slugify_unique import unique_slug_generator
@@ -109,7 +110,7 @@ class Article(models.Model):
 
     title = models.CharField(max_length=200)
     category = models.ManyToManyField(Category, verbose_name=(
-        "Blog Category"), related_name='blog_type', blank=True, null=True)
+        "Blog Category"), related_name='blog_type', blank=True)
     content = models.TextField(("Article description"))
     last_updated = models.DateTimeField(("Last Updated"))
     pub_date = models.DateTimeField(auto_now_add=True)
@@ -159,6 +160,13 @@ class Article(models.Model):
 
         except:
             print("Error in opening file")
+
+        try:
+            ping_google(sitemap_url='/sitemap.xml')
+        except Exception:
+            # Bare 'except' because we could get a variety
+            # of HTTP-related exceptions.
+            pass
 
         super(Article, self).save(*args, **kwargs)
 

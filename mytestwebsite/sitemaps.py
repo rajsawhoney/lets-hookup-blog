@@ -1,5 +1,6 @@
 from django.contrib import sitemaps
 from django.urls import reverse
+from testapp.models import Article
 
 
 class StaticViewSitemap(sitemaps.Sitemap):
@@ -11,3 +12,8 @@ class StaticViewSitemap(sitemaps.Sitemap):
 
     def location(self, item):
         return reverse(item)
+        
+class ArticleSiteMap(sitemaps.Sitemap):
+
+    def items(self):
+        return Article.objects.all()
