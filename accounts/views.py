@@ -41,6 +41,9 @@ class UserModelDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["form"] = AuthenticationForm()
+        context["user_profile_form"] = UserProfileForm()
+        context["user_form"] = UserForm()
         if self.request.user.is_authenticated:
             context["user_object"] = get_object_or_404(
                 UserModel, user=self.request.user)
@@ -56,20 +59,6 @@ class ChangePassword(auth_views.PasswordChangeView):
         context = super().get_context_data(**kwargs)
         context["user_object"] = get_object_or_404(
             UserModel, user=self.request.user)
-        return context
-
-
-class MyProfileView(TemplateView):
-    template_name = "accounts/myprofile.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        if self.request.user.is_authenticated:
-            context['object'] = get_object_or_404(
-                UserModel, user=self.request.user)
-        else:
-            context['object'] = None
         return context
 
 
