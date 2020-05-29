@@ -34,15 +34,10 @@ class ArticleSiteMap(sitemaps.Sitemap):
         return Article.objects.all()
 
 
+
 class ArticleCategorySiteMap(sitemaps.Sitemap):
     priority = 0.6
     changefreq = 'monthly'
 
     def items(self):
         return Category.objects.all()
-
-
-class UserModelSiteMap(sitemaps.Sitemap):
-
-    def items(self):
-        return UserModel.objects.all()
