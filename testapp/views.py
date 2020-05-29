@@ -515,11 +515,11 @@ def article_detail_view(request, slug):
 
     if request.method == "POST":
         print("This is a POST method!")
-        form = CommentForm(request.POST or None)
-        if form.is_valid():
+        cmtform = CommentForm(request.POST or None)
+        if cmtform.is_valid():
             print("This is a valid form...")
-            print(form.cleaned_data)
-            comment_txt = form.cleaned_data['comment_txt']
+            print(cmtform.cleaned_data)
+            comment_txt = cmtform.cleaned_data['comment_txt']
             comment_id = request.POST.get('cmt_id')
             comment_qs = None
             if comment_id:
@@ -529,17 +529,24 @@ def article_detail_view(request, slug):
                         article=current_article, reply=comment_qs)
             q.save()
         else:
-            print(form.errors)
+            print(cmtform.errors)
 
     else:
-        form = CommentForm()
+        cmtform = CommentForm()
+
+    form = AuthenticationForm()
+    user_profile_form = UserProfileForm()
+    user_form = UserForm()
     context = {
-        'cmtform': form,
+        'cmtform': cmtform,
         'comments': comments,
         'post': current_article,
         'user_object': current_user,
         'popular_articles': popular_articles,
         'who_to_follow': who_to_follow,
+        'form': form,
+        'user_profile_form': user_profile_form,
+        'user_form': user_form,
     }
 
     if request.is_ajax():

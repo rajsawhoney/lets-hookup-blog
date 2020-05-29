@@ -127,6 +127,12 @@ class Article(models.Model):
     client_ip = models.ManyToManyField("accounts.IPAddress", verbose_name=(
         "Client IP"), related_name='clients_ip', blank=True,)
 
+    class Meta:
+        managed = True
+        verbose_name = 'Article'
+        verbose_name_plural = 'Articles'
+        ordering = ("-last_updated",)
+
     def save(self, *args, **kwargs):
         if not kwargs.pop('updatelasttime', False):
             self.last_updated = timezone.now()
@@ -186,12 +192,6 @@ def article_pre_save_receiver(sender, instance, **kwargs):
     #         yield
     #     finally:
     #         session(model_cls)._get().skip_last_updated = skip_last_updated
-
-    class Meta:
-        managed = True
-        verbose_name = 'Article'
-        verbose_name_plural = 'Articles'
-        ordering = ("-last_updated",)
 
 
 class Gallery(models.Model):
