@@ -54,7 +54,8 @@
 
                         <div class="col-lg-4 col-md-6 col-sm-12">
                             <button class=" btn-sm btn-warning btn-block" style="cursor: pointer;"
-                                onclick="$('#signup-modal').modal('toggle')">Not Registered?
+                                onclick="$('#signup-modal').modal('toggle');$('#login-modal').modal('toggle')">Not
+                                Registered?
                             </button>
                             {% include "accounts/includes/signup_popup.html" %}
                         </div>
