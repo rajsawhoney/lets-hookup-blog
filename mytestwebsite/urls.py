@@ -33,7 +33,6 @@ sitemaps = {
     'static': StaticViewSitemap,
     'articles': ArticleSiteMap,
     'categories': ArticleCategorySiteMap,
-    'users': UserModelSiteMap,
 }
 
 
