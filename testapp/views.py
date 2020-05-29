@@ -24,6 +24,7 @@ from plyer import notification
 from django.core.paginator import Paginator
 from testapp.forms import CategoryForm
 from testapp.models import Category
+from django.contrib.sitemaps import ping_google
 
 # @method_decorator(csrf_exempt, name='get_context_data')
 
@@ -333,6 +334,10 @@ def delete_article_view(request):
         article = get_object_or_404(Article, id=pk)
         article.delete()
         messages.success(request, f"\"{article.title}\" successfully deleted!")
+        try:
+            ping_google(sitemap_url='/sitemap.xml')
+        except Exception:
+            pass
         return JsonResponse({'success': 'ok'})
     else:
         messages.warning(request, f"\"{article.title}\" failed to delete!!!")
@@ -385,6 +390,10 @@ class ArticleCreateView(LoginRequiredMixin, AjaxableResponseMixin, CreateView):
         user = get_object_or_404(UserModel, user=self.request.user)
         form.instance.author = user
         form.save()
+        try:
+            ping_google(sitemap_url='/sitemap.xml')
+        except Exception:
+            pass
         messages.success(self.request, "New Article Successfully Published!")
         return super().form_valid(form)
 

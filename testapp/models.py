@@ -161,12 +161,6 @@ class Article(models.Model):
         except:
             print("Error in opening file")
 
-        try:
-            ping_google(sitemap_url='/sitemap.xml')
-        except Exception:
-            # Bare 'except' because we could get a variety
-            # of HTTP-related exceptions.
-            pass
 
         super(Article, self).save(*args, **kwargs)
 
