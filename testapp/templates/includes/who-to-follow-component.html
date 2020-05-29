@@ -17,6 +17,7 @@
 
 
             <div class="col col-8">
+                {% if user.is_authenticated %}
                 <form action="." userid="{{author.id}}" class="follow-profile" method="post">
                     {% csrf_token %}
 
@@ -29,17 +30,16 @@
                     15px;border-bottom-right-radius:
                     15px;border-bottom-style:solid;">
                         <i class="fa fa-link" aria-hidden="true"></i>
-                        {% if user.is_authenticated %}
                         Follow
-                        {% else %}
-                        <a style="color:white;cursor: pointer;" onclick="$('#login-modal').modal('toggle')"
-                            style="color: white;"> Login to
-                            Follow
-                        </a>
-                        {% include "accounts/includes/login_popup.html" %}
-                        {% endif %}
                     </button>
                 </form>
+                {% else %}
+                <a style="color:white;cursor: pointer;" onclick="$('#login-modal').modal('toggle')"
+                    style="color: white;"> Login to
+                    Follow
+                </a>
+                {% include "accounts/includes/login_popup.html" %}
+                {% endif %}
                 <h6 class="card-subtitle my-2">{{author.qualifications|slice:44}}</h6>
                 <p class="card-text text-muted">{{author.about_me|slice:100}}
                     <a href="{{author.get_absolute_url}}"><span style="color:rgb(122, 122, 204);cursor:
