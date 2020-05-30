@@ -43,7 +43,6 @@ urlpatterns = [
 
     path('sitemap.xml/', views.index, {
         'sitemaps': sitemaps,
-        'template_name': 'sitemap_template.html'
     }),
     path('sitemap-<section>.xml/', views.sitemap, {
         'sitemaps': sitemaps,
