@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
-from testapp import views
 
 from django.conf import settings
 
@@ -12,6 +11,7 @@ from django.contrib.sitemaps import views
 from .sitemaps import StaticViewSitemap, ArticleSiteMap, ArticleCategorySiteMap
 from django.contrib import admin
 from django.contrib.sites.models import Site
+from testapp.views import ArticleListView
 
 
 admin.site.unregister(Site)
@@ -53,7 +53,7 @@ urlpatterns = [
         'template_name': 'sitemap_template.html'
     }, name='django.contrib.sitemaps.views.sitemap'),
 
-    url(r'^$', views.ArticleListView.as_view(), name='home'),
+    url(r'^$', ArticleListView.as_view(), name='home'),
     url(r'^testapp/', include('testapp.urls')),
     url(r'^api-auth/', include('rest_framework.urls')),
     url(r'^api/', include('testapp.api.urls')),
