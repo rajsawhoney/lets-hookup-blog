@@ -38,6 +38,8 @@ sitemaps = {
 urlpatterns = [
 
     path('admin/', admin.site.urls),
+    url('', include('social_django.urls', namespace='social')),
+    
     path('google6cebc7472dd08059.html', TemplateView.as_view(
         template_name='google6cebc7472dd08059.html')),
 

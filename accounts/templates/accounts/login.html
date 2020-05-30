@@ -21,6 +21,9 @@
             <input type="hidden" name='next' value="{{request.GET.next}}">
             {% endif %}
             <input class="btn btn-sm btn-block btn-primary text-uppercase" type="submit" value='Login'>
+            <br>
+            <p><strong>-- OR --</strong></p>
+            <a href="{% url 'social:begin' 'github' %}" class="btn-md btn-outline-secondary">Login with GitHub</a><br>
         </form>
         {% else %}
         <span class="text-msg text-center display-5 my-3"
