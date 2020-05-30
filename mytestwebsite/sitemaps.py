@@ -30,10 +30,12 @@ class StaticViewSitemap(sitemaps.Sitemap):
 class ArticleSiteMap(sitemaps.Sitemap):
     priority = 0.8
     changefreq = 'daily'
-    lastmod = timezone.now()
 
     def items(self):
         return Article.objects.all()
+
+    def lastmod(self, item):
+        return timezone.now()
 
 
 class ArticleCategorySiteMap(sitemaps.Sitemap):
