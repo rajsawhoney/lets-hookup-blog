@@ -84,12 +84,15 @@ class ArticleListView(ListView):
         context['form'] = form
 
         if self.request.user.is_authenticated:
-            context['user_object'] = get_object_or_404(
-                UserModel, user=self.request.user)
             who_to_follow = []
-            for user in UserModel.objects.all():
-                if user not in context['user_object'].followed_by.all():
-                    who_to_follow.append(user)
+            try:
+                context['user_object'] = get_object_or_404(
+                    UserModel, user=self.request.user)
+                for user in UserModel.objects.all():
+                    if user not in context['user_object'].followed_by.all():
+                        who_to_follow.append(user)
+            except:
+                pass
 
         else:
             context['user_object'] = None

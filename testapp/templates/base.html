@@ -101,6 +101,7 @@
                     {% if user_object %}
                     <li>
                         <p class="nav-link" style="float: right;">Loginned as:
+                            {% if user_object %}
                             <a href="{{user_object.get_absolute_url}}"> <img
                                     style="width: 30px; height:30px; border-radius:50%;"
                                     src="{% if user_object.profile_pic %} {{user_object.profile_pic.url}} {% else %} # {% endif %}"
@@ -110,6 +111,9 @@
                                         aria-hidden="true"></i> </sup>
 
                             </a>
+                            {% else %}
+                            <span style="color: blue;background-color: yellow;">{{requser.user|capfirst}}</span>
+                            {% endif %}
                         </p>
                     </li>
                     {% endif %}
