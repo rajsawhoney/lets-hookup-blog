@@ -1,3 +1,4 @@
+from decouple import config, Csv
 import django_heroku
 import dj_database_url
 import os
@@ -10,12 +11,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'j4w&y+2y$=()#t!ioi8l1db5v$fnx4j3omti3v_*g-st+$v0ak'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 # Application definition
 
@@ -147,11 +148,11 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-SOCIAL_AUTH_GITHUB_KEY = '4dd887f8ad1b0ff0063b'
-SOCIAL_AUTH_GITHUB_SECRET = 'acc3cb153e1ffb827d0af6d9ce4a22c6c28893b0'
+SOCIAL_AUTH_GITHUB_KEY = config('SOCIAL_AUTH_GITHUB_KEY')
+SOCIAL_AUTH_GITHUB_SECRET = config('SOCIAL_AUTH_GITHUB_SECRET')
 
-SOCIAL_AUTH_TWITTER_KEY = 'mRazWrSkixskgtlgetc3yIH6V'
-SOCIAL_AUTH_TWITTER_SECRET = 'Pl1ZL7suRrEr9Nu4MOwdJn0Xr1VdDYoVEA4y35ZthMUvPWjSPB'
+SOCIAL_AUTH_TWITTER_KEY = config('SOCIAL_AUTH_TWITTER_KEY')
+SOCIAL_AUTH_TWITTER_SECRET = config('SOCIAL_AUTH_TWITTER_SECRET')
 
 TINYMCE_DEFAULT_CONFIG = {
     'plugins': "pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,wordcount,advlist,autosave,pagebreak",
@@ -238,7 +239,7 @@ REST_FRAMEWORK = {
 
 GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = 'lets-hookup-278508-96bb0dec9ef3.json'
 
-GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = 'https://drive.google.com/drive/u/2/folders/1-SePn8sDkW90MZpCnlV9-53RA0K24M7Z'  # OPTIONAL
+GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = config('GOOGLE_DRIVE_STORAGE_MEDIA_ROOT')
 
 
 CORS_ORIGIN_ALLOW_ALL = True
