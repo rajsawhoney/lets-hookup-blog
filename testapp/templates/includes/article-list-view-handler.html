@@ -176,6 +176,7 @@ box-shadow: 1px 3px 4px rgb(177, 167, 167);">
 
                     {% if my_list %} Sorry folk you have not posted any Article so far!!! <br>
                     <h3 class="badge badge-warning display-4 mb-2">You can create your brand new Article here! </h3>
+                    <br>
                     <a href="{% url 'testapp:article-create' %}">
                         <span class="display-5 text-primary">Click here to Create One</span>
                     </a>
@@ -184,7 +185,7 @@ box-shadow: 1px 3px 4px rgb(177, 167, 167);">
 
                     {% if fav_list %} Sorry folk you have not added any Post to your Fav-List so far!!! <br>
                     <h3 class="badge badge-warning display-4 mb-2">Go on surfing our blog and add posts to your
-                        Fav-List.</h3>
+                        Fav-List.</h3> <br>
                     <a href="{% url 'testapp:article-list' %}">
                         <span class="display-5 text-primary">Click here to see Posts</span>
                     </a>
