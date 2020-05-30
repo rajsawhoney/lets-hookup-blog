@@ -2,14 +2,14 @@
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
     {% spaceless %}
-    
+
     {% if sitemaps %}
-    <sitemapindex>
-        {% for location in sitemaps %}
-        <sitemap>
-            <loc>{{ location }}</loc>
-        </sitemap>{% endfor %}
-    </sitemapindex>
+
+    {% for location in sitemaps %}
+    <sitemap>
+        <loc>{{ location }}</loc>
+    </sitemap>{% endfor %}
+
     {% endif %}
 
     {% for url in urlset %}
