@@ -205,7 +205,7 @@ class RelatedArticleListView(ListView):
         self.context['cmtform'] = form
         popular_articles = Article.objects.all().order_by('-views_count')[:5]
         self.context['popular_articles'] = popular_articles
-        self.context['personal_list'] = True
+        self.context['followed_list'] = True
         return self.context
 
     def dispatch(self, request, *args, **kwargs):
@@ -260,6 +260,48 @@ class FavArticleListView(ListView):
         popular_articles = Article.objects.all().order_by('-views_count')[:5]
         context['popular_articles'] = popular_articles
         context['fav_list'] = True
+
+        return context
+
+
+
+class YourArticleListView(ListView):
+    model = Article
+    template_name = "article-list.html"
+    paginate_by = 4
+
+    def get_queryset(self):
+        ins_user = get_object_or_404(
+            UserModel, user=self.request.user)
+        list_article = ins_user.articles.all()
+        print("Fav articles list ", list_article)
+        return list_article
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.request.method == "POST":
+            print("This is a POST method!")
+            form = CommentForm(self.request.POST or None)
+        else:
+            form = CommentForm()
+
+        if self.request.user.is_authenticated:
+            context['user_object'] = get_object_or_404(
+                UserModel, user=self.request.user)
+            who_to_follow = []
+            for user in UserModel.objects.all():
+                if user not in context['user_object'].followed_by.all():
+                    who_to_follow.append(user)
+
+        else:
+            context['user_object'] = None
+            who_to_follow = UserModel.objects.all()
+
+        context['who_to_follow'] = who_to_follow
+        context['cmtform'] = form
+        popular_articles = Article.objects.all().order_by('-views_count')[:5]
+        context['popular_articles'] = popular_articles
+        context['my_list'] = True
 
         return context
 

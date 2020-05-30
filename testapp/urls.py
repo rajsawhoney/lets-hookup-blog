@@ -22,7 +22,10 @@ urlpatterns = [
     path('favourite/articles/', views.FavArticleListView.as_view(),
          name='fav-article-list'),
 
-    path('your/articles/', views.RelatedArticleListView.as_view(),
+     path('my/articles/', views.YourArticleListView.as_view(),
+         name='my-article-list'),
+
+    path('followed/articles/', views.RelatedArticleListView.as_view(),
          name='related-article-list'),
 
     path("article/detail/<slug>/",

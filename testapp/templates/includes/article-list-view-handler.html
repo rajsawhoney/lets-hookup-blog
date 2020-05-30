@@ -1,10 +1,12 @@
 <div class="list-type my-3 mx-3 pt-4 text-center">
     {% if all_list %}
     <span class="text-center">WelCome Mr./Mrs. {{user|capfirst}} To Blog Home Page</span> {% endif %}
-    {% if personal_list %}
+    {% if my_list %}
     <span class="text-center">WelCome Mr./Mrs. {{user|capfirst}} To Your Article Section </span> {% endif %}
     {% if fav_list %}
     <span class="text-center">WelCome Mr./Mrs. {{user|capfirst}} To Your Favourite Article Section</span> {% endif %}
+    {% if followed_list %}
+    <span class="text-center">WelCome Mr./Mrs. {{user|capfirst}} To Your Followed Article Section</span> {% endif %}
 </div>
 
 {% if object_list %}
@@ -159,15 +161,38 @@ box-shadow: 1px 3px 4px rgb(177, 167, 167);">
             </div>
         </div>
         {% else %}
+
         <div class="row text-center">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <h3 class="display-5 text-center text-info mx-3"> Dear {{user.username}}! You have not followed any
-                    bloggers so far. <br>
+                <h3 class="display-5 text-center text-info mx-3">
+                    {% if followed_list %} Dear {{user.username}}! You have not followed any bloggers so far. <br>
+                    <h3 class="badge badge-warning display-4 mb-2">Please follow bloggers to see their posts here! </h3>
+                    <br>
+                    <a href="{% url 'testapp:authors-list' %}">
+                        <span class="display-5 text-primary">Click here to follow</span>
+                    </a>
+                    {% endif %}
+
+
+                    {% if my_list %} Sorry folk you have not posted any Article so far!!! <br>
+                    <h3 class="badge badge-warning display-4 mb-2">You can create your brand new Article here! </h3>
+                    <a href="{% url 'testapp:create-article' %}">
+                        <span class="display-5 text-primary">Click here to Create One</span>
+                    </a>
+                    {% endif %}
+
+
+                    {% if fav_list %} Sorry folk you have not added any Post to your Fav-List so far!!! <br>
+                    <h3 class="badge badge-warning display-4 mb-2">Go on surfing our blog and add posts to your
+                        Fav-List.</h3>
+                    <a href="{% url 'testapp:article-list' %}">
+                        <span class="display-5 text-primary">Click here to see Posts</span>
+                    </a>
+                    {% endif %}
+
+                    <br>
                 </h3>
-                <h3 class="badge badge-warning display-4 mb-2">Please follow bloggers to see their posts here! </h3><br>
-                <a href="{% url 'testapp:authors-list' %}">
-                    <span class="display-5 text-primary">Click here to follow</span>
-                </a>
+
             </div>
         </div>
         {% endif %}
