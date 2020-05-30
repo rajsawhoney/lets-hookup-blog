@@ -3,10 +3,12 @@
     xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
     {% spaceless %}
     {% if sitemaps %}
-    {% for location in sitemaps %}
-    <sitemap>
-        <loc>{{ location }}</loc>
-    </sitemap>{% endfor %}
+    <sitemapindex>
+        {% for location in sitemaps %}
+        <sitemap>
+            <loc>{{ location }}</loc>
+        </sitemap>{% endfor %}
+    </sitemapindex>
     {% endif %}
     {% for url in urlset %}
     <url>
