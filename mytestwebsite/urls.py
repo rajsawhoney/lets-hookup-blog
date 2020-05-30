@@ -8,7 +8,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic import TemplateView
-from django.contrib.sitemaps.views import sitemap
+from django.contrib.sitemaps import views
 from .sitemaps import StaticViewSitemap, ArticleSiteMap, ArticleCategorySiteMap
 from django.contrib import admin
 from django.contrib.sites.models import Site
@@ -40,9 +40,19 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('google6cebc7472dd08059.html', TemplateView.as_view(
         template_name='google6cebc7472dd08059.html')),
-    path('sitemap.xml/', TemplateView.as_view(
-        template_name='sitemap_template.html'), {'sitemaps': sitemaps},
-        name='django.contrib.sitemaps.views.sitemap'),
+    # path('sitemap.xml/', TemplateView.as_view(
+    #     template_name='sitemap_template.html'), {'sitemaps': sitemaps},
+    #     name='django.contrib.sitemaps.views.sitemap'),
+
+    path('sitemap.xml', views.index, {
+        'sitemaps': sitemaps,
+        'template_name': 'sitemap_template.html'
+    }),
+    path('sitemap-<section>.xml', views.sitemap, {
+        'sitemaps': sitemaps,
+        'template_name': 'sitemap_template.html'
+    }, name='django.contrib.sitemaps.views.sitemap'),
+
     url(r'^$', views.ArticleListView.as_view(), name='home'),
     url(r'^testapp/', include('testapp.urls')),
     url(r'^api-auth/', include('rest_framework.urls')),
