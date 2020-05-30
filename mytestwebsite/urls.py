@@ -44,11 +44,11 @@ urlpatterns = [
     #     template_name='sitemap_template.html'), {'sitemaps': sitemaps},
     #     name='django.contrib.sitemaps.views.sitemap'),
 
-    path('sitemap.xml', views.index, {
+    path('sitemap.xml/', views.index, {
         'sitemaps': sitemaps,
         'template_name': 'sitemap_template.html'
     }),
-    path('sitemap-<section>.xml', views.sitemap, {
+    path('sitemap-<section>.xml/', views.sitemap, {
         'sitemaps': sitemaps,
         'template_name': 'sitemap_template.html'
     }, name='django.contrib.sitemaps.views.sitemap'),
