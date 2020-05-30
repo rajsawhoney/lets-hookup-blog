@@ -2,6 +2,7 @@
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
     {% spaceless %}
+    
     {% if sitemaps %}
     <sitemapindex>
         {% for location in sitemaps %}
@@ -10,6 +11,7 @@
         </sitemap>{% endfor %}
     </sitemapindex>
     {% endif %}
+
     {% for url in urlset %}
     <url>
         <loc>{{ url.location }}</loc>

@@ -40,9 +40,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('google6cebc7472dd08059.html', TemplateView.as_view(
         template_name='google6cebc7472dd08059.html')),
-    # path('sitemap.xml/', TemplateView.as_view(
-    #     template_name='sitemap_template.html'), {'sitemaps': sitemaps},
-    #     name='django.contrib.sitemaps.views.sitemap'),
 
     path('sitemap.xml/', views.index, {
         'sitemaps': sitemaps,
