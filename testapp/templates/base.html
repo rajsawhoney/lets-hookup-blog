@@ -36,7 +36,7 @@
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
-                    <li class="nav-item {% if 'your/articles/' in request.path %} active {% endif %}">
+                    <li class="nav-item {% if 'followed/articles/' in request.path %} active {% endif %}">
                         {% if user.is_authenticated %}
                         <a class="nav-link" href="{% url 'testapp:related-article-list' %}">Posts You Follow
                         </a>
