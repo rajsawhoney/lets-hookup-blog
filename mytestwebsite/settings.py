@@ -150,6 +150,9 @@ AUTHENTICATION_BACKENDS = (
 SOCIAL_AUTH_GITHUB_KEY = '4dd887f8ad1b0ff0063b'
 SOCIAL_AUTH_GITHUB_SECRET = 'acc3cb153e1ffb827d0af6d9ce4a22c6c28893b0'
 
+SOCIAL_AUTH_TWITTER_KEY = 'mRazWrSkixskgtlgetc3yIH6V'
+SOCIAL_AUTH_TWITTER_SECRET = 'Pl1ZL7suRrEr9Nu4MOwdJn0Xr1VdDYoVEA4y35ZthMUvPWjSPB'
+
 TINYMCE_DEFAULT_CONFIG = {
     'plugins': "pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,wordcount,advlist,autosave,pagebreak",
     'theme': "advanced",

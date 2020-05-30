@@ -23,7 +23,16 @@
             <input class="btn btn-sm btn-block btn-primary text-uppercase" type="submit" value='Login'>
             <br>
             <p><strong>-- OR --</strong></p>
-            <a href="{% url 'social:begin' 'github' %}" class="btn-md btn-outline-secondary">Login with GitHub</a><br>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <a href="{% url 'social:begin' 'github' %}" class="btn-md btn-outline-secondary">Login with
+                        GitHub</a><br>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <a href="{% url 'social:begin' 'twitter' %}" class="btn-md btn-outline-secondary">Login with
+                        Twitter</a><br>
+                </div>
+            </div>
         </form>
         {% else %}
         <span class="text-msg text-center display-5 my-3"
