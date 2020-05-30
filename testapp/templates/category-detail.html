@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
-{% block titleblock %}
-<title>About Blog Category</title>
+{% block title %}
+<title>{{object.slug}}</title>
 {% endblock  %}
 {% block bodyblock %}
 {% if object %}

@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% load static %}
 {% block title %}
-<title>Article Detail Page</title>
+<title>{{post.slug}}</title>
 {% endblock  %}
 
 {% block bodyblock %}
@@ -119,7 +119,6 @@
         }
     }
 
-
 </style>
 
 
@@ -129,7 +128,8 @@
     <div class="col col-lg-8 col-md-6 col-sm-12 my-3">
 
         <div class="intro-text">
-            <h4 class="display-5 text-muted">Hey there! I am {{post.author.user.username|capfirst}} in your service.</h4>
+            <h4 class="display-5 text-muted">Hey there! I am {{post.author.user.username|capfirst}} in your service.
+            </h4>
             <hr>
             <span>{{post.content|safe}}</span>
             <div class="mt-4">
