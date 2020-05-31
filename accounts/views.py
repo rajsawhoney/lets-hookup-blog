@@ -7,7 +7,7 @@ from django.views.generic import TemplateView, View, DetailView, ListView
 from django.views.generic.edit import UpdateView, ModelFormMixin
 from .models import UserModel
 from django.contrib.auth.models import User
-from .forms import UserForm, UserProfileForm
+from .forms import UserForm, UserProfileForm, UserEditForm
 from django import forms
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
@@ -65,7 +65,6 @@ class ContactView(TemplateView):
         else:
             context["user_object"] = None
         return context
-
 
 
 class UserModelDetailView(DetailView):
@@ -171,7 +170,7 @@ class UserModelView(View):
         if pk and request.user.is_authenticated:  # user already exists so update case
             user = get_object_or_404(UserModel, id=pk)
             user_profile_form = UserProfileForm(instance=user)
-            user_form = UserForm(instance=request.user)
+            user_form = UserEditForm(instance=request.user)
             template = 'accounts/usermodel_update_form.html'
             context = {'user_form': user_form,
                        'user_profile_form': user_profile_form, }

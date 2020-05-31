@@ -30,17 +30,15 @@
                         GitHub</a><br>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <a href="{% url 'social:begin' 'twitter' %}" class="btn-md btn-outline-secondary"><i
+                    <a href="{% url 'social:begin' 'twitter' %}" class="btn-md btn-outline-primary"><i
                             class="fa fa-twitter" aria-hidden="true"></i> Login with
                         Twitter</a><br>
                 </div>
 
-                <div class="col-sm-12 col-md-6-col-lg-4">
+                <div class="col-sm-12 col-md-6 col-lg-4">
                     <a href="{% url 'social:begin' 'facebook' %}" class="btn-md btn-outline-primary"><i
                             class="fa fa-facebook" aria-hidden="true"></i> Login with
                         Facebook</a><br>
-                    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-                    </fb:login-button>
                 </div>
             </div>
         </form>

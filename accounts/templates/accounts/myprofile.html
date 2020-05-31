@@ -10,8 +10,8 @@
 <div style="padding-top: 50px; box-sizing:content-box; box-shadow:2px 6px 9px rgb(149, 34, 153);" class="card">
     <img src="{% if object.profile_pic %}{{object.profile_pic.url}} {% else %} # {% endif %}" alt="Profile-pic">
     <h3 style="box-shadow:.5px 3px 10px rgb(51, 21, 218);">{{object.user.username|capfirst}}</h3>
-    <p class="title">{{object.qualifications|slice:250}}</p> <!-- Custom filter used here -->
-    <p>Tribhuvan University</p>
+    <p class="title mt-2 pt-1 text-center">{{object.qualifications|safe}}</p> <!-- Custom filter used here -->
+    <p>Blogger At Lets-HookUp.com</p>
     <div style="margin: 24px;">
         <a href="https://twitter.com/rajsahani1819"><i class="fa fa-twitter"></i></a>
         <a href="https://www.linkedin.com/in/razz-sawhoney-2b1a05190/"><i class="fa fa-linkedin"></i></a>
@@ -40,7 +40,7 @@
     </p>
 
 </div>
-<div style="text-shadow: .5px 1px rgb(32, 32, 28); text-align: center;" class="container">
+<div class="container mt-4 pt-2 mx-2" style="text-shadow: .5px 1px rgb(32, 32, 28); text-align: center;">
     <p>{{object.about_me}}</p>
 </div>
 
@@ -87,7 +87,3 @@
 
 
 {% endblock %}
-
-
-
-
