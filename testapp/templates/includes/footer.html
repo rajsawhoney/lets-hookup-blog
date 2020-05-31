@@ -3,7 +3,7 @@
     <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-wrap md:text-left text-center order-first">
             <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                <h2 class="content-color title-font font-medium tracking-widest text-sm mb-3">Main Navigation</h2>
+                <h2 class="content-color title-font font-medium tracking-widest text-lg mb-3">Main Navigation</h2>
                 <nav class="list-none mb-10">
                     <li>
                         <a href="{% url 'testapp:related-article-list' %}"
@@ -19,12 +19,12 @@
                     </li>
                     <li>
                         <a href="{% url 'testapp:article-category-list' %}"
-                            class="content-color hover:text-gray-400">Article Categoriesx</a>
+                            class="content-color hover:text-gray-400">Article Categories</a>
                     </li>
                 </nav>
             </div>
             <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                <h2 class="content-color title-font font-medium tracking-widest text-sm mb-3">Profile</h2>
+                <h2 class="content-color title-font font-medium tracking-widest text-lg mb-3">Profile</h2>
                 <nav class="list-none mb-10">
                     <li>
                         <a href="{{user_object.get_absolute_url}}" class="content-color hover:text-gray-400">My
@@ -44,7 +44,7 @@
                 </nav>
             </div>
             <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                <h2 class="content-color title-font font-medium tracking-widest text-sm mb-3">Policies</h2>
+                <h2 class="content-color title-font font-medium tracking-widest text-lg mb-3">Policies</h2>
                 <nav class="list-none mb-10">
                     <li>
                         <a href="{% url 'about' %}" class="content-color hover:text-gray-400">About Us</a>
@@ -63,7 +63,7 @@
                 </nav>
             </div>
             <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                <h2 class="content-color title-font font-medium tracking-widest text-sm mb-3">NewsLetter</h2>
+                <h2 class="content-color title-font font-medium tracking-widest text-md mb-3">NewsLetter</h2>
                 <div
                     class="flex xl:flex-no-wrap md:flex-no-wrap lg:flex-wrap flex-wrap justify-center md:justify-start">
                     <input
