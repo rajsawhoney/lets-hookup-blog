@@ -25,12 +25,22 @@
             <p><strong>-- OR --</strong></p>
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <a href="{% url 'social:begin' 'github' %}" class="btn-md btn-outline-secondary">Login with
+                    <a href="{% url 'social:begin' 'github' %}" class="btn-md btn-outline-secondary"><i
+                            class="fa fa-github" aria-hidden="true"></i> Login with
                         GitHub</a><br>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <a href="{% url 'social:begin' 'twitter' %}" class="btn-md btn-outline-secondary">Login with
+                    <a href="{% url 'social:begin' 'twitter' %}" class="btn-md btn-outline-secondary"><i
+                            class="fa fa-twitter" aria-hidden="true"></i> Login with
                         Twitter</a><br>
+                </div>
+
+                <div class="col-sm-12 col-md-6-col-lg-4">
+                    <a href="{% url 'social:begin' 'facebook' %}" class="btn-md btn-outline-primary"><i
+                            class="fa fa-facebook" aria-hidden="true"></i> Login with
+                        Facebook</a><br>
+                    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                    </fb:login-button>
                 </div>
             </div>
         </form>

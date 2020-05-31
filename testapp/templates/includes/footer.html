@@ -5,10 +5,7 @@
             <div class="lg:w-1/4 md:w-1/2 w-full px-4">
                 <h2 class="content-color title-font font-medium tracking-widest text-lg mb-3">Main Navigation</h2>
                 <nav class="list-none mb-10">
-                    <li>
-                        <a href="{% url 'testapp:related-article-list' %}"
-                            class="content-color hover:text-gray-400">Followed Posts</a>
-                    </li>
+
                     <li>
                         <a href="{% url 'testapp:my-article-list' %}" class="content-color hover:text-gray-400">Your
                             Posts</a>
@@ -16,6 +13,11 @@
                     <li>
                         <a href="{% url 'testapp:fav-article-list' %}" class="content-color hover:text-gray-400">My
                             Favourite</a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'testapp:related-article-list' %}"
+                            class="content-color hover:text-gray-400">Followed Posts</a>
                     </li>
                     <li>
                         <a href="{% url 'testapp:article-category-list' %}"
@@ -26,6 +28,11 @@
             <div class="lg:w-1/4 md:w-1/2 w-full px-4">
                 <h2 class="content-color title-font font-medium tracking-widest text-lg mb-3">Profile</h2>
                 <nav class="list-none mb-10">
+
+                    <li>
+                        <a href="{% url 'accounts:logout' %}" class="content-color hover:text-gray-400">Logout</a>
+                    </li>
+                    
                     <li>
                         <a href="{{user_object.get_absolute_url}}" class="content-color hover:text-gray-400">My
                             Profile</a>
@@ -38,9 +45,7 @@
                         <a href="{% url 'accounts:password-change' %}" class="content-color hover:text-gray-400">Change
                             Password</a>
                     </li>
-                    <li>
-                        <a href="{% url 'accounts:logout' %}" class="content-color hover:text-gray-400">Logout</a>
-                    </li>
+
                 </nav>
             </div>
             <div class="lg:w-1/4 md:w-1/2 w-full px-4">
@@ -94,7 +99,7 @@
                     target="_blank">@RazzSawHoney</a>
             </p>
             <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-                <a class=">
+                <a class="ml-3">
                     <svg fill=" currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     class="w-5 h-5" viewBox="0 0 24 24">
                     <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
