@@ -45,7 +45,7 @@ class UserModel(models.Model):
         verbose_name_plural = ("UserModels")
 
     def save(self, *args, **kwargs):
-        if self.profile_pic:
+        try:
             baseSize = 350
             print("Save method called!!")
             imageTemproary = Image.open(self.profile_pic)
@@ -63,6 +63,8 @@ class UserModel(models.Model):
             outputIoStream.seek(0)
             self.profile_pic = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % self.profile_pic.name.split('.')[
                 0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
+        except:
+            print("Unable to open file...")
         super(UserModel, self).save(*args, **kwargs)
 
     def get_update_url(self):
