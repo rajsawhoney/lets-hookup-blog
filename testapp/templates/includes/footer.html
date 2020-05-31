@@ -1,4 +1,5 @@
-<footer class="text-gray-700 body-font" style="background-color: rgb(18, 27, 43);">
+<br><br>
+<footer class="text-gray-700 body-font mt-5 pt-4" style="background-color: rgba(18, 27, 43, 0.288);">
     <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-wrap md:text-left text-center order-first">
             <div class="lg:w-1/4 md:w-1/2 w-full px-4">
@@ -6,19 +7,19 @@
                 <nav class="list-none mb-10">
                     <li>
                         <a href="{% url 'testapp:related-article-list' %}"
-                            class="content-color hover:text-gray-800">Followed Posts</a>
+                            class="content-color hover:text-gray-400">Followed Posts</a>
                     </li>
                     <li>
-                        <a href="{% url 'testapp:my-article-list' %}" class="content-color hover:text-gray-800">Your
+                        <a href="{% url 'testapp:my-article-list' %}" class="content-color hover:text-gray-400">Your
                             Posts</a>
                     </li>
                     <li>
-                        <a href="{% url 'testapp:fav-article-list' %}" class="content-color hover:text-gray-800">My
+                        <a href="{% url 'testapp:fav-article-list' %}" class="content-color hover:text-gray-400">My
                             Favourite</a>
                     </li>
                     <li>
                         <a href="{% url 'testapp:article-category-list' %}"
-                            class="content-color hover:text-gray-800">Article Categoriesx</a>
+                            class="content-color hover:text-gray-400">Article Categoriesx</a>
                     </li>
                 </nav>
             </div>
@@ -26,19 +27,19 @@
                 <h2 class="content-color title-font font-medium tracking-widest text-sm mb-3">Profile</h2>
                 <nav class="list-none mb-10">
                     <li>
-                        <a href="{{user_object.get_absolute_url}}" class="content-color hover:text-gray-800">My
+                        <a href="{{user_object.get_absolute_url}}" class="content-color hover:text-gray-400">My
                             Profile</a>
                     </li>
                     <li>
-                        <a href="{{user_object.get_update_url}}" class="content-color hover:text-gray-800">Edit
+                        <a href="{{user_object.get_update_url}}" class="content-color hover:text-gray-400">Edit
                             Profile</a>
                     </li>
                     <li>
-                        <a href="{% url 'accounts:password-change' %}" class="content-color hover:text-gray-800">Change
+                        <a href="{% url 'accounts:password-change' %}" class="content-color hover:text-gray-400">Change
                             Password</a>
                     </li>
                     <li>
-                        <a href="{% url 'accounts:logout' %}" class="content-color hover:text-gray-800">Logout</a>
+                        <a href="{% url 'accounts:logout' %}" class="content-color hover:text-gray-400">Logout</a>
                     </li>
                 </nav>
             </div>
@@ -46,18 +47,18 @@
                 <h2 class="content-color title-font font-medium tracking-widest text-sm mb-3">Policies</h2>
                 <nav class="list-none mb-10">
                     <li>
-                        <a href="{% url 'about' %}" class="content-color hover:text-gray-800">About Us</a>
+                        <a href="{% url 'about' %}" class="content-color hover:text-gray-400">About Us</a>
                     </li>
 
                     <li>
-                        <a href="{% url 'contact' %}" class="content-color hover:text-gray-800">Contact Us</a>
+                        <a href="{% url 'contact' %}" class="content-color hover:text-gray-400">Contact Us</a>
                     </li>
                     <li>
-                        <a href="#terms&condition" class="content-color hover:text-gray-800">Terms and Condtion</a>
+                        <a href="#terms&condition" class="content-color hover:text-gray-400">Terms and Condtion</a>
                     </li>
 
                     <li>
-                        <a href="#something" class="content-color hover:text-gray-800"></a>
+                        <a href="#something" class="content-color hover:text-gray-400"></a>
                     </li>
                 </nav>
             </div>
@@ -69,7 +70,7 @@
                         class="w-40 sm:w-auto bg-gray-100 rounded xl:mr-4 lg:mr-0 sm:mr-4 mr-2 border border-gray-400 focus:outline-none focus:border-purple-500 text-base py-2 px-4"
                         placeholder="Your Email" type="email">
                     <button
-                        class="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-purple-500 border-0 py-2 px-2 focus:outline-none hover:bg-purple-600 rounded">Subscribe</button>
+                        class="float-right lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-purple-500 border-0 py-2 px-2 focus:outline-none hover:bg-purple-600 rounded">Subscribe</button>
                 </div>
 
                 <p class="content-color text-sm mt-2 md:text-left text-center">Don't LookUp! Let's HookUp!!
@@ -129,8 +130,9 @@
 </footer>
 
 <style>
-    .content-color{
-        color:white;
-        text-shadow: .5px rgba(72, 72, 206, 0.438);
+    .content-color {
+        color: white;
+        text-shadow: 1px .2px .4px solid rgba(72, 72, 206, 0.438);
     }
+
 </style>
