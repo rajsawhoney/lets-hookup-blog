@@ -65,7 +65,7 @@ urlpatterns = [
 
     url(r'^about/', AboutView.as_view(), name='about'),
 
-    url(r'^about/', ContactView.as_view(), name='contact'),
+    url(r'^contact/', ContactView.as_view(), name='contact'),
 
 ]
 
