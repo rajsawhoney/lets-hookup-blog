@@ -6,8 +6,8 @@ from django.utils import timezone
 
 
 class StaticViewSitemap(sitemaps.Sitemap):
-    priority = 0.5
-    changefreq = 'daily'
+    priority = 0.6
+    changefreq = 'weekly'
 
     def items(self):
         return [
@@ -19,7 +19,8 @@ class StaticViewSitemap(sitemaps.Sitemap):
             'testapp:fav-article-list',
             'testapp:related-article-list',
             'testapp:authors-list',
-            'testapp:about',
+            'about',
+            'contact',
 
         ]
 

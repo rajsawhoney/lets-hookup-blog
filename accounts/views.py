@@ -33,8 +33,27 @@ class UserModelListView(ListView):
             context["user_object"] = None
 
         return context
+
+
 class AboutView(TemplateView):
     template_name = "accounts/about.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form"] = AuthenticationForm()
+        context["user_profile_form"] = UserProfileForm()
+        context["user_form"] = UserForm()
+        if self.request.user.is_authenticated:
+            context["user_object"] = get_object_or_404(
+                UserModel, user=self.request.user)
+        else:
+            context["user_object"] = None
+        return context
+
+
+class ContactView(TemplateView):
+    template_name = "accounts/contact.html"
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["form"] = AuthenticationForm()
@@ -124,7 +143,6 @@ class LogOutUser(auth_views.LogoutView):
         context["user_form"] = UserForm()
 
         return context
-
 
 
 # def password_change(request):

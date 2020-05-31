@@ -95,9 +95,6 @@
                         </div>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'testapp:about' %}">About</a>
-                    </li>
                     <li>
                         <p class="nav-link" style="float: right;">Loginned as:
                             {% if user_object %}
@@ -130,6 +127,11 @@
                     {% include "accounts/includes/login_popup.html" %}
 
                     {% endif %}
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">About</a>
+                    </li>
+
                 </ul>
 
 

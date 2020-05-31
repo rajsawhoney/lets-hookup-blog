@@ -2,7 +2,7 @@ from django.conf.urls import url
 from django.urls import path
 
 from . import views
-from accounts.views import AboutView, UserModelListView, follow_me
+from accounts.views import UserModelListView, follow_me
 from likecomment.views import edit_comment, clapping, likePost, put_edit_comment_form
 
 
@@ -22,7 +22,7 @@ urlpatterns = [
     path('favourite/articles/', views.FavArticleListView.as_view(),
          name='fav-article-list'),
 
-     path('my/articles/', views.YourArticleListView.as_view(),
+    path('my/articles/', views.YourArticleListView.as_view(),
          name='my-article-list'),
 
     path('followed/articles/', views.RelatedArticleListView.as_view(),
@@ -41,8 +41,6 @@ urlpatterns = [
 
     url(r"^category/create/", views.CategoryCreateView.as_view(),
         name='category-create'),
-
-    url(r'^about/', AboutView.as_view(), name='about'),
 
     url(r'^likepost/', likePost, name='likepost'),
 

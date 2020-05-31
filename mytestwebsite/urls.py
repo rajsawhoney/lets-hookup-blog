@@ -12,6 +12,7 @@ from .sitemaps import StaticViewSitemap, ArticleSiteMap, ArticleCategorySiteMap
 from django.contrib import admin
 from django.contrib.sites.models import Site
 from testapp.views import ArticleListView
+from accounts.views import AboutView, ContactView
 
 
 admin.site.unregister(Site)
@@ -61,6 +62,10 @@ urlpatterns = [
     url(r'^photo-upload/', include('photos.urls')),
     url(r'^test/', include('checkapp.urls')),
     url(r'^', include('django.contrib.auth.urls')),
+
+    url(r'^about/', AboutView.as_view(), name='about'),
+
+    url(r'^about/', ContactView.as_view(), name='contact'),
 
 ]
 

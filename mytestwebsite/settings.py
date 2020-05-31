@@ -38,8 +38,6 @@ INSTALLED_APPS = [
     'accounts',
     'likecomment',
     'tinymce',
-    #     'dajaxice',
-    #     'dajax',
     'search',
     'crispy_forms',
     'photos',
@@ -52,7 +50,6 @@ SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -61,7 +58,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
-    # 'django.middleware.csrf.CsrfResponseMiddleware',
+
 ]
 
 ROOT_URLCONF = 'mytestwebsite.urls'
