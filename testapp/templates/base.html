@@ -110,12 +110,25 @@
                             </a>
                             {% else %}
                             {% for ass in backends.associated %}
+                            {% if ass.provider == 'facebook' %}
                             <a href="{{ass.extra_data.profile_url}}"> <img
                                     style="width: 30px; height:30px; border-radius:50%;"
                                     src="{{ass.extra_data.picture.data.url}}" alt="">
                                 <span style="color: blue;background-color: yellow;">
                                     @{{ass.extra_data.name|capfirst}}</span>
                             </a>
+                            {% endif %}
+
+                            {% if ass.provider == 'linkedin-oauth2' %}
+                            <a href="{{ass.extra_data.profile_url}}"> <img
+                                    style="width: 30px; height:30px; border-radius:50%;"
+                                    src="{{ass.extra_data.picture_url}}" alt="">
+                                <span style="color: blue;background-color: yellow;">
+                                    @{{ ass.extra_data.name |capfirst}}</span>
+                            </a>
+                            {% endif %}
+
+
                             {% endfor %}
                             {% endif %}
                         </p>
