@@ -96,6 +96,8 @@
                     </li>
 
                     <li>
+
+
                         <p class="nav-link" style="float: right;">Loginned as:
                             {% if user_object %}
                             <a href="{{user_object.get_absolute_url}}"> <img
@@ -103,12 +105,18 @@
                                     src="{% if user_object.profile_pic %} {{user_object.profile_pic.url}} {% else %} # {% endif %}"
                                     alt="">
                                 <span style="color: blue;background-color: yellow;">
-                                    @{{user_object.user.username|capfirst}}</span> <sup>2 <i class="fa fa-info-circle"
-                                        aria-hidden="true"></i> </sup>
+                                    @{{user_object.user.username|capfirst}}</span>
 
                             </a>
                             {% else %}
-                            <span style="color: blue;background-color: yellow;">{{user|capfirst}}</span>
+                            {% for ass in backends.associated %}
+                            <a href="{{ass.extra_data.profile_url}}"> <img
+                                    style="width: 30px; height:30px; border-radius:50%;"
+                                    src="{{ass.extra_data.picture.data.url}}" alt="">
+                                <span style="color: blue;background-color: yellow;">
+                                    @{{ass.extra_data.name|capfirst}}</span>
+                            </a>
+                            {% endfor %}
                             {% endif %}
                         </p>
                     </li>
