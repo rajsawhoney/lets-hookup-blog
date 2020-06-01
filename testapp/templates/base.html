@@ -118,13 +118,13 @@
                                     @{{ass.extra_data.name|capfirst}}</span>
                             </a>
                             {% endif %}
-
+                            
                             {% if ass.provider == 'linkedin-oauth2' %}
                             <a href="www.linkedin.com/in/{{vanityName}}"> <img
                                     style="width: 30px; height:30px; border-radius:50%;"
                                     src="{{ass.extra_data.picture_url}}" alt="">
                                 <span style="color: blue;background-color: yellow;">
-                                    @{{ ass.extra_data.firstName|capfirst}}</span>
+                                    @{{ ass.extra_data.first_name.localized.en_US|capfirst }}</span>
                             </a>
                             {% endif %}
 

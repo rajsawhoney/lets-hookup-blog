@@ -152,14 +152,13 @@ SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = 'wVcObbcg3T2FudH4'  # Client Secret
 
 SOCIAL_AUTH_LINKEDIN_OAUTH2_SCOPE = ['r_basicprofile', 'r_emailaddress']
 SOCIAL_AUTH_LINKEDIN_OAUTH2_FIELD_SELECTORS = [
-    'email-address', 'firstName', 'lastName', 'public-profile-url', 'picture-url', 'profilePicture']
+    'email-address', 'firstName', 'lastName', 'profilePicture', 'vanityName', 'displayImage']
 SOCIAL_AUTH_LINKEDIN_OAUTH2_EXTRA_DATA = [
     ('id', 'id'),
     ('firstName', 'firstName'),
     ('lastName', 'lastName'),
     ('emailAddress', 'email_address'),
     ('profilePicture', 'picture_url'),
-    # ('profilePicture.displayImage', 'picture_url'),
     ('vanityName', 'profile_url'),
 ]
 
