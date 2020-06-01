@@ -150,15 +150,17 @@ AUTHENTICATION_BACKENDS = (
 SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = '86w6t4oq2x0v1w'  # Client ID
 SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = 'wVcObbcg3T2FudH4'  # Client Secret
 
-SOCIAL_AUTH_LINKEDIN_OAUTH2_SCOPE = ['r_liteprofile', 'r_emailaddress']
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SCOPE = ['r_basicprofile', 'r_emailaddress']
 SOCIAL_AUTH_LINKEDIN_OAUTH2_FIELD_SELECTORS = [
-    'email-address', 'formatted-name', 'public-profile-url', 'picture-url']
+    'email-address', 'firstName', 'lastName', 'public-profile-url', 'picture-url', 'profilePicture']
 SOCIAL_AUTH_LINKEDIN_OAUTH2_EXTRA_DATA = [
     ('id', 'id'),
-    ('formattedName', 'name'),
+    ('firstName', 'firstName'),
+    ('lastName', 'lastName'),
     ('emailAddress', 'email_address'),
-    ('pictureUrl', 'picture_url'),
-    ('publicProfileUrl', 'profile_url'),
+    ('profilePicture', 'picture_url'),
+    # ('profilePicture.displayImage', 'picture_url'),
+    ('vanityName', 'profile_url'),
 ]
 
 
