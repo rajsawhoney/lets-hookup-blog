@@ -122,7 +122,7 @@
                             {% if ass.provider == 'linkedin-oauth2' %}
                             <a href="www.linkedin.com/in/{{first_name.localized.en_US}}{{last_name.localized.en_US}}">
                                 <img style="width: 30px; height:30px; border-radius:50%;"
-                                    src="{{ass.extra_data.picture_url.displayImage}}" alt="">
+                                    src="{{ass.extra_data.picture_url.displayImage.url}}" alt="">
                                 <span style="color: blue;background-color: yellow;">
                                     @{{ ass.extra_data.first_name.localized.en_US|capfirst }}
                                 </span>
