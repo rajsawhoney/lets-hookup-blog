@@ -3,7 +3,8 @@
     <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-wrap md:text-left text-center order-first">
             <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                <h2 class="content-color title-font font-medium tracking-widest text-lg mb-3">Main Navigation</h2>
+                <h2 class="content-color title-font font-medium tracking-widest text-lg mb-3"
+                    style="text-decoration: underline;">Main Navigation</h2>
                 <nav class="list-none mb-10">
 
                     <li>
@@ -26,9 +27,10 @@
                 </nav>
             </div>
             <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                <h2 class="content-color title-font font-medium tracking-widest text-lg mb-3">Profile</h2>
+                <h2 class="content-color title-font font-medium tracking-widest text-lg mb-3"
+                    style="text-decoration: underline;">Profile</h2>
                 <nav class="list-none mb-10">
-
+                    {% if request.user.is_authenticated %}
                     <li>
                         <a href="{% url 'accounts:logout' %}" class="content-color hover:text-gray-400">Logout</a>
                     </li>
@@ -45,11 +47,26 @@
                         <a href="{% url 'accounts:password-change' %}" class="content-color hover:text-gray-400">Change
                             Password</a>
                     </li>
+                    {% else %}
+                    <li>
+                        <a href="{% url 'accounts:singup' %}" class="content-color hover:text-gray-400">Sign Up</a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'accounts:login' %}" class="content-color hover:text-gray-400">Login</a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'accounts:password_reset' %}" class="content-color hover:text-gray-400">Recover
+                            Account</a>
+                    </li>
+                    {% endif %}
 
                 </nav>
             </div>
             <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                <h2 class="content-color title-font font-medium tracking-widest text-lg mb-3">Policies</h2>
+                <h2 class="content-color title-font font-medium tracking-widest text-lg mb-3"
+                    style="text-decoration: underline;">Company</h2>
                 <nav class="list-none mb-10">
                     <li>
                         <a href="{% url 'about' %}" class="content-color hover:text-gray-400">About Us</a>
@@ -63,7 +80,7 @@
                     </li>
 
                     <li>
-                        <a href="#api" class="content-color hover:text-gray-400">API Reference</a>
+                        <a href="#api" class="content-color hover:text-gray-400">Our API Reference</a>
                     </li>
                 </nav>
             </div>

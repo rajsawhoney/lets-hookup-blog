@@ -57,6 +57,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+
     'social_django.middleware.SocialAuthExceptionMiddleware',
 
 ]
@@ -83,7 +85,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    #     'dajaxice.finders.DajaxiceFinder',
+    
 )
 
 TEMPLATES = [
@@ -152,7 +154,7 @@ SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = 'wVcObbcg3T2FudH4'  # Client Secret
 
 SOCIAL_AUTH_LINKEDIN_OAUTH2_SCOPE = ['r_liteprofile', 'r_emailaddress']
 SOCIAL_AUTH_LINKEDIN_OAUTH2_FIELD_SELECTORS = [
-    'email-address', 'firstName', 'lastName', 'profilePicture', 'vanityName',]
+    'email-address', 'firstName', 'lastName', 'profilePicture', 'vanityName', ]
 SOCIAL_AUTH_LINKEDIN_OAUTH2_EXTRA_DATA = [
     ('id', 'id'),
     ('firstName', 'firstName'),
