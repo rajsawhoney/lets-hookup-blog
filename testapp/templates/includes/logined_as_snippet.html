@@ -1,0 +1,32 @@
+<p class="nav-link" style="float: right;">Loginned as:
+    {% if user_object %}
+    <a href="{{user_object.get_absolute_url}}"> <img style="width: 30px; height:30px; border-radius:50%;"
+            src="{% if user_object.profile_pic %} {{user_object.profile_pic.url}} {% else %} # {% endif %}" alt="">
+        <span style="color: blue;background-color: yellow;">
+            @{{user_object.user.username|capfirst}}</span>
+
+    </a>
+    {% else %}
+    {% for ass in backends.associated %}
+    {% if ass.provider == 'facebook' %}
+    <a href="{{ass.extra_data.profile_url}}"> <img style="width: 30px; height:30px; border-radius:50%;"
+            src="{{ass.extra_data.picture.data.url}}" alt="">
+        <span style="color: blue;background-color: yellow;">
+            @{{ass.extra_data.name|capfirst}}</span>
+    </a>
+    {% endif %}
+
+    {% if ass.provider == 'linkedin-oauth2' %}
+    <a href="https://linkedin.com/in/{{first_name.localized.en_US}}{{last_name.localized.en_US}}" target="_blank">
+        <img style="width: 30px; height:30px; border-radius:50%;" src="{{ass.extra_data.picture_url.displayImage}}"
+            alt="Missing">
+        <span style="color: blue;background-color: yellow;">
+            @{{ ass.extra_data.first_name.localized.en_US|capfirst }}
+        </span>
+    </a>
+    {% endif %}
+
+
+    {% endfor %}
+    {% endif %}
+</p>
