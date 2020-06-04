@@ -37,7 +37,7 @@ class ArticleSiteMap(sitemaps.Sitemap):
 
     def lastmod(self, item):
         print("Item goes here...")
-        print(item)
+        print(item.last_updated)
         return timezone.now()
 
 
