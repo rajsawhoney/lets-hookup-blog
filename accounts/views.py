@@ -244,7 +244,7 @@ def follow_me(request):
 
     return HttpResponse("Warning! Please have an Ajax Request!!!")
 
-
+# This is not the right place for this view
 def add_remove_frm2fav(request, slug):
     article = get_object_or_404(Article, slug=slug)
     author = get_object_or_404(UserModel, user=request.user)
