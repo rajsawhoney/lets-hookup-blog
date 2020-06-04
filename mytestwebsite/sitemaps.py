@@ -35,9 +35,6 @@ class ArticleSiteMap(sitemaps.Sitemap):
     def items(self):
         return Article.objects.all()
 
-    def lastmod(self, item):
-        return item.last_updated
-
 
 class ArticleCategorySiteMap(sitemaps.Sitemap):
     priority = 0.6
