@@ -48,13 +48,16 @@
                             Password</a>
                     </li>
                     {% else %}
-                    <li>
-                        <a href="{% url 'accounts:signup' %}" class="content-color hover:text-gray-400">Login</a>
-                    </li>
 
                     <li>
-                        <a href="{% url 'accounts:login' %}" class="content-color hover:text-gray-400">Sign Up</a>
+                        <a href="{% url 'accounts:login' %}" class="content-color hover:text-gray-400">Login</a>
                     </li>
+
+
+                    <li>
+                        <a href="{% url 'accounts:signup' %}" class="content-color hover:text-gray-400">Sign Up</a>
+                    </li>
+
 
                     <li>
                         <a href="{% url 'accounts:password_reset' %}" class="content-color hover:text-gray-400">Recover
@@ -118,14 +121,16 @@
                     target="_blank">@RazzSawHoney</a>
             </p>
             <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-                 <a class="ml-3" href="https://www.facebook.com/ramsuresh.k.sahani/"> <!-- #facebook -->
+                <a class="ml-3" href="https://www.facebook.com/ramsuresh.k.sahani/">
+                    <!-- #facebook -->
                     <svg fill=" currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         class="w-5 h-5" viewBox="0 0 24 24">
                         <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
                     </svg>
                 </a>
 
-                <a class="ml-3" href="https://twitter.com/rajsahani1819"> <!-- #twitter -->
+                <a class="ml-3" href="https://twitter.com/rajsahani1819">
+                    <!-- #twitter -->
                     <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         class="w-5 h-5" viewBox="0 0 24 24">
                         <path

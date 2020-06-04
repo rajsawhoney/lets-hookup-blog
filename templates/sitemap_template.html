@@ -7,11 +7,6 @@
         {% if url.lastmod %}<lastmod>{{ url.lastmod|date:"Y-m-d" }} {{ url.lastmod|time:"H:i:s" }}</lastmod>{% endif %}
         {% if url.changefreq %}<changefreq>{{ url.changefreq }}</changefreq>{% endif %}
         {% if url.priority %}<priority>{{ url.priority }}</priority>{% endif %}
-        <news:news>
-            {% if url.item.publication_date %}<news:publication_date>{{ url.item.publication_date|date:"Y-m-d" }}
-                {{ url.item.publication_date|time:"H:i:s" }}</news:publication_date>{% endif %}
-            {% if url.item.tags %}<news:keywords>{{ url.item.tags }}</news:keywords>{% endif %}
-        </news:news>
     </url>
     {% endfor %}
     {% endspaceless %}
