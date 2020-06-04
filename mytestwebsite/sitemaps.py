@@ -36,9 +36,7 @@ class ArticleSiteMap(sitemaps.Sitemap):
         return Article.objects.all()
 
     def lastmod(self, item):
-        print("Item goes here...")
-        print(item.last_updated)
-        return timezone.now()
+        return item.last_updated
 
 
 class ArticleCategorySiteMap(sitemaps.Sitemap):
@@ -47,6 +45,3 @@ class ArticleCategorySiteMap(sitemaps.Sitemap):
 
     def items(self):
         return Category.objects.all()
-
-    def lastmod(self, item):
-        return timezone.now()
