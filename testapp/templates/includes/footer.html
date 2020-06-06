@@ -6,7 +6,7 @@
                 <h2 class="content-color title-font font-medium tracking-widest text-lg mb-3"
                     style="text-decoration: underline;">Main Navigation</h2>
                 <nav class="list-none mb-10">
-
+                    {% if request.user.is_authenticated %}
                     <li>
                         <a href="{% url 'testapp:my-article-list' %}" class="content-color hover:text-gray-400">Your
                             Posts</a>
@@ -24,6 +24,16 @@
                         <a href="{% url 'testapp:article-category-list' %}"
                             class="content-color hover:text-gray-400">Article Categories</a>
                     </li>
+                    {% else %}
+                    <li>
+                        <a href="{% url 'testapp:home' %}" class="content-color hover:text-gray-400">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'testapp:article-list' %}" class="content-color hover:text-gray-400">All
+                            Posts</a>
+                    </li>
+
                 </nav>
             </div>
             <div class="lg:w-1/4 md:w-1/2 w-full px-4">
