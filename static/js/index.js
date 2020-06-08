@@ -113,29 +113,6 @@ $(document).on("submit", "form.follow-profile", function (e) {
 	});
 });
 
-// Reply btn toggle functionality
-$(document).on("click", ".replybtn", function (event) {
-	event.preventDefault();
-	var form_id = $(this).attr("comment_id");
-	txtid = "reply_div" + form_id;
-	var id = get_correct_id(txtid);
-	console.log(id);
-	$(`#${id}`).fadeToggle('slow');
-
-});
-
-// Comment btn toggle functionality
-$(document).on("click", ".commenthandler", function (event) {
-	event.preventDefault();
-	console.log("I am really called now!!!");
-	var form_id = $(this).attr("article_id");
-	txtid = "comment_div" + form_id;
-	var id = get_correct_id(txtid);
-	console.log(id);
-	$(`#${id}`).fadeToggle('slow');
-
-});
-
 // Share Article Functionality
 function shareArticle(url) {
 	location.assign(url);
@@ -319,33 +296,6 @@ $(document).on("submit", "form.reply_comment_form", function (event) {
 		}, 7000);
 	}
 });
-
-//Ajax Reply Functionality
-// $(document).on("submit", "form.replyform", function (event) {
-//   event.preventDefault();
-//   console.log("Hi I am working!");
-//   var url = $(this).attr("url");
-//   console.log(url);
-//   var comment_id = $(this).attr("comment_id");
-//   txtid = "reply_div" + comment_id;
-//   var id = get_correct_id(txtid);
-//   console.log(id);
-//   $.ajax({
-//     type: "POST",
-//     url: url,
-//     data: $(this).serialize(),
-//     dataType: "json",
-//     success: function (response) {
-//       $(`#${id}`).html(response["form"]);
-//       $("textarea").val("");
-//     },
-//     error: function (es, e) {
-//       console.log(es.responseText);
-//       $("textarea").val("");
-//       $("#error-div").html(es.responseText);
-//     },
-//   });
-// });
 
 // Share Article Functionality
 function shareArticle(url) {
