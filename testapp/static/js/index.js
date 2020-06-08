@@ -385,17 +385,26 @@ function scroll_to_comment() {
     handler.scrollIntoView();
 }
 
-// $(document).on('mouseover', '.likebutton', function (event) {
-// 	event.preventDefault();
-// 	$("#myModal").modal("show");
+// For Back to Top Function
+window.onscroll = function () {
+    scrollFunction()
+};
 
-// });
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        $('#scroll2top').css('display', 'block');
+    } else {
+        $('#scroll2top').css('display', 'none');
+    }
+}
 
-// $(document).on('mouseout', '.likebutton', function (event) {
-// 	event.preventDefault();
-// 	$("#myModal").modal("hide");
+// When the user clicks on the button, scroll to the top of the document
+function scroll2top() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
 
-// });
+// End of Back to Top
 
 //correct id calculator
 function get_correct_id(roughid) {
