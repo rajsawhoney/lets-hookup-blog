@@ -19,7 +19,7 @@
 
     </head>
 
-    <body class="jumbotron jumbotron-fluid">
+    <body class="jumbotron jumbotron-fluid dark-mode">
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark mynav fixed-top">
             <a class="navbar-brand list-view-trigger" method='post' href="{% url 'testapp:article-list' %}"><i
                     class="App-logo" style="color: rgba(42, 220, 226, 0.767);">Let's HookUp</i>
@@ -187,6 +187,16 @@
 
     html {
         scroll-behavior: smooth;
+    }
+
+    .dark-mode {
+        background-color: rgb(21, 32, 43);
+        color: white;
+    }
+
+    .light-mode {
+        background-color: white;
+        color: rgb(21, 32, 43);
     }
 
 
