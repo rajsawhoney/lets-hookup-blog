@@ -41,7 +41,8 @@
         <p>
             <div class="row">
                 {% if request.user.is_authenticated %}
-                <span class="replybtn" onclick="$(`#reply_div{{comment.id}}`).toggle('display');"
+                <span class="replybtn"
+                    onclick="$(`#reply_div{{comment.id}}`).toggle('display');$(`#id_comment_txt`).focus();"
                     comment_id="{{comment.id}}" style="color: blue; cursor: pointer; margin-left: 40px;">
                     <i class="fa fa-reply" aria-hidden="true"></i> Reply
                 </span>
@@ -49,7 +50,8 @@
                 {% endif %}
 
                 {% if request.user == comment.user.user %}
-                <span class="editbtn" onclick="$(`#edit-comment-sec{{comment.id}}`).toggle('display');"
+                <span class="editbtn"
+                    onclick="$(`#edit-comment-sec{{comment.id}}`).toggle('display');$(`#edit-area{{comment.id}}`).focus();"
                     comment_id="{{comment.id}}" style="color: blue; cursor:
                     pointer; margin-left: 10px;">
                     <i class="fa fa-pencil" aria-hidden="true">Edit</i>
