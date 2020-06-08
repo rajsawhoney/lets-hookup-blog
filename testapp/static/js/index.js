@@ -1,25 +1,3 @@
-// *****Your Article Section Functionality*****
-// function onclickFunction(evn) {
-//   console.log("List trigger iniated for the end point:>>> ", evn);
-//   $.ajax({
-//     type: "GET",
-//     url: '/testapp/your/articles/',
-//     data: {
-//       'data': "I am working! Damm but he isn't...",
-//     },
-//     dataType: "json",
-//     success: function (response) {
-//       console.log("Request sent successfully", response['list_data']);
-//       history.pushState('data to be passed', 'Your Article Page', 'http://127.0.0.1:8000/testapp/your/articles');
-//       $('.article-list-view-div').html(response['list_data']);
-
-//     },
-//     error: (err) => {
-//       console.log("ERR in sending request!!! ", err.responseText);
-//     }
-//   });
-// }
-
 // Toggle Fav Article Functionality
 $(document).on('submit', 'form.add-remove-fav', (event) => {
     event.preventDefault();
@@ -36,7 +14,7 @@ $(document).on('submit', 'form.add-remove-fav', (event) => {
         //     'csrfmiddlewaretoken': getCookie('csrftoken'),
         // },
         dataType: "json",
-        success: function(response) {
+        success: function (response) {
             $('#fav-div').html(response['fav_data']);
             // console.log(response['fav_data']);
 
@@ -54,13 +32,13 @@ $(document).on('submit', 'form.add-remove-fav', (event) => {
 });
 
 // Confirmation PopUp
-$(document).on('click', '.delete-post-btn', function(env) {
+$(document).on('click', '.delete-post-btn', function (env) {
     $('#delete-post-confirm-modal').modal('show');
 
 });
 
 // Action of confirmation
-$(document).on('submit', 'form.delete-post', function(env) {
+$(document).on('submit', 'form.delete-post', function (env) {
     env.preventDefault();
     const id = $(this).attr('post-id');
     console.log("We are in for the delete post process!!!!!!");
@@ -73,13 +51,13 @@ $(document).on('submit', 'form.delete-post', function(env) {
             'csrfmiddlewaretoken': getCookie('csrftoken'),
         },
         dataType: "json",
-        success: function(response) {
+        success: function (response) {
             $('#delete-post-confirm-modal').modal('hide');
             location.assign('/testapp/your/articles/');
             console.log("Got successs");
             console.log(response);
         },
-        error: function(err) {
+        error: function (err) {
             console.log(err.responseText);
         }
     });
@@ -88,7 +66,7 @@ $(document).on('submit', 'form.delete-post', function(env) {
 
 
 // Follow User Functionality
-$(document).on("submit", "form.follow-profile", function(e) {
+$(document).on("submit", "form.follow-profile", function (e) {
     e.preventDefault();
     url = "/testapp/articles/follow/";
     const id = $(this).attr("userid");
@@ -116,7 +94,7 @@ $(document).on("submit", "form.follow-profile", function(e) {
             csrfmiddlewaretoken: getCookie("csrftoken"),
         },
         dataType: "json",
-        success: function(response) {
+        success: function (response) {
             if (response["success"] === "followed") {
                 $(`#${valid_id}`).html(
                     '<i class="fa fa-link" aria-hidden="true"> Following</i>'
@@ -129,38 +107,16 @@ $(document).on("submit", "form.follow-profile", function(e) {
                 console.log("Success in unfollowing");
             }
         },
-        error: function(err) {
+        error: function (err) {
             console.log("Error in following user");
             console.error(err.responseText);
         },
     });
 });
 
-// Reply btn toggle functionality
-$(document).on("click", ".replybtn", function(event) {
-    event.preventDefault();
-    var form_id = $(this).attr("comment_id");
-    txtid = "reply_div" + form_id;
-    var id = get_correct_id(txtid);
-    console.log(id);
-    $(`#${id}`).fadeToggle('slow');
-
-});
-
-// Comment btn toggle functionality
-$(document).on("click", ".commenthandler", function(event) {
-    event.preventDefault();
-    console.log("I am really called now!!!");
-    var form_id = $(this).attr("article_id");
-    txtid = "comment_div" + form_id;
-    var id = get_correct_id(txtid);
-    console.log(id);
-    $(`#${id}`).fadeToggle('slow');
-
-});
 
 // Ajax update article Functionality
-$(document).on("submit", ".updateform", function(event) {
+$(document).on("submit", ".updateform", function (event) {
     event.preventDefault();
     console.log("Udpate form submitted!");
     var url = $(this).attr("action");
@@ -169,7 +125,7 @@ $(document).on("submit", ".updateform", function(event) {
         url: url,
         data: $("form.updateform").serialize(),
         dataType: "json",
-        success: function(response) {
+        success: function (response) {
             console.log("Update OK!!!");
             $("#alert-area").html(response["form"]);
             $("#updatestatus-modal").modal("show");
@@ -177,7 +133,7 @@ $(document).on("submit", ".updateform", function(event) {
                 $("#updatestatus-modal").modal("hide");
             }, 4000);
         },
-        error: function(e) {
+        error: function (e) {
             console.log(e.responseText);
         },
     });
@@ -200,7 +156,7 @@ $(document).on("submit", ".updateform", function(event) {
 
 
 // Edit comment form toggle
-$(document).on('click', '.editbtn', function(e) {
+$(document).on('click', '.editbtn', function (e) {
     e.preventDefault();
     var roughid = 'edit-comment-sec' + $(this).attr('comment_id');
 
@@ -221,12 +177,12 @@ $(document).on('click', '.editbtn', function(e) {
             'csrfmiddlewaretoken': getCookie('csrftoken'),
         },
         dataType: "json",
-        success: function(response) {
+        success: function (response) {
             console.log("Edit comment form put successfully!");
             $(`#${edit_area_id}`).val(response['comment_txt']);
 
         },
-        error: function(err) {
+        error: function (err) {
             console.log("Failed to put comment form!!!");
             console.log(err.responseText);
         }
@@ -237,7 +193,7 @@ $(document).on('click', '.editbtn', function(e) {
 
 // Edit Comment Request Functionality
 
-$(document).on('submit', 'form.edit-comment-form', function(e) {
+$(document).on('submit', 'form.edit-comment-form', function (e) {
     e.preventDefault();
     console.log("Data submitted!!!!!!!");
 
@@ -272,13 +228,13 @@ $(document).on('submit', 'form.edit-comment-form', function(e) {
             'csrfmiddlewaretoken': getCookie('csrftoken'),
         },
         dataType: "json",
-        success: function(response) {
+        success: function (response) {
             console.log("Comment edited successfully!");
             $(`#${btnid}`).css('display', 'none');
             $('.comment_div').html(response["form"]);
         },
 
-        error: function(err) {
+        error: function (err) {
             console.log("Failed to edit comment!!!");
             console.log(err.responseText);
         }
@@ -288,7 +244,7 @@ $(document).on('submit', 'form.edit-comment-form', function(e) {
 
 
 // Ajax Reply & Comment Functionality
-$(document).on("submit", "form.reply_comment_form", function(event) {
+$(document).on("submit", "form.reply_comment_form", function (event) {
     event.preventDefault();
     var is_authenticated = $(this).attr("auth-status");
     console.log("Hi I am working!");
@@ -307,11 +263,11 @@ $(document).on("submit", "form.reply_comment_form", function(event) {
             url: url,
             data: $(this).serialize(),
             dataType: "json",
-            success: function(response) {
+            success: function (response) {
                 $(`#${id}`).html(response["form"]);
                 $("textarea").val("");
             },
-            error: function(es, e) {
+            error: function (es, e) {
                 console.log(es.responseText);
                 $("#error-div").html(es.responseText);
             },
@@ -359,7 +315,7 @@ function shareArticle(url) {
 }
 
 // Clapping Functionality
-$(document).on("submit", "form.clap", function(event) {
+$(document).on("submit", "form.clap", function (event) {
     event.preventDefault();
     console.log("Clapping iniated...");
     const pk = $(this).attr("comment_id");
@@ -380,7 +336,7 @@ $(document).on("submit", "form.clap", function(event) {
             csrfmiddlewaretoken: getCookie("csrftoken"),
         },
         dataType: "json",
-        success: function(response) {
+        success: function (response) {
             $(`#${id}`).html(response["form"]);
             clap_alert.load();
             clap_alert.play();
@@ -390,14 +346,14 @@ $(document).on("submit", "form.clap", function(event) {
 
             console.log("Clapped!");
         },
-        error: function(e) {
+        error: function (e) {
             console.error(e.responseText);
         },
     });
 });
 
 // Like Button Toggle Ajax Functionality
-$(document).on("click", ".likebutton", function(event) {
+$(document).on("click", ".likebutton", function (event) {
     event.preventDefault();
     var pk = $(this).attr("data-catid");
     txtid = "like-section" + pk;
@@ -415,10 +371,10 @@ $(document).on("click", ".likebutton", function(event) {
             csrfmiddlewaretoken: csrftoken,
         },
         dataType: "json",
-        success: function(response) {
+        success: function (response) {
             $(`#${id}`).html(response["form"]);
         },
-        error: function(rs, e) {
+        error: function (rs, e) {
             console.error(rs.responseText);
         },
     });
