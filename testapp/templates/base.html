@@ -164,13 +164,14 @@
 
         <div id="fb-root"></div>
 
-        <a onclick="scroll2top();" id="scroll2top" class="float" style="display: none; cursor: pointer;">
-            <img src="{% static "images/top.png" %}" class="my-float" alt="Missing">
-        </a>
+
 
         {% include "includes/footer.html" %}
 
         {% include "includes/loadscripts.html" %}
+        <a onclick="scroll2top();" id="scroll2top" class="float" style="display: none; cursor: pointer;">
+            <img src="{% static "images/top.png" %}" class="my-float" alt="Missing">
+        </a>
     </body>
 
 </html>
