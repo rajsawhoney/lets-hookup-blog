@@ -128,10 +128,11 @@
     <div class="col col-lg-8 col-md-6 col-sm-12 my-3">
 
         <div class="intro-text">
-            <h4 class="display-5 text-muted">Hey there! I am {{post.author.user.username|capfirst}} in your service.
+            <h4 class="display-5 text-muted mb-3">Hey there! I am {{post.author.user.username|capfirst}} in your
+                service.
             </h4>
             <hr>
-            <span>{{post.content|safe}}</span>
+            <span class="pt-2">{{post.content|safe}}</span>
             <div class="mt-4">
                 <a href="{% if object %}
                             {{object.get_absolute_url}} {% else %}#{% endif %}" class="sp-link text-primary">Take a
@@ -148,7 +149,7 @@
             </div>
             {% endif %}
             <br><br>
-            <span class="sp-link">Share Article:</span>
+            <span class="sp-link dark-mode">Share Article:</span>
 
             <button class="btn btn-md"
                 onclick="shareArticle(`https://www.facebook.com/sharer/sharer.php?u=https://lets-hookup.herokuapp.com/testapp/article/detail/{{post.slug}}/`)"><i

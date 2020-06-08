@@ -2,10 +2,9 @@
 </h3>
 <div class="card mb-2 dark-mode">
     {% for author in who_to_follow %}
-    <div class="card-body">
+    <div class="card-body" style="border:1px solid rgb(60, 168, 218);">
         <div class="row">
             <div class="col col-4">
-
                 <img src="{% if author.profile_pic %} {{author.profile_pic.url}} {% else %}# {% endif %}" style="width:100px;height: 100px; border-radius:
                 50%;box-shadow: 1px 2px 3px rgb(230, 17, 17);" alt="No profile Pic">
                 <span class="card-title"><a href="{{author.get_absolute_url}}" style="box-shadow:1px 2px 3px rgb(223, 59,
