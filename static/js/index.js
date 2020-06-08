@@ -175,11 +175,6 @@ $(document).on('click', '.editbtn', function (e) {
 	e.preventDefault();
 	var roughid = 'edit-comment-sec' + $(this).attr('comment_id');
 
-	console.log("Rough ID:", roughid);
-	var id = get_correct_id(roughid);
-	$(`#${id}`).fadeToggle('slow');
-
-	console.log('correctId', id);
 	var comment_id = $(this).attr('comment_id');
 
 	var edit_area_id = 'edit-area' + comment_id;
