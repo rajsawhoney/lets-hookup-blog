@@ -87,7 +87,7 @@
                 {% endif %}
 
                 {% if request.user == comment.user.user %}
-                <div id="{{comment.id}}" style="display: none;">
+                <div id="edit-comment-sec{{comment.id}}" style="display: none;">
                     {% include "includes/edit_comment_snippet.html" %}
                 </div>
                 {% endif %}
