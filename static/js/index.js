@@ -395,6 +395,34 @@ function get_correct_id(roughid) {
 	return correct_id;
 }
 
+
+function scroll_to_comment() {
+	var handler = document.getElementById("scrolled_to");
+	handler.scrollIntoView();
+}
+
+// For Back to Top Function
+window.onscroll = function () {
+	scrollFunction()
+};
+
+function scrollFunction() {
+	if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+		$('#scroll2top').css('display', 'block');
+	} else {
+		$('#scroll2top').css('display', 'none');
+	}
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function scroll2top() {
+	document.body.scrollTop = 0; // For Safari
+	document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+// End of Back to Top
+
+
 // csrf token generator
 function getCookie(name) {
 	var cookieValue = null;
