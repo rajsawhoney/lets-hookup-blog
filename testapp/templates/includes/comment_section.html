@@ -45,35 +45,15 @@
                     comment_id="{{comment.id}}" style="color: blue; cursor: pointer; margin-left: 40px;">
                     <i class="fa fa-reply" aria-hidden="true"></i> Reply
                 </span>
-                {% if request.user.is_authenticated %}
-                <!-- hidden reply form sections -->
-                <div class="my-2 reply-div" style="display: none; margin-left: 40px;" id="reply_div{{comment.id}}">
-                    <form class="reply_comment_form" action="." auth-status="{{user.is_authenticated}}"
-                        url="{{post.get_absolute_url}}" article_id="{{post.id}}" method="post">
-                        {% csrf_token %}
-                        <reply_section>{{cmtform|crispy}}</reply_section>
-
-                        <button class="btn btn-outline-primary">
-                            Reply
-                        </button>
-                        <input type="hidden" name="cmt_id" value="{{comment.id}}">
-                    </form>
-                </div>
-                <!-- end of reply form section -->
-                {% endif %}
 
                 {% endif %}
 
                 {% if request.user == comment.user.user %}
-                <span class="editbtn" onclick="$(`#edit-comment-sec{{comment.id}}`).toggle('display');" comment_id="{{comment.id}}" style="color: blue; cursor:
+                <span class="editbtn" onclick="$(`#edit-comment-sec{{comment.id}}`).toggle('display');"
+                    comment_id="{{comment.id}}" style="color: blue; cursor:
                     pointer; margin-left: 10px;">
                     <i class="fa fa-pencil" aria-hidden="true">Edit</i>
                 </span>
-                {% if request.user == comment.user.user %}
-                <div class="mt-4" id="edit-comment-sec{{comment.id}}" style="display: none;">
-                    {% include "includes/edit_comment_snippet.html" %}
-                </div>
-                {% endif %}
 
                 {% endif %}
 
@@ -88,8 +68,30 @@
                     <source src="{% static 'media/clap.wav' %}">
                 </audio>
             </div>
+            <div class="row">
+                {% if request.user.is_authenticated %}
+                <!-- hidden reply form sections -->
+                <div class="reply-div" style="display: none; margin-left: 40px;" id="reply_div{{comment.id}}">
+                    <form class="reply_comment_form" action="." auth-status="{{user.is_authenticated}}"
+                        url="{{post.get_absolute_url}}" article_id="{{post.id}}" method="post">
+                        {% csrf_token %}
+                        <reply_section>{{cmtform|crispy}}</reply_section>
 
+                        <button class="btn btn-outline-primary">
+                            Reply
+                        </button>
+                        <input type="hidden" name="cmt_id" value="{{comment.id}}">
+                    </form>
+                </div>
+                <!-- end of reply form section -->
+                {% endif %}
 
+                {% if request.user == comment.user.user %}
+                <div id="{{comment.id}}" style="display: none;">
+                    {% include "includes/edit_comment_snippet.html" %}
+                </div>
+                {% endif %}
+            </div>
 
         </p>
 
