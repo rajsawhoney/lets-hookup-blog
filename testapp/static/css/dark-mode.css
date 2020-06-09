@@ -1,5 +1,6 @@
 body,
-.container-fluid {
+.container-fluid,
+.row {
     background-color: rgb(21, 32, 43);
     color: #8D99AE;
     font-family: Georgia, "Times New Roman", Times, serif;
