@@ -1,4 +1,4 @@
-<p class="nav-link" style="float: right;">Loginned as:{% if user_object %}
+<p class="nav-link">{% if user_object %}
     <a href="{{user_object.get_absolute_url}}" style="align-self: inherit;"> <img
             style="width: 30px; height:30px; border-radius:50%;"
             src="{% if user_object.profile_pic %} {{user_object.profile_pic.url}} {% else %} # {% endif %}" alt="">
