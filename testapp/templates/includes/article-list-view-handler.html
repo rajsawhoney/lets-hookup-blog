@@ -54,7 +54,7 @@ box-shadow: 1px 3px 4px rgb(177, 167, 167);">
 
 <hr class="my-2">
 <div class="mt-5">
-    <div class="col-lg-8 col-md-6 col-sm-12" style="float: left;">
+    <div class="col-lg-7 col-md-5 col-sm-12" style="float: left;">
         {% include "includes/article_update_alert.html" %} {% if messages %}
         <script>
             $("#updatestatus-modal").modal("show");
@@ -70,8 +70,8 @@ box-shadow: 1px 3px 4px rgb(177, 167, 167);">
             <h4 class="display-5 text-muted text-center">Recent Articles</h4>
             <div class="row">
                 {% for post in object_list %}
-                <div class="col-lg-6 col-md-12 col-sm-12 my-2">
-                    <div class="card mx-1" style="width: fit-content;">
+                <div class="col-lg-5 col-md-12 col-sm-12 my-2">
+                    <div class="card mx-2 article-body" style="width: fit-content;">
                         <a href="{{post.get_absolute_url}}">
                             <img class="card-img-top" style="border: 1px solid rgb(8, 12, 240);
                             border-bottom-color: rgb(248, 247, 247);"
@@ -229,6 +229,10 @@ box-shadow: 1px 3px 4px rgb(177, 167, 167);">
     p {
         color: rgba(14, 12, 12, 0.822);
         font-family: 'Merienda', cursive;
+    }
+
+    .article-body {
+        box-shadow: 2px 5px 6px;
     }
 
     .mr-1,
