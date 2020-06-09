@@ -19,15 +19,15 @@
 
     </head>
 
-    <body class="jumbotron jumbotron-fluid dark-mode">
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark mynav fixed-top">
+    <body class="jumbotron jumbotron-fluid ">
+        <nav class="navbar navbar-expand-sm navbar-dark dark-mode mynav fixed-top">
             <a class="navbar-brand list-view-trigger" method='post' href="{% url 'testapp:article-list' %}"><i
                     class="App-logo" style="color: rgba(42, 220, 226, 0.767);">Let's HookUp</i>
             </a>
 
-            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
-                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
-                aria-label="Toggle navigation"><i class="fa fa-home" aria-hidden="true"></i>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+                aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"><i
+                    class="fa fa-home" aria-hidden="true"></i>
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="background: none !important;">
@@ -184,8 +184,13 @@
         padding: 0px;
         text-align: justify;
     }
-    h1,h2,h3,h4,h5{
-        color:white;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        color: white;
     }
 
     html {
