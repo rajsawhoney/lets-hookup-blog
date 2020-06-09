@@ -1,4 +1,5 @@
-body {
+body,
+.container-fluid {
     background-color: rgb(21, 32, 43);
     color: #8D99AE;
     font-family: Georgia, "Times New Roman", Times, serif;
@@ -32,4 +33,19 @@ span {
 p {
     color: #8D99AE !important;
     font-family: 'Merienda', cursive;
+}
+
+.card {
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-left: 1px solid currentColor;
+    box-shadow: -2px -2px 13p;
+}
+
+.footer {
+    background-color: rgba(28, 45, 63, 0.637) !important;
+}
+
+.footer-bottom {
+    background-color: rgb(21, 32, 43) !important;
 }
