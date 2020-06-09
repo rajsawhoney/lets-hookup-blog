@@ -20,7 +20,7 @@
     </head>
 
     <body class="jumbotron jumbotron-fluid ">
-        <nav class="navbar navbar-expand-sm navbar-dark dark-mode mynav fixed-top">
+        <nav class="navbar navbar-expand-sm navbar-dark mynav fixed-top">
             <a class="navbar-brand list-view-trigger" method='post' href="{% url 'testapp:article-list' %}"><i
                     class="App-logo" style="color: rgba(42, 220, 226, 0.767);">Let's HookUp</i>
             </a>
@@ -185,28 +185,10 @@
         text-align: justify;
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5 {
-        color: white;
-    }
 
     html {
         scroll-behavior: smooth;
     }
-
-    .dark-mode {
-        background-color: rgb(21, 32, 43);
-        color: white;
-    }
-
-    .light-mode {
-        background-color: white;
-        color: rgb(21, 32, 43);
-    }
-
 
     .float {
         position: fixed;
@@ -277,7 +259,6 @@
 
     .mynav {
         text-align: center;
-        background-color: rgb(21, 32, 43);
     }
 
 </style>

@@ -1,0 +1,35 @@
+body {
+    background-color: rgb(21, 32, 43);
+    color: #8D99AE;
+    font-family: Georgia, "Times New Roman", Times, serif;
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.fa,
+span {
+    color: #8D99AE;
+}
+
+.input-select,
+.input {
+    background: rgb(21, 32, 43) !important;
+    color: #8D99AE !important;
+}
+
+.mynav {
+    background: rgb(21, 32, 43) !important;
+    color: #8D99AE !important;
+
+}
+
+
+p {
+    color: #8D99AE !important;
+    font-family: 'Merienda', cursive;
+}
