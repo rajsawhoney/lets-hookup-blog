@@ -1,8 +1,8 @@
 <div class="modal fade" id="delete-post-confirm-modal" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content" style="box-shadow: 2px 4px 10px lawngreen;">
+        <div class="modal-content" style="box-shadow: 0px 0px 20px;">
             <div class="modal-header">
-                <h4 class="modal-title" style="box-shadow: 2px 3px 7px rgb(252, 0, 197); text-align:center;">
+                <h4 class="modal-title" style="text-align:center;">
                     Confirmation</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -30,7 +30,7 @@
                                         More</span></a>
                             </p>
                             <span class="card-title my-2"><a href="{{post.author.get_absolute_url}}"
-                                    style="box-shadow:1px 2px 3px rgb(223, 59, 30);font-style: oblique;">
+                                    style="font-style: oblique;">
                                     By: @{{post.author.user.username|capfirst}}</a>
                             </span>
                         </div>
@@ -57,9 +57,6 @@
 
 <style>
     .confirm-box {
-        border: 1px solid rgba(0, 0, 255, 0.514);
-        border-radius: 5px;
-        box-shadow: 2px 4px 7px rgb(58, 55, 55);
         font-size: larger;
         padding: 2px 1px;
     }
