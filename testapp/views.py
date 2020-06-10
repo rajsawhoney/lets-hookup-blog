@@ -267,7 +267,6 @@ class FavArticleListView(ListView):
         return context
 
 
-
 class YourArticleListView(ListView):
     model = Article
     template_name = "article-list.html"
@@ -420,7 +419,7 @@ class ArticleCreateView(LoginRequiredMixin, AjaxableResponseMixin, CreateView):
     model = Article
     form_class = ArticleForm
     template_name = "create-article.html"
-    success_url = '/testapp/your/articles/'
+    success_url = '/testapp/my/articles/'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -436,7 +435,7 @@ class ArticleCreateView(LoginRequiredMixin, AjaxableResponseMixin, CreateView):
         form.instance.author = user
         form.save()
         try:
-            ping_google(sitemap_url='/sitemap.xml')
+            ping_google(sitemap_url='/sitemap-articles.xml/')
         except Exception:
             pass
         messages.success(self.request, "New Article Successfully Published!")

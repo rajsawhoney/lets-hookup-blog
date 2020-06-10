@@ -52,7 +52,7 @@ $(document).on('submit', 'form.delete-post', function (env) {
 		success: function (response) {
 			$('.delete-confirm').html('<span class="spinner-border spinner-border-sm" role="status"></span> <span class="light">Post Deleted!</span>');
 			$('#delete-post-confirm-modal').modal('hide');
-			location.assign('/testapp/your/articles/');
+			location.assign('/testapp/my/articles/');
 
 		},
 		error: function (err) {
