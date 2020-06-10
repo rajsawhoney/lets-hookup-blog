@@ -123,20 +123,20 @@ box-shadow: 1px 3px 4px gray;">
 
                                 <!-- comment btn -->
                                 <div class="fa-pull-left" style="margin-top:
-                                7%;margin-left: 2%;">
+                                7%;margin-left: 228%;">
                                     <button class="commenthandler" id="comment{{post.id}}"
                                         onclick="$(`#comment_div{{post.id}}`).toggle('display');"
                                         article_id="{{post.id}}">
-                                        <i class="fa fa-comment" style="margin-left: 228%;" aria-hidden="true"></i>
+                                        <i class="fa fa-comment" aria-hidden="true"></i>
                                     </button>
                                 </div>
 
 
                                 <!-- Share Section -->
                                 <div class="fa-pull-left" style="margin-top:
-                                7%;margin-left: 2%;">
+                                7%;margin-left: 32%;">
                                     <button id="share-btn" class="share-class" postid="{{post.id}}"><i
-                                            style="margin-left: 32%;" class="fa fa-share" aria-hidden="true"></i>
+                                            class="fa fa-share" aria-hidden="true"></i>
                                     </button>
                                 </div>
                                 {% if request.user.is_authenticated %}
