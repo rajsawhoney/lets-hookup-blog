@@ -36,8 +36,9 @@ td {
 }
 
 .mynav {
-    background: rgba(21, 32, 43, 0.561) !important;
+    background: rgba(21, 32, 43, 0.918) !important;
     color: #8D99AE !important;
+    box-shadow: inset 1px 0px 17px;
 
 }
 
