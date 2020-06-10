@@ -41,6 +41,10 @@ td {
 
 }
 
+.fa-heart {
+    color: red !important;
+}
+
 
 p {
     background: rgb(21, 32, 43) !important;
