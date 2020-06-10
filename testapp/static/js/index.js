@@ -16,8 +16,6 @@ $(document).on('submit', 'form.add-remove-fav', (event) => {
         dataType: "json",
         success: function (response) {
             $('#fav-div').html(response['fav_data']);
-            // console.log(response['fav_data']);
-
             console.log("Fav article toggled!");
 
         },
