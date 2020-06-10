@@ -18,8 +18,8 @@ h6,
 .fa,
 span,
 th,
-td,._5mdd {
-    color: #8D99AE;
+td {
+    color: #8D99AE !important;
 }
 
 .input-select,
