@@ -67,3 +67,8 @@ p {
 .footer-bottom {
     background-color: rgb(21, 32, 43) !important;
 }
+
+.myclass {
+    background: rgb(21, 32, 43) !important;
+    color: #8D99AE !important;
+}
