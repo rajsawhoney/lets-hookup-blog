@@ -245,6 +245,8 @@ def follow_me(request):
     return HttpResponse("Warning! Please have an Ajax Request!!!")
 
 # This is not the right place for this view
+
+
 def add_remove_frm2fav(request, slug):
     article = get_object_or_404(Article, slug=slug)
     author = get_object_or_404(UserModel, user=request.user)
@@ -263,3 +265,16 @@ def add_remove_frm2fav(request, slug):
         return JsonResponse({'fav_data': html})
 
     return render(request, 'article-detail.html', context=context)
+
+
+def toggle_mode(request, pk):
+    user = get_object_or_404(UserModel, pk=pk)
+    if user.dark_mode:
+        user.dark_mode = False
+        print("Light Mode Enabled!!!")
+    else:
+        user.dark_mode = True
+        print("Dark Mode Enabled!!!")
+    user.save()
+
+    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))

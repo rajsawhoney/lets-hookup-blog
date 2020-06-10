@@ -37,6 +37,9 @@ urlpatterns = [
         views.UserModelView.as_view(), name='update-profile'),
 
     path("fav-articles/<slug>/", add_remove_frm2fav, name='add-remove-fav'),
+    
+    url(r"^toggle_mode/(?P<pk>[\w-]+)/",
+        views.toggle_mode, name='toggle-mode'),
 
 
 ]

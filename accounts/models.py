@@ -34,6 +34,8 @@ class UserModel(models.Model):
     favourites = models.ManyToManyField("testapp.Article", verbose_name=(
         "Favourite Articles"), related_name='fav_articles')
 
+    dark_mode = models.BooleanField(("Dark or Light Mode"), default=False)
+
     def __str__(self):
         return self.user.username
 
