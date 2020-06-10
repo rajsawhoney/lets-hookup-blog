@@ -11,11 +11,11 @@
 
 {% if object_list %}
 <div class="pr-4" style="border: 1px solid rgba(15, 29, 37, 0.609);border-radius: 5px;
-box-shadow: 3px 5px 13px rgb(177, 167, 167);">
+box-shadow: 1px 3px 4px gray;">
     {% include "includes/message-alert-snippet.html" %}
-    <div class="row mt-4 mb-2" style="clear: both;">
+    <div class="row mt-4 mb-2" style="clear: both;margin-left: auto;">
         <div class="col col-lg-4 col-md-12 col-sm-12">
-            <img class="ml-2" src=" {% if object_list.0.thumbnail %}
+            <img class="ml-2" style="height: max-content;" src=" {% if object_list.0.thumbnail %}
 
             {{object_list.0.thumbnail.url}} {% else %} # {% endif %} " alt="No Thumbnail">
         </div>

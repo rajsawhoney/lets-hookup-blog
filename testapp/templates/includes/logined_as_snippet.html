@@ -11,7 +11,7 @@
     {% if ass.provider == 'facebook' %}
     <a href="{{ass.extra_data.profile_url}}"> <img style="width: 30px; height:30px; border-radius:50%;"
             src="{{ass.extra_data.picture.data.url}}" alt="">
-        <span style="color: blue;background-color: yellow;">
+        <span style="color: blue;background-color: rgba(255, 255, 0, 0.349);">
             @{{ass.extra_data.name|capfirst}}</span>
     </a>
     {% endif %}
