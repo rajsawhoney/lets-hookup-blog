@@ -32,7 +32,7 @@ td {
 .dropdown-menu {
     background: rgb(21, 32, 43) !important;
     color: #8D99AE !important;
-    box-shadow: 1px 1px 6px gray;
+    box-shadow: inset 0px 1px 19px;
 }
 
 .mynav {

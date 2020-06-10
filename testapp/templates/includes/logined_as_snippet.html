@@ -1,6 +1,5 @@
-<p class="nav-link">{% if user_object %}
-    <a href="{{user_object.get_absolute_url}}" style="background-color: transparent !important;"> <img
-            style="width: 25px; height:25px; border-radius:50%;"
+<p class="nav-link" style="background-color: transparent !important;">{% if user_object %}
+    <a href="{{user_object.get_absolute_url}}"> <img style="width: 25px; height:25px; border-radius:50%;"
             src="{% if user_object.profile_pic %} {{user_object.profile_pic.url}} {% else %} # {% endif %}" alt="">
         @{{user_object.user.username|capfirst}}
     </a>
