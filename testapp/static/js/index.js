@@ -433,3 +433,33 @@ function getCookie(name) {
     }
     return cookieValue;
 }
+
+
+// Toggle-Appreance Mode Function
+
+function toggle_mode() {
+    $.ajax({
+        type: "get",
+        url: "https://lets-hookup.herokuapp.com/accounts/toggle-mode/",
+        success: function (response) {
+            dark_mode = response.status;
+            if (dark_mode) {
+                $('#toggle-mode').attr('href', 'https://lets-hookup.herokuapp.com/static/css/dark-mode.css');
+                $('#mode-toggler').html('<i class="fa fa-2x fa-globe" aria-hidden="true"></i><span style="font-size: large;"> Back To Light Mode</span>')
+
+            }
+            if (!dark_mode) {
+                $('#toggle-mode').attr('href', 'https://lets-hookup.herokuapp.com/static/css/light-mode.css');
+                $('#mode-toggler').html('<i class="fa fa-2x fa-globe" aria-hidden="true"></i><span style="font-size: large;"> Enable Dark Mode</span>')
+
+
+            }
+
+        },
+
+        errro: (err) => {
+            console.log(err.responseText);
+
+        }
+    });
+}

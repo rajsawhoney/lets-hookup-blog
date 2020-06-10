@@ -115,17 +115,21 @@
                     {% endif %}
 
                     <li>
-                        {% if user_object %}
-
-                        <a class="nav-link" href="{% url 'accounts:toggle-mode' pk=user_object.id %}"><i class="fa fa-globe fa-2" aria-hidden="true"></i>
-                            {% if user_object.dark_mode %}
-                            Back To Light Mode
+                        <a class="nav-link float-right" style="cursor: pointer;" id='mode-toggler'
+                            onclick="toggle_mode();">
+                            {% if not request.session.dark_mode %}
+                            <i class="fa fa-2x fa-globe" aria-hidden="true"></i>
+                            <span style="font-size: large;">
+                                Enable Dark Mode
+                            </span>
                             {% else %}
-                            Enable Dark Mode
-                            {% endif %} </a>
+                            <i class="fa fa-2x fa-globe" aria-hidden="true"></i> <span style="font-size: large;">
+                                Enable Light Mode
+                            </span>
+                            {% endif %}
+                            </span>
 
-                        {% endif %}
-
+                        </a>
                     </li>
 
 
@@ -268,7 +272,7 @@
     }
 
     .mynav a:hover {
-        background-color: rgb(118, 113, 189);
+        background-color: rgba(118, 113, 189, 0.657);
         font-size: larger;
     }
 

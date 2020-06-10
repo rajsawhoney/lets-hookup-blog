@@ -267,14 +267,15 @@ def add_remove_frm2fav(request, slug):
     return render(request, 'article-detail.html', context=context)
 
 
-def toggle_mode(request, pk):
-    user = get_object_or_404(UserModel, pk=pk)
-    if user.dark_mode:
-        user.dark_mode = False
-        print("Light Mode Enabled!!!")
-    else:
-        user.dark_mode = True
-        print("Dark Mode Enabled!!!")
-    user.save()
+def toggle_mode(request):
+    if request.is_ajax():
+        mode = request.session.get('dark_mode')
+        if mode:
+            request.session['dark_mode'] = False
+            print("Light Mode Enabled!!!")
+        else:
+            request.session['dark_mode'] = True
+            print("Dark Mode Enabled!!!")
+        return JsonResponse({'status': request.session.get('dark_mode')})
 
     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
