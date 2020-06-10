@@ -45,7 +45,7 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <form method='post' class="delete-post" post-id="{{post.id}}">
                     {% csrf_token %}
-                    <input type="submit" class="btn btn-danger" name="confirmation" value="Delete">
+                    <input type="submit" class="btn btn-danger delete-confirm" name="confirmation" value="Delete">
                 </form>
             </div>
 

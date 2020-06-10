@@ -40,8 +40,7 @@ $(document).on('click', '.delete-post-btn', function (env) {
 $(document).on('submit', 'form.delete-post', function (env) {
 	env.preventDefault();
 	const id = $(this).attr('post-id');
-	console.log("We are in for the delete post process!!!!!!");
-
+	$('.delete-confirm').html('<span class="spinner-border spinner-border-sm" role="status"></span> <span class="light">Post Deleting...</span>');
 	$.ajax({
 		type: "post",
 		url: '/testapp/delete-article/',
@@ -51,10 +50,10 @@ $(document).on('submit', 'form.delete-post', function (env) {
 		},
 		dataType: "json",
 		success: function (response) {
+			$('.delete-confirm').html('<span class="spinner-border spinner-border-sm" role="status"></span> <span class="light">Post Deleted!</span>');
 			$('#delete-post-confirm-modal').modal('hide');
 			location.assign('/testapp/your/articles/');
-			console.log("Got successs");
-			console.log(response);
+
 		},
 		error: function (err) {
 			console.log(err.responseText);
