@@ -36,8 +36,11 @@
 <link rel="stylesheet" href='{% static "css/owl.carousel.min.css" %}' />
 <!-- Main Stylesheets -->
 <link rel="stylesheet" href='{% static "css/style.css" %}' />
-{% if user_object.dark_mode %}
 
 <link rel="stylesheet" href="{% static 'css/dark-mode.css' %}">
+
+{% if not user_object.dark_mode %}
+
+<link rel="stylesheet" href="{% static 'css/light-mode.css' %}">
 
 {% endif %}
