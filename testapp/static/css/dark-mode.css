@@ -36,7 +36,7 @@ td {
 }
 
 .mynav {
-    background: rgb(21, 32, 43) !important;
+    background: rgba(21, 32, 43, 0.561) !important;
     color: #8D99AE !important;
 
 }
