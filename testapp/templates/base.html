@@ -115,12 +115,18 @@
                     {% endif %}
 
                     <li>
-                        <a class="nav-link" href="{% url 'accounts:toggle-mode' pk=user_object.id %}"><i class="fa fa-globe fa-2" aria-hidden="true"></i>
+                        {% if user_object %}
+
+                        <a class="nav-link" href="{% url 'accounts:toggle-mode' pk=user_object.id %}"><i
+                                class="fa fa-globe fa-2" aria-hidden="true"></i>
                             {% if user_object.dark_mode %}
                             Back To Light Mode
                             {% else %}
                             Enable Dark Mode
                             {% endif %} </a>
+
+                        {% endif %}
+
                     </li>
 
 
