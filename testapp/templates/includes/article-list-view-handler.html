@@ -70,8 +70,8 @@ box-shadow: 1px 3px 4px gray;">
             <h4 class="display-5 text-muted text-center">Recent Articles</h4>
             <div class="row">
                 {% for post in object_list %}
-                <div class="col-lg-5 col-md-12 col-sm-12 my-2">
-                    <div class="card mx-2 article-body" style="width: fit-content;">
+                <div class="col-lg-6 col-md-12 col-sm-12 my-2 article-list">
+                    <div class="card article-body">
                         <a href="{{post.get_absolute_url}}">
                             <img class="card-img-top" style="border: 1px solid rgb(8, 12, 240);
                             border-bottom-color: rgb(248, 247, 247);"
