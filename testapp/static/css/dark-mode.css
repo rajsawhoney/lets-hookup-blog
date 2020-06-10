@@ -49,7 +49,7 @@ td {
 p {
     background: rgb(21, 32, 43) !important;
     color: #8D99AE !important;
-    font-family: 'Merienda', cursive;
+    font-family: 'Merienda', cursive !important;
 }
 
 .card {
