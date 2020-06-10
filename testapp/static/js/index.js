@@ -438,6 +438,7 @@ function getCookie(name) {
 // Toggle-Appreance Mode Function
 
 function toggle_mode() {
+    $('#mode-toggler').html('<span class="spinner-border spinner-border-sm" role="status"></span> <span class="light">Toggling Mode...</span>');
     $.ajax({
         type: "get",
         url: "https://lets-hookup.herokuapp.com/accounts/toggle-mode/",
