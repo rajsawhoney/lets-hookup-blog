@@ -1,12 +1,16 @@
 body,
 .container-fluid,
 .jumbotron,
-.row,
-.modal-content {
+.row {
     background-color: rgb(21, 32, 43);
     color: #8D99AE;
     font-family: Georgia, "Times New Roman", Times, serif;
 
+}
+
+.modal-content {
+    background-image: url("{% static 'images/modal-bg.jpg' %}") !important;
+    color: #8D99AE;
 }
 
 h1,
@@ -28,15 +32,19 @@ td {
 }
 
 .input-select,
-.input,
-.dropdown-menu {
+.input {
     background: rgb(21, 32, 43) !important;
     color: #8D99AE !important;
     box-shadow: inset 0px 1px 19px;
 }
 
+.dropdown-menu {
+    background-image: url("{% static 'images/modal-bg.jpg' %}") !important;
+    color: #8D99AE;
+}
+
 .mynav {
-    background-image: url(https://s3.envato.com/files/db42d010-c276-4acc-b144-fe2d7b82c0fe/inline_image_preview.jpg) !important;
+    background-image: url("{% static 'images/modal-bg.jpg' %}") !important;
     color: #8D99AE !important;
     box-shadow: inset 1px 0px 17px;
 
