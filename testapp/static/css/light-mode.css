@@ -1,4 +1,5 @@
 .mynav {
+    box-shadow: inset 1px 0px 17px;
     background-image: url('https://lets-hookup.herokuapp.com/static/images/navback.jpg');
 }
 
