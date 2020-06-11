@@ -140,7 +140,7 @@
 
                 <form action="{% url 'search:result_list' %}" class="form-inline my-2 my-lg-0">
                     <div class="form-group">
-                        <select name="search_by" class="form-control">
+                        <select name="search_by" class="form-control" style="border-radius: 20px 0px 0px 20px;">
                             <option>Search By</option>
                             <option {% if request.GET.search_by == 'Author' %} selected {% endif %}>Author</option>
                             <option {% if request.GET.search_by == 'Category' %} selected {% endif %}>Category</option>
@@ -150,8 +150,8 @@
                     </div>
 
                     <input class="form-control mr-sm-2" value="{{request.GET.q}}" id="myInput" name="q" type="text"
-                        placeholder="Search" />
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                        placeholder="Search" style="border-radius: 0px 20px 20px 0px;" />
+                    <button class="btn btn-outline-success my-2 my-sm-0" style="border-radius: 20px" type="submit">
                         Search
                     </button>
                 </form>

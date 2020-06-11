@@ -1,35 +1,36 @@
 // Toggle Fav Article Functionality
-$(document).on('submit', 'form.add-remove-fav', (event) => {
+$(document).on("click", ".fav_btn", function (event) {
     event.preventDefault();
-    console.log("I am cliked to add or remove article to or from MyFav List... ");
-    console.log("Target Url ", $(this).attr('action'));
-    const post_id = $(this).attr('post-id')
-    console.log("Post ID", post_id);
+    var pk = $(this).attr("post-id");
+    txtid = "fav-div" + pk;
+    var id = get_correct_id(txtid);
+    console.log("ID ", pk);
+    var csrftoken = getCookie("csrftoken");
+    console.log(csrftoken);
+    console.log(id);
+
 
 
     $.ajax({
-        type: "get",
-        url: $(this).attr('action'),
-        // data: {
-        //     'csrfmiddlewaretoken': getCookie('csrftoken'),
-        // },
+        type: "POST",
+        url: $(this).attr('url'),
+        data: {
+            csrfmiddlewaretoken: csrftoken,
+        },
         dataType: "json",
         success: function (response) {
-            $('#fav-div').html(response['fav_data']);
+            $(`#${id}`).html(response["fav_data"]);
             console.log("Fav article toggled!");
-
         },
-        error: (err) => {
-            console.log("Facing Problems:");
-
-            console.log(err.responseText);
-            $('#fav-error-div').html(err.responseText);
-
-        }
+        error: function (rs, e) {
+            console.error(rs.responseText);
+        },
     });
 });
 
-// Confirmation PopUp
+
+
+//Delete Post Confirmation PopUp
 $(document).on('click', '.delete-post-btn', function (env) {
     $('#delete-post-confirm-modal').modal('show');
 
@@ -39,8 +40,7 @@ $(document).on('click', '.delete-post-btn', function (env) {
 $(document).on('submit', 'form.delete-post', function (env) {
     env.preventDefault();
     const id = $(this).attr('post-id');
-    console.log("We are in for the delete post process!!!!!!");
-
+    $('.delete-confirm').html('<span class="spinner-border spinner-border-sm" role="status"></span> <span class="light">Post Deleting...</span>');
     $.ajax({
         type: "post",
         url: '/testapp/delete-article/',
@@ -50,10 +50,10 @@ $(document).on('submit', 'form.delete-post', function (env) {
         },
         dataType: "json",
         success: function (response) {
+            $('.delete-confirm').html('<span class="spinner-border spinner-border-sm" role="status"></span> <span class="light">Post Deleted!</span>');
             $('#delete-post-confirm-modal').modal('hide');
-            location.assign('/testapp/your/articles/');
-            console.log("Got successs");
-            console.log(response);
+            location.assign('/testapp/my/articles/');
+
         },
         error: function (err) {
             console.log(err.responseText);
@@ -112,12 +112,26 @@ $(document).on("submit", "form.follow-profile", function (e) {
     });
 });
 
+// Share Article Functionality
+function shareArticle(url) {
+    location.assign(url);
+}
+
+$(document).on('click', '.share-class', function () {
+    var roughid = 'share-article-modal' + $(this).attr('postid');
+    const id = get_correct_id(roughid);
+    $(`#${id}`).modal('show');
+    setTimeout(() => {
+        $(`#${id}`).modal('hide');
+    }, 10000);
+});
 
 // Ajax update article Functionality
 $(document).on("submit", ".updateform", function (event) {
     event.preventDefault();
     console.log("Udpate form submitted!");
     var url = $(this).attr("action");
+    $('#update-spinner').html('<span class="spinner-border spinner-border-sm" role="status"></span> <span class="light">Updating...</span>')
     $.ajax({
         type: "POST",
         url: url,
@@ -126,9 +140,11 @@ $(document).on("submit", ".updateform", function (event) {
         success: function (response) {
             console.log("Update OK!!!");
             $("#alert-area").html(response["form"]);
+            $('#update-spinner').html('Updated')
             $("#updatestatus-modal").modal("show");
             setTimeout(() => {
                 $("#updatestatus-modal").modal("hide");
+                $('#update-spinner').html('Update')
             }, 4000);
         },
         error: function (e) {
@@ -158,11 +174,6 @@ $(document).on('click', '.editbtn', function (e) {
     e.preventDefault();
     var roughid = 'edit-comment-sec' + $(this).attr('comment_id');
 
-    console.log("Rough ID:", roughid);
-    var id = get_correct_id(roughid);
-    $(`#${id}`).fadeToggle('slow');
-
-    console.log('correctId', id);
     var comment_id = $(this).attr('comment_id');
 
     var edit_area_id = 'edit-area' + comment_id;
@@ -280,33 +291,6 @@ $(document).on("submit", "form.reply_comment_form", function (event) {
     }
 });
 
-//Ajax Reply Functionality
-// $(document).on("submit", "form.replyform", function (event) {
-//   event.preventDefault();
-//   console.log("Hi I am working!");
-//   var url = $(this).attr("url");
-//   console.log(url);
-//   var comment_id = $(this).attr("comment_id");
-//   txtid = "reply_div" + comment_id;
-//   var id = get_correct_id(txtid);
-//   console.log(id);
-//   $.ajax({
-//     type: "POST",
-//     url: url,
-//     data: $(this).serialize(),
-//     dataType: "json",
-//     success: function (response) {
-//       $(`#${id}`).html(response["form"]);
-//       $("textarea").val("");
-//     },
-//     error: function (es, e) {
-//       console.log(es.responseText);
-//       $("textarea").val("");
-//       $("#error-div").html(es.responseText);
-//     },
-//   });
-// });
-
 // Share Article Functionality
 function shareArticle(url) {
     location.assign(url);
@@ -361,6 +345,8 @@ $(document).on("click", ".likebutton", function (event) {
     console.log(csrftoken);
     console.log(id);
 
+
+
     $.ajax({
         type: "POST",
         url: "/testapp/likepost/",
@@ -377,6 +363,37 @@ $(document).on("click", ".likebutton", function (event) {
         },
     });
 });
+
+function scroll_to_comment() {
+    var handler = document.getElementById("scrolled_to");
+    handler.scrollIntoView();
+}
+
+// $(document).on('mouseover', '.likebutton', function (event) {
+// 	event.preventDefault();
+// 	$("#myModal").modal("show");
+
+// });
+
+// $(document).on('mouseout', '.likebutton', function (event) {
+// 	event.preventDefault();
+// 	$("#myModal").modal("hide");
+
+// });
+
+//correct id calculator
+function get_correct_id(roughid) {
+    var correct_id = "";
+    for (let i = 0; i < roughid.length; i++) {
+        if (roughid[i] == " " || roughid[i] == "\n") {
+            continue;
+        } else {
+            correct_id += roughid[i];
+        }
+    }
+    return correct_id;
+}
+
 
 function scroll_to_comment() {
     var handler = document.getElementById("scrolled_to");
@@ -404,18 +421,6 @@ function scroll2top() {
 
 // End of Back to Top
 
-//correct id calculator
-function get_correct_id(roughid) {
-    var correct_id = "";
-    for (let i = 0; i < roughid.length; i++) {
-        if (roughid[i] == " " || roughid[i] == "\n") {
-            continue;
-        } else {
-            correct_id += roughid[i];
-        }
-    }
-    return correct_id;
-}
 
 // csrf token generator
 function getCookie(name) {
@@ -434,11 +439,11 @@ function getCookie(name) {
     return cookieValue;
 }
 
-
 // Toggle-Appreance Mode Function
 
 function toggle_mode() {
     $('#mode-toggler').html('<span class="spinner-border spinner-border-sm" role="status"></span> <span class="light">Toggling Mode...</span>');
+
     $.ajax({
         type: "get",
         url: "https://lets-hookup.herokuapp.com/accounts/toggle-mode/",
