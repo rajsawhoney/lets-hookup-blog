@@ -24,7 +24,7 @@
     {% if user in post.has_liked.all %}
 
     <button class="likebutton" id="like{{post.id}}" data-catid="{{ post.id }}">
-        <i style="color: blue;" class="fa fa-thumbs-up" aria-hidden="true">Liked</i>
+        <i style="color: blue !important;" class="fa fa-thumbs-up" aria-hidden="true">Liked</i>
     </button>
     {% else %}
     <button class="likebutton" id="like{{post.id}}" data-catid="{{ post.id }}">
