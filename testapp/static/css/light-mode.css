@@ -1,6 +1,8 @@
 .mynav {
-    box-shadow: inset 1px 0px 17px;
+    box-shadow: inset 1px 0px 17px lightseagreen;
     background-image: url('https://lets-hookup.herokuapp.com/static/images/navback.jpg');
+    background-blend-mode: soft-light;
+    background-color: currentcolor;
 }
 
 .footer {
