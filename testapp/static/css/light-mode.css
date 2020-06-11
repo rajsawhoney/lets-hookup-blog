@@ -1,7 +1,7 @@
 .mynav {
-    background: rgba(0, 0, 0, 0.767);
+    background-image: url('{% static "images/navback.jpg" %}');
 }
 
-.footer{
+.footer {
     background: rgba(15, 65, 65, 0.74);
 }

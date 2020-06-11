@@ -36,10 +36,14 @@ td {
 }
 
 .mynav {
-    background: rgba(21, 32, 43, 0.918) !important;
+    background-image: url(https://s3.envato.com/files/db42d010-c276-4acc-b144-fe2d7b82c0fe/inline_image_preview.jpg) !important;
     color: #8D99AE !important;
     box-shadow: inset 1px 0px 17px;
 
+}
+
+.navbar-nav .nav-link {
+    color: #8D99AE !important;
 }
 
 .fa-heart {
