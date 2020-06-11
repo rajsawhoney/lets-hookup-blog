@@ -9,7 +9,7 @@ body,
 }
 
 .modal-content {
-    background-image: url("{% static 'images/modal-bg.jpg' %}") !important;
+    background-image: url('https://lets-hookup.herokuapp.com/static/images/modal-bg.jpg') !important;
     color: #8D99AE;
 }
 
@@ -39,12 +39,12 @@ td {
 }
 
 .dropdown-menu {
-    background-image: url("{% static 'images/modal-bg.jpg' %}") !important;
+    background-image: url('https://lets-hookup.herokuapp.com/static/images/modal-bg.jpg') !important;
     color: #8D99AE;
 }
 
 .mynav {
-    background-image: url("{% static 'images/modal-bg.jpg' %}") !important;
+    background-image: url('https://lets-hookup.herokuapp.com/static/images/modal-bg.jpg') !important;
     color: #8D99AE !important;
     box-shadow: inset 1px 0px 17px;
 

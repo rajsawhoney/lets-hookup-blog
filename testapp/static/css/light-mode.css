@@ -1,5 +1,5 @@
 .mynav {
-    background-image: url('{% static "images/navback.jpg" %}');
+    background-image: url('https://lets-hookup.herokuapp.com/static/images/navback.jpg');
 }
 
 .footer {
