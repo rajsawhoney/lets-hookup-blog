@@ -18,7 +18,7 @@
                             {% csrf_token %}
                             <div class="container row">
                                 {% for fm in form %}
-                                <p class="form-group-sm">{{fm.label_tag}} {{fm}}</p>
+                                <p class="form-group-sm" style="background-color: transparent !important;">{{fm.label_tag}} {{fm}}</p>
                                 {{fm.help_text}}
                                 {% if fm.errors %}
                                 {% for error in fm.errors %}
