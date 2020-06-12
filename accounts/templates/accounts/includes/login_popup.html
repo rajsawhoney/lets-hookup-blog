@@ -41,7 +41,8 @@
                             {% endif %}
 
                     </div>
-                    <input class="btn btn-sm btn-block btn-primary text-uppercase" type="submit" value='Login'>
+                    <button class="btn btn-sm btn-block btn-primary text-uppercase" id="login-pop-btn"
+                        type="submit">Login</button>
 
                     </form>
 
@@ -83,3 +84,12 @@
     }
 
 </style>
+
+<script>
+    $(document).on('click', '#login-pop-btn', function (evn) {
+        $(this).html(
+            '<span class="spinner-border spinner-border-sm" role="status"></span> <span class="light">Logging...</span>'
+        )
+    });
+
+</script>
