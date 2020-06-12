@@ -38,7 +38,7 @@
 <link rel="stylesheet" href='{% static "css/style.css" %}' />
 
 {% if request.session.dark_mode %}
-<link type="text/css" rel="stylesheet" id="toggle-mode" href="{% static 'css/dark-mode.css' %}" />
-{% else %}
 <link type="text/css" rel="stylesheet" id="toggle-mode" href="{% static 'css/light-mode.css' %}" />
+{% else %}
+<link type="text/css" rel="stylesheet" id="toggle-mode" href="{% static 'css/dark-mode.css' %}" />
 {% endif %}

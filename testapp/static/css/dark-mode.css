@@ -50,6 +50,10 @@ td {
 
 }
 
+.fb-comments {
+    background: azure;
+}
+
 .navbar-nav .nav-link {
     color: #8D99AE !important;
 }
