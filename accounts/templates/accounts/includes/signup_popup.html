@@ -17,12 +17,13 @@
                     {% endif %}
                     {% if not registered %}
                     <h4 class="text-muted"><sup>*</sup> Fill the form with correct details</h4>
-                    <form class='site-form' enctype="multipart/form-data" action="{% url 'accounts:signup' %}"
-                        method="post">
+                    <form class='site-form validation-form' enctype="multipart/form-data"
+                        action="{% url 'accounts:signup' %}" method="post">
                         {% csrf_token %}
                         {{user_form|crispy}}
                         {{user_profile_form|crispy}}
-                        <button class="btn btn-lg btn-primary" id='signup-pop-btn' type="submit">Sign up</button>
+                        <button class="btn btn-lg btn-primary"
+                            onclick="triggerSpinner(this, 'Registering...', 'Sign-Up')" type="submit">Sign up</button>
                     </form>
                     {% else %}
                     <a href="{% url 'accounts:login' %}">
@@ -38,13 +39,3 @@
         </div>
     </div>
 </div>
-
-
-<script>
-    $(document).on('click', '#signup-pop-btn', function (evn) {
-        $(this).html(
-            '<span class="spinner-border spinner-border-sm" role="status"></span> <span class="light">Registering...</span>'
-            )
-    });
-
-</script>

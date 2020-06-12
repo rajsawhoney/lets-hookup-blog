@@ -438,6 +438,17 @@ function getCookie(name) {
     }
     return cookieValue;
 }
+// Spinner triggering method
+function triggerSpinner(this_, message1, message2) {
+    if ($('.validation-form')[0].checkValidity()) {
+
+        this_.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" style="color:white !important;"></span> <span class="light" style="color:white !important;">${message1}</span>`;
+        setTimeout(() => {
+            this_.innerHTML = `${message2}`;
+        }, 4000);
+    }
+}
+
 
 // Toggle-Appreance Mode Function
 

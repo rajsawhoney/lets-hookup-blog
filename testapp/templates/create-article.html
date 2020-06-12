@@ -7,10 +7,10 @@
 <div class="mx-3 my-2">
   <h3 class="display-5 text-muted text-center">Create your brand new Article here!!!</h3>
 
-  <form class="create-article" method="post" enctype="multipart/form-data">
+  <form class="create-article validation-form" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{form|crispy}}
-    <input type="submit" class='float-left btn btn-md btn-block btn-outline-primary' value=' Submit'>
+    <button type="submit" class='float-left btn btn-md btn-block btn-outline-primary' onclick="triggerSpinner(this, 'Processing...', 'Submit')">Submit</button>
   </form>
 
   <div class="File-Upload float-right">
@@ -31,4 +31,6 @@
 {# PHOTOS PAGE SCRIPTS #}
 <script src="{% static 'photos/js/progress-bar-upload.js' %}"></script>
 {% endblock %}
+
+
 {% endblock %}

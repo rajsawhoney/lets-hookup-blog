@@ -11,7 +11,7 @@
     <div class="col col-lg-12 col-md-12 col-sm-12 text-center">
         <h3 class="text-muted display-5 text-center my-4">{% trans 'Login Page' %}</h3>
         {% if not request.user.is_authenticated %}
-        <form class='site-form' action="{% url 'accounts:login' %}" method="post">
+        <form class='site-form validation-form' action="{% url 'accounts:login' %}" method="post">
             {% csrf_token %}
             {{form|crispy}}
             <div class="checkbox">
@@ -20,7 +20,7 @@
             {% if request.GET.next %}
             <input type="hidden" name='next' value="{{request.GET.next}}">
             {% endif %}
-            <button class="btn btn-sm btn-block btn-primary text-uppercase" id='login-btn' type="submit">Login</button>
+            <button class="btn btn-sm btn-block btn-primary text-uppercase" onclick="triggerSpinner(this, 'Logging...', 'Login')" type="submit">Login</button>
             <br>
             <p><strong>-- OR --</strong></p>
             <div class="row">
@@ -97,13 +97,5 @@
     }
 
 </style>
-<script>
-    $(document).on('click', '#login-btn', function (evn) {
-        $(this).html(
-            '<span class="spinner-border spinner-border-sm" role="status"></span> <span class="light">Logging...</span>'
-            )
-    });
-
-</script>
 
 {% endblock  %}
