@@ -15,7 +15,7 @@
         {% csrf_token %}
         {{user_form|crispy}}
         {{user_profile_form|crispy}}
-        <input class="btn btn-lg btn-primary" type="submit" value='Sign up'>
+        <button class="btn btn-lg btn-primary" id="signup-btn" type="submit">Sign up</button>
     </form>
     {% else %}
     <a href="{% url 'accounts:login' %}">
@@ -44,4 +44,13 @@
     }
 
 </style>
+
+<script>
+    $(document).on('click', '#signup-btn', function (evn) {
+        $(this).html(
+            '<span class="spinner-border spinner-border-sm" role="status"></span> <span class="light">Registering...</span>'
+            )
+    });
+
+</script>
 {% endblock %}

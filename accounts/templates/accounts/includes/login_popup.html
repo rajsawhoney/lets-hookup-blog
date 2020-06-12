@@ -16,9 +16,10 @@
                     <div>
                         <form class='site-form' action="{% url 'accounts:login' %}" method="post">
                             {% csrf_token %}
-                            <div class="container row">
+                            <div class="container row" style="background-color: transparent !important;">
                                 {% for fm in form %}
-                                <p class="form-group-sm" style="background-color: transparent !important;">{{fm.label_tag}} {{fm}}</p>
+                                <p class="form-group-sm" style="background-color: transparent !important;">
+                                    {{fm.label_tag}} {{fm}}</p>
                                 {{fm.help_text}}
                                 {% if fm.errors %}
                                 {% for error in fm.errors %}
@@ -44,7 +45,7 @@
 
                     </form>
 
-                    <div class="row">
+                    <div class="row" style="background-color: transparent !important;">
                         <div class="col-lg-8 col-md-6 col-sm-12">
                             <a class="custom" href="{% url 'accounts:password_reset' %}"><button
                                     class="btn btn-sm btn-block btn-danger">Forgot
@@ -76,7 +77,9 @@
 </div>
 
 <style>
-    #id_username,#id_password{
+    #id_username,
+    #id_password {
         border: .4px solid rgb(22, 12, 12);
     }
+
 </style>

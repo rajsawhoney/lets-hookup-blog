@@ -219,7 +219,7 @@ class UserModelView(View):
             return redirect('testapp:article-list')
         context = {'user_form': user_form,
                    'user_profile_form': user_profile_form, }
-        return render(request, 'accounts/signupform.html', context)
+        return render(request, 'accounts/signup.html', context)
 
     # @method_decorator(decorators)
     def delete(self, request, pk=None):

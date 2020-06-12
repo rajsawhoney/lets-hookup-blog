@@ -20,7 +20,7 @@
             {% if request.GET.next %}
             <input type="hidden" name='next' value="{{request.GET.next}}">
             {% endif %}
-            <input class="btn btn-sm btn-block btn-primary text-uppercase" type="submit" value='Login'>
+            <button class="btn btn-sm btn-block btn-primary text-uppercase" id='login-btn' type="submit">Login</button>
             <br>
             <p><strong>-- OR --</strong></p>
             <div class="row">
@@ -97,5 +97,13 @@
     }
 
 </style>
+<script>
+    $(document).on('click', '#login-btn', function (evn) {
+        $(this).html(
+            '<span class="spinner-border spinner-border-sm" role="status"></span> <span class="light">Logging...</span>'
+            )
+    });
+
+</script>
 
 {% endblock  %}
