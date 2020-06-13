@@ -7,10 +7,12 @@
 <div class="mx-3 my-2">
   <h3 class="display-5 text-muted text-center">Create your brand new Article here!!!</h3>
 
-  <form class="create-article validation-form" method="post" enctype="multipart/form-data">
+  <form class="create-article" onsubmit="triggerSpinner(this,'create-article-btn', 'Processing...', 'Submit')"
+    method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{form|crispy}}
-    <button type="submit" class='float-left btn btn-md btn-block btn-outline-primary' onclick="triggerSpinner(this, 'Processing...', 'Submit')">Submit</button>
+    <button id='create-article-btn' type="submit"
+      class='float-left btn btn-md btn-block btn-outline-primary'>Submit</button>
   </form>
 
   <div class="File-Upload float-right">

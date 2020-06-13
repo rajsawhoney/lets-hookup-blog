@@ -11,12 +11,12 @@
     {% if not registered %}
     <h3 class="text-muted text-center display-5 my-3">Registration Form</h3>
     <p class="text-info text-center">* Please fill the correct details.</p>
-    <form class='site-form validation-form' enctype="multipart/form-data" action="{% url 'accounts:signup' %}" method="post">
+    <form class='site-form' onsubmit="triggerSpinner(this,'signup-btn', 'Registering...', 'Sign-Up')"
+        enctype="multipart/form-data" action="{% url 'accounts:signup' %}" method="post">
         {% csrf_token %}
         {{user_form|crispy}}
         {{user_profile_form|crispy}}
-        <button class="btn btn-lg btn-primary" onclick="triggerSpinner(this, 'Registering...', 'Sign-Up')"
-            type="submit">Sign up</button>
+        <button id='signup-btn' class="btn btn-lg btn-primary" type="submit">Sign up</button>
     </form>
     {% else %}
     <a href="{% url 'accounts:login' %}">

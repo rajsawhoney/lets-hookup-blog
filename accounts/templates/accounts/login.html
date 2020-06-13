@@ -11,7 +11,8 @@
     <div class="col col-lg-12 col-md-12 col-sm-12 text-center">
         <h3 class="text-muted display-5 text-center my-4">{% trans 'Login Page' %}</h3>
         {% if not request.user.is_authenticated %}
-        <form class='site-form validation-form' action="{% url 'accounts:login' %}" method="post">
+        <form class='site-form' onsubmit="triggerSpinner(this,'login-btn', 'Logging...', 'Login')"
+            action="{% url 'accounts:login' %}" method="post">
             {% csrf_token %}
             {{form|crispy}}
             <div class="checkbox">
@@ -20,34 +21,35 @@
             {% if request.GET.next %}
             <input type="hidden" name='next' value="{{request.GET.next}}">
             {% endif %}
-            <button class="btn btn-sm btn-block btn-primary text-uppercase" onclick="triggerSpinner(this, 'Logging...', 'Login')" type="submit">Login</button>
-            <br>
-            <p><strong>-- OR --</strong></p>
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <a href="{% url 'social:begin' 'github' %}" class="btn-md btn-outline-secondary"><i
-                            class="fa fa-github" aria-hidden="true"></i> Login with
-                        GitHub</a><br>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <a href="{% url 'social:begin' 'twitter' %}" class="btn-md btn-outline-primary"><i
-                            class="fa fa-twitter" aria-hidden="true"></i> Login with
-                        Twitter</a><br>
-                </div>
-
-                <div class="col-sm-12 col-md-6 col-lg-3">
-                    <a href="{% url 'social:begin' 'facebook' %}" class="btn-md btn-outline-primary"><i
-                            class="fa fa-facebook" aria-hidden="true"></i> Login with
-                        Facebook</a><br>
-                </div>
-
-                <div class="col-sm-12 col-md-6 col-lg-3">
-                    <a href="{% url 'social:begin' 'linkedin-oauth2' %}" class="btn-md btn-outline-primary"><i
-                            class="fa fa-linkedin" aria-hidden="true"></i> Login with
-                        LinkedIn</a><br>
-                </div>
-            </div>
+            <button id='login-btn' class="btn btn-sm btn-block btn-primary text-uppercase" type="submit">Login</button>
         </form>
+
+        <br>
+        <p><strong>-- OR --</strong></p>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <a href="{% url 'social:begin' 'github' %}" class="btn-md btn-outline-secondary"><i class="fa fa-github"
+                        aria-hidden="true"></i> Login with
+                    GitHub</a><br>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <a href="{% url 'social:begin' 'twitter' %}" class="btn-md btn-outline-primary"><i class="fa fa-twitter"
+                        aria-hidden="true"></i> Login with
+                    Twitter</a><br>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <a href="{% url 'social:begin' 'facebook' %}" class="btn-md btn-outline-primary"><i
+                        class="fa fa-facebook" aria-hidden="true"></i> Login with
+                    Facebook</a><br>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <a href="{% url 'social:begin' 'linkedin-oauth2' %}" class="btn-md btn-outline-primary"><i
+                        class="fa fa-linkedin" aria-hidden="true"></i> Login with
+                    LinkedIn</a><br>
+            </div>
+        </div>
         {% else %}
         <span class="text-msg text-center display-5 my-3"
             style="border: 1px solid rgb(255, 215, 0);box-shadow: 2px 4px 7px gray;font-size: large;">Sorry for the

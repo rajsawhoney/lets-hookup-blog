@@ -1,5 +1,6 @@
 <!-- Modal -->
 {% load i18n %}
+{% load crispy_forms_tags %}
 <div class="modal fade" data-backdrop="false" id="login-modal" tabindex="-1" role="dialog"
     aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -13,24 +14,11 @@
             <div class="modal-body">
                 {% if not user.is_authenticated %}
                 <div class='container'>
-                    <form class='site-form validation-form' action="{% url 'accounts:login' %}" method="post">
+                    <form class='site-form validation-form'
+                        onsubmit="triggerSpinner(this,'login-pop-btn', 'Logging...', 'Login')"
+                        action="{% url 'accounts:login' %}" method="post">
                         {% csrf_token %}
-                        <div class="container row" style="background-color: transparent !important;">
-                            {% for fm in form %}
-                            <p class="form-group-sm" style="background-color: transparent !important;">
-                                {{fm.label_tag}} {{fm}}</p>
-                            {{fm.help_text}}
-                            {% if fm.errors %}
-                            {% for error in fm.errors %}
-                            {{error}}
-                            {% endfor %}
-
-                            {% endif %}
-
-                            {% endfor %}
-
-                        </div>
-
+                        {{ form|crispy }}
 
                         <div class="checkbox">
                             <label><input type="checkbox" name="remember"> {% trans "Remember me" %}</label>
@@ -39,8 +27,8 @@
                         <input type="hidden" name='next' value="{{request.GET.next}}">
                         {% endif %}
 
-                        <button class="btn btn-sm btn-block btn-primary text-uppercase"
-                            onclick="triggerSpinner(this, 'Logging...', 'Login')" type="submit">Login</button>
+                        <button id="login-pop-btn" class="btn btn-sm btn-block btn-primary text-uppercase"
+                            type="submit">Login</button>
 
                     </form>
                 </div>
