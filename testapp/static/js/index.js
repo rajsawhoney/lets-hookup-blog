@@ -4,10 +4,11 @@ $(document).on("click", ".fav_btn", function (event) {
     var pk = $(this).attr("post-id");
     txtid = "fav-div" + pk;
     var id = get_correct_id(txtid);
-    console.log("ID ", pk);
     var csrftoken = getCookie("csrftoken");
-    console.log(csrftoken);
-    console.log(id);
+    const fav_btn = $(this).attr('fav_btn');
+    $(`#${fav_btn}`).html(`<span class="spinner-border spinner-border-sm" role="status" style="color:white !important;"></span> <span class="light" style="color:white !important;">Adding to Fav...</span>`);
+
+
 
 
 
@@ -19,6 +20,7 @@ $(document).on("click", ".fav_btn", function (event) {
         },
         dataType: "json",
         success: function (response) {
+            $(`#${fav_btn}`).html('Added...');
             $(`#${id}`).html(response["fav_data"]);
             console.log("Fav article toggled!");
         },

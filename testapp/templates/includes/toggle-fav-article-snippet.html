@@ -1,4 +1,4 @@
-<form action="{{post.get_fav_article_url}}" class="add-remove-fav" method="post">
+<form action="{{post.get_fav_article_url}}" fav_btn="add2fav{{post.id}}" class="add-remove-fav" method="post">
     {% csrf_token %}
     <button class="fav_btn" post-id="{{post.id}}" id="add2fav{{post.id}}" url="{{post.get_fav_article_url}}">
         {% if post in user_object.favourites.all  %}<i class="fa fa-heart text-danger" aria-hidden="true"></i>
