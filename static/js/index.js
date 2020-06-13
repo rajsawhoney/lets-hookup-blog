@@ -228,6 +228,8 @@ $(document).on('submit', 'form.edit-comment-form', function (e) {
 	const comment_txt = $(`#${edit_area_id}`).val()
 	console.log('comment Data: ', comment_txt);
 
+	$(`#${btnid}`).html(`<span class="spinner-border spinner-border-sm" role="status" style="color:white !important;"></span> <span class="light" style="color:white !important;">Updating...</span>`);
+
 	$.ajax({
 		type: "post",
 		url: "/testapp/edit-comment/",
@@ -241,6 +243,7 @@ $(document).on('submit', 'form.edit-comment-form', function (e) {
 			console.log("Comment edited successfully!");
 			$(`#${btnid}`).css('display', 'none');
 			$('.comment_div').html(response["form"]);
+			$(`#${btnid}`).html(`Update`);
 		},
 
 		error: function (err) {
@@ -256,9 +259,18 @@ $(document).on('submit', 'form.edit-comment-form', function (e) {
 $(document).on("submit", "form.reply_comment_form", function (event) {
 	event.preventDefault();
 	var is_authenticated = $(this).attr("auth-status");
-	console.log("Hi I am working!");
-	console.log("Auth status ", is_authenticated);
+	const comment_btn = $(this).attr('cmt-btn');
+	const reply_btn = $(this).attr('reply-btn');
+	console.log('comment_btn', comment_btn);
+	console.log('reply_btn', reply_btn);
+
 	if (is_authenticated === "True") {
+		if (comment_btn != 'None') {
+			$(`#${comment_btn}`).html(`<span class="spinner-border spinner-border-sm" role="status" style="color:white !important;"></span> <span class="light" style="color:white !important;">Commenting...</span>`);
+		}
+		if (reply_btn != 'None') {
+			$(`#${reply_btn}`).html(`<span class="spinner-border spinner-border-sm" role="status" style="color:white !important;"></span> <span class="light" style="color:white !important;">Replying...</span>`);
+		}
 		var url = $(this).attr("url");
 		var roughid = "";
 		var form_id = $(this).attr("article_id");
@@ -275,6 +287,10 @@ $(document).on("submit", "form.reply_comment_form", function (event) {
 			success: function (response) {
 				$(`#${id}`).html(response["form"]);
 				$("textarea").val("");
+				$(`#${comment_btn}`).html(`Comment`);
+				$(`#${reply_btn}`).html(`Reply`);
+
+
 			},
 			error: function (es, e) {
 				console.log(es.responseText);
@@ -439,7 +455,6 @@ function getCookie(name) {
 	return cookieValue;
 }
 // Spinner triggering method
-// Spinner triggering method
 function triggerSpinner(this_, btnid, message1, message2) {
 	console.log("Spinner Function call...")
 
@@ -449,6 +464,7 @@ function triggerSpinner(this_, btnid, message1, message2) {
 	}, 7000);
 
 }
+
 
 // Toggle-Appreance Mode Function
 
