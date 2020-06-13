@@ -13,68 +13,67 @@
             <div class="modal-body">
                 {% if not user.is_authenticated %}
                 <div class='container'>
-                    <div>
-                        <form class='site-form validation-form' action="{% url 'accounts:login' %}" method="post">
-                            {% csrf_token %}
-                            <div class="container row" style="background-color: transparent !important;">
-                                {% for fm in form %}
-                                <p class="form-group-sm" style="background-color: transparent !important;">
-                                    {{fm.label_tag}} {{fm}}</p>
-                                {{fm.help_text}}
-                                {% if fm.errors %}
-                                {% for error in fm.errors %}
-                                {{error}}
-                                {% endfor %}
+                    <form class='site-form validation-form' action="{% url 'accounts:login' %}" method="post">
+                        {% csrf_token %}
+                        <div class="container row" style="background-color: transparent !important;">
+                            {% for fm in form %}
+                            <p class="form-group-sm" style="background-color: transparent !important;">
+                                {{fm.label_tag}} {{fm}}</p>
+                            {{fm.help_text}}
+                            {% if fm.errors %}
+                            {% for error in fm.errors %}
+                            {{error}}
+                            {% endfor %}
 
-                                {% endif %}
-
-                                {% endfor %}
-
-                            </div>
-
-
-                            <div class="checkbox">
-                                <label><input type="checkbox" name="remember"> {% trans "Remember me" %}</label>
-                            </div>
-                            {% if request.GET.next %}
-                            <input type="hidden" name='next' value="{{request.GET.next}}">
                             {% endif %}
 
-                </div>
-                <button class="btn btn-sm btn-block btn-primary text-uppercase" onclick="triggerSpinner(this, 'Logging...', 'Login')"
-                        type="submit">Login</button>
+                            {% endfor %}
+
+                        </div>
+
+
+                        <div class="checkbox">
+                            <label><input type="checkbox" name="remember"> {% trans "Remember me" %}</label>
+                        </div>
+                        {% if request.GET.next %}
+                        <input type="hidden" name='next' value="{{request.GET.next}}">
+                        {% endif %}
+
+                        <button class="btn btn-sm btn-block btn-primary text-uppercase"
+                            onclick="triggerSpinner(this, 'Logging...', 'Login')" type="submit">Login</button>
 
                     </form>
-
-                    <div class="row" style="background-color: transparent !important;">
-                        <div class="col-lg-8 col-md-6 col-sm-12">
-                            <a class="custom" href="{% url 'accounts:password_reset' %}"><button
-                                    class="btn btn-sm btn-block btn-danger">Forgot
-                                    Password?</button>
-                            </a>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <button class="btn-sm btn-warning btn-block" style="cursor: pointer;"
-                                onclick="$('.modal').css('overflow-y', 'auto');$('#login-modal').modal('toggle');$('#signup-modal').modal('toggle');">Not
-                                Registered?
-                            </button>
-                            {% include "accounts/includes/signup_popup.html" %}
-                        </div>
-
-                    </div>
                 </div>
 
-                {% else %}
-                <h2 class="text-info text-center">Dear Sir, you are already an authenticated user!!!</h2>
-                {% endif %}
+                <div class="row" style="background-color: transparent !important;">
+                    <div class="col-lg-8 col-md-6 col-sm-12">
+                        <a class="custom" href="{% url 'accounts:password_reset' %}"><button
+                                class="btn btn-sm btn-block btn-danger">Forgot
+                                Password?</button>
+                        </a>
+                    </div>
 
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <button class="btn-sm btn-warning btn-block" style="cursor: pointer;"
+                            onclick="$('.modal').css('overflow-y', 'auto');$('#login-modal').modal('toggle');$('#signup-modal').modal('toggle');">Not
+                            Registered?
+                        </button>
+                        {% include "accounts/includes/signup_popup.html" %}
+                    </div>
+
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Never mind</button>
-            </div>
+
+            {% else %}
+            <h2 class="text-info text-center">Dear Sir, you are already an authenticated user!!!</h2>
+            {% endif %}
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Never mind</button>
         </div>
     </div>
+</div>
 </div>
 
 <style>
