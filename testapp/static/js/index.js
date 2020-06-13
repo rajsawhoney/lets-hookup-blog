@@ -442,14 +442,11 @@ function getCookie(name) {
 function triggerSpinner(this_, btnid, message1, message2) {
     console.log("Spinner Function call...")
 
-    if ($(this_)[0].checkValidity()) {
-        $(`#${btnid}`).html(`<span class="spinner-border spinner-border-sm" role="status" style="color:white !important;"></span> <span class="light" style="color:white !important;">${message1}</span>`);
-        setTimeout(() => {
-            $(`#${btnid}`).html(`${message2}`);
-        }, 4000);
-    } else {
-        console.log("invalid Form!!");
-    }
+    $(`#${btnid}`).html(`<span class="spinner-border spinner-border-sm" role="status" style="color:white !important;"></span> <span class="light" style="color:white !important;">${message1}</span>`);
+    setTimeout(() => {
+        $(`#${btnid}`).html(`${message2}`);
+    }, 7000);
+
 }
 
 
