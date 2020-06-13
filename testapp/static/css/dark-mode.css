@@ -55,7 +55,7 @@ td {
 }
 
 .invalid-feedback {
-    color: red;
+    color: red !important;
 }
 
 .navbar-nav .nav-link {
