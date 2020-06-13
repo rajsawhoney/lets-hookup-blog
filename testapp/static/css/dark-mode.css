@@ -54,6 +54,10 @@ td {
     background: azure;
 }
 
+.invalid-feedback {
+    color: red;
+}
+
 .navbar-nav .nav-link {
     color: #8D99AE !important;
 }
