@@ -74,12 +74,12 @@
                 {% if request.user.is_authenticated %}
                 <!-- hidden reply form sections -->
                 <div class="reply-div" style="display: none; margin-left: 40px;" id="reply_div{{comment.id}}">
-                    <form class="reply_comment_form" action="." auth-status="{{user.is_authenticated}}"
+                    <form class="reply_comment_form" action="." reply-btn="reply-btn{{comment.id}}" auth-status="{{user.is_authenticated}}"
                         url="{{post.get_absolute_url}}" article_id="{{post.id}}" method="post">
                         {% csrf_token %}
                         <reply_section>{{cmtform|crispy}}</reply_section>
 
-                        <button class="btn btn-outline-primary">
+                        <button id="reply-btn{{comment.id}}" class="btn btn-outline-primary">
                             Reply
                         </button>
                         <input type="hidden" name="cmt_id" value="{{comment.id}}">
@@ -134,13 +134,13 @@
 {% if request.user.is_authenticated %}
 <!-- comment form -->
 <div style="margin-left: 20px;" id="scrolled_to" class="form mt-4">
-    <form class="reply_comment_form" action="." url="{{post.get_absolute_url}}" article_id="{{post.id}}"
+    <form class="reply_comment_form" action="." cmt-btn="comment-btn{{post.id}}" url="{{post.get_absolute_url}}" article_id="{{post.id}}"
         auth-status="{{user.is_authenticated}}" method="post">
         {% csrf_token %}
         {{cmtform|crispy}}
 
-        <button type="submit" class="btn btn-outline-primary">
-            Comment as <span class="text-primary">@{{user}}</span>
+        <button id="comment-btn{{post.id}}" type="submit" class="btn btn-outline-primary">
+            Comment as <span class="text-light">@{{user}}</span>
         </button>
 
         <div style="display: none;" id="login-alert">
