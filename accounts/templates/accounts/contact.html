@@ -5,32 +5,34 @@
 {% block bodyblock %}
 <section class="text-gray-700 body-font relative">
   <div class="container px-5 py-24 mx-auto">
-    <div class="flex flex-col text-center w-full mb-12 md">
+    <div class="flex flex-col text-center w-full mb-12 md" id='contact-response'>
       <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Us</h1>
       <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Fill the form below and put any of your queries without any
-        hegitation.</p>
+        hesitation.</p>
     </div>
     <div class="lg:w-1/2 md:w-2/3 mx-auto">
       <div class="flex flex-wrap -m-2 md">
-        <div class="p-2 w-1/2">
-          <input
-            class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-purple-500 text-base px-4 py-2"
-            placeholder="Name" type="text">
-        </div>
-        <div class="p-2 w-1/2">
-          <input
-            class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-purple-500 text-base px-4 py-2"
-            placeholder="Email" type="email">
-        </div>
-        <div class="p-2 w-full">
-          <textarea
-            class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none h-48 focus:border-purple-500 text-base px-4 py-2 resize-none block"
-            placeholder="Message"></textarea>
-        </div>
-        <div class="p-2 w-full">
-          <button
-            class="flex mx-auto text-white bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded text-lg">Submit</button>
-        </div>
+        <form action="" onsubmit="contactUs(this,'contact-btn');" method="post">
+          <div class="p-2 w-1/2">
+            <input
+              class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-purple-500 text-base px-4 py-2"
+              placeholder="Name" type="text">
+          </div>
+          <div class="p-2 w-1/2">
+            <input
+              class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-purple-500 text-base px-4 py-2"
+              placeholder="Email" type="email">
+          </div>
+          <div class="p-2 w-full">
+            <textarea
+              class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none h-48 focus:border-purple-500 text-base px-4 py-2 resize-none block"
+              placeholder="Message"></textarea>
+          </div>
+          <div class="p-2 w-full">
+            <button id="contact-btn"
+              class="flex mx-auto text-white bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded text-lg">Submit</button>
+          </div>
+        </form>
         <div class="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
           <a class="text-purple-500">letshookup.support@gmail.com</a>
           <p class="leading-normal my-5">Razz SawHoney

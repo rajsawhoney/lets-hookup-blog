@@ -41,7 +41,9 @@ td {
 .dropdown-menu {
     background-image: url('https://lets-hookup.herokuapp.com/static/images/modal-bg.jpg') !important;
     color: #8D99AE;
+    box-shadow: inset 0px 0px 14px;
 }
+
 
 .mynav {
     background-image: url('https://lets-hookup.herokuapp.com/static/images/modal-bg.jpg') !important;

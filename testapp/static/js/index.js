@@ -498,3 +498,17 @@ function toggle_mode() {
         }
     });
 }
+
+
+function contactUs(this_, btn_id) {
+    $(`#${btn_id}`).html(`<span class="spinner-border spinner-border-sm" role="status"></span> <span class="light">Submitting...</span>`);
+    setTimeout(() => {
+        $(`#${btn_id}`).html('Submit');
+        $(`#contact-response`).html(`<div class="alert alert-success alert-dismissible" role="alert">
+        <span style="font-size: larger; color:black !important" aria-hidden="true">&times;</span>
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Thanks for contacting us. We shall get back to you as soon as possible.</strong>
+      </div>`);
+    }, 5000);
+}
