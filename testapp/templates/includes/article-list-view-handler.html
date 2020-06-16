@@ -15,7 +15,7 @@ box-shadow: 1px 3px 4px gray;">
     {% include "includes/message-alert-snippet.html" %}
     <div class="row mt-4 mb-2" style="clear: both;margin-left: auto;">
         <div class="col col-lg-4 col-md-12 col-sm-12">
-            <img class="ml-2" style="height: max-content;" src=" {% if object_list.0.thumbnail %}
+            <img class="ml-2" style="height: auto;" src=" {% if object_list.0.thumbnail %}
 
             {{object_list.0.thumbnail.url}} {% else %} # {% endif %} " alt="No Thumbnail">
         </div>
@@ -126,7 +126,7 @@ box-shadow: 1px 3px 4px gray;">
                                 7%;">
                                     <button style="margin-left: 140%;" class="commenthandler" id="comment{{post.id}}"
                                         onclick="$(`#comment_div{{post.id}}`).toggle('display');"
-                                        article_id="{{post.id}}"> 
+                                        article_id="{{post.id}}">
                                         <i class="fa fa-comment" aria-hidden="true"> </i>
                                     </button>
                                 </div>
