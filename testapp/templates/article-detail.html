@@ -192,9 +192,10 @@
 
         <!-- About Me Section -->
         <div class="card">
-            <h3 class="text-muted display-4 text-center">About Me</h3>
-            <img src="{% if post.auhtor.profile_pic %}{{post.author.profile_pic.url}} {% else %} # {% endif %}" alt="Profile-pic">
-            <h3 style="box-shadow:.5px 3px 10px rgb(51, 21, 218);">{{post.author.user.username|capfirst}}</h3>
+            <h3 class="my-8 text-info text-center mb-2">About Me</h3>
+            <img src="{% if post.author.profile_pic %}{{post.author.profile_pic.url}} {% else %} # {% endif %}"
+                alt="Profile-pic">
+            <h3 style="box-shadow:.5px 3px 10px rgb(51, 21, 218);text-align: center;">{{post.author.user.username|capfirst}}</h3>
             <p class="title mt-2 pt-1 text-center">{{post.author.qualifications|safe}}</p>
             <!-- Custom filter used here -->
             <p>Blogger At Lets-HookUp.com</p>
