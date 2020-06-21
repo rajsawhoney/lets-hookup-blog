@@ -189,6 +189,43 @@
 
 
     <div class="col col-lg-4 col-md-6 col-sm-12 my-3">
+        <div class="card">
+            <img src="{% if object.profile_pic %}{{object.profile_pic.url}} {% else %} # {% endif %}" alt="Profile-pic">
+            <h3 style="box-shadow:.5px 3px 10px rgb(51, 21, 218);">{{post.author.user.username|capfirst}}</h3>
+            <p class="title mt-2 pt-1 text-center">{{post.author.qualifications|safe}}</p> <!-- Custom filter used here -->
+            <p>Blogger At Lets-HookUp.com</p>
+            <div style="margin: 24px;">
+                <a href="https://twitter.com/rajsahani1819"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/razz-sawhoney-2b1a05190/"><i class="fa fa-linkedin"></i></a>
+                <a href="https://www.facebook.com/ex.fbuser.5"><i class="fa fa-facebook"></i></a>
+            </div>
+            <p>
+                {% if user.is_authenticated %}
+                <form action="." userid="{{object.id}}" class="follow-profile" method="post">
+                    {% csrf_token %}
+                    <button type="submit" id="follow-my-btn{{post.user.id}}" class=" btn-md btn-primary" style="color:white">
+                        <i class="fa fa-link" aria-hidden="true"></i>
+                        {% if post.author in user_object.followed_by.all %}
+                        Following {% else %}Follow
+                        {% endif %}
+                    </button>
+                </form>
+                {% else %}
+                <a class=" btn-md btn-primary btn-block" style="color:white;cursor: pointer;"
+                    onclick="$('#login-modal').modal('toggle')">
+                    <i class="fa fa-link" aria-hidden="true"></i>
+                    Login to Follow Me
+                </a>
+                {% include "accounts/includes/login_popup.html" %}
+                {% endif %}
+
+            </p>
+
+        </div>
+        <div class="container mt-4 pt-2 mx-2" style="text-shadow: .5px 1px rgb(32, 32, 28); text-align: center;">
+            <p>{{post.author.about_me}}</p>
+        </div>
+
         <!-- **********Trending Posts SECTION************ -->
         {% include "includes/trending_posts_component.html" %}
 
