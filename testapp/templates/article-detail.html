@@ -125,7 +125,7 @@
 
 <!-- Article Description section   -->
 <div class="row my-4">
-    <div class="col col-lg-8 col-md-6 col-sm-12 my-3">
+    <div class="col col-lg-8 col-md-6 col-sm-12 my-3" id='main-content'>
 
         <div class="intro-text">
             <h4 class="display-5 text-muted mb-3">Hey there! I am {{post.author.user.username|capfirst}} in your
@@ -190,7 +190,21 @@
 
 
 
+<style>
+    #main-content {
+        overflow: scroll;
+        height: 150vh;
+        scroll-behavior: smooth;
+        scroll-margin-left: 10px;
+        scroll-margin-top: 10px;
+        -ms-overflow-style: none !important;
+    }
 
+    #main-content::-webkit-scrollbar {
+        display: none;
+    }
+
+</style>
 {% block js %}
 <!--====== Javascripts & Jquery ======-->
 <script src='{% static "js/jquery-3.2.1.min.js" %}'></script>
