@@ -194,11 +194,11 @@
         <div class="card">
             <h3 class="my-8 text-info text-center mb-2">About Me</h3>
             <img src="{% if post.author.profile_pic %}{{post.author.profile_pic.url}} {% else %} # {% endif %}"
-                alt="Profile-pic">
-            <h3 style="box-shadow:.5px 3px 10px rgb(51, 21, 218);text-align: center;">{{post.author.user.username|capfirst}}</h3>
+                alt="Profile-pic" style="align-self: center;height: 130px; width: 70%;">
+            <h4 style="text-align: center;">{{post.author.user.username|capfirst}}</h4>
             <p class="title mt-2 pt-1 text-center">{{post.author.qualifications|safe}}</p>
             <!-- Custom filter used here -->
-            <p>Blogger At Lets-HookUp.com</p>
+            <p class="text-center text-warning">Blogger At Lets-HookUp.com</p>
             <div style="margin: 24px;">
                 <a href="https://twitter.com/rajsahani1819"><i class="fa fa-twitter"></i></a>
                 <a href="https://www.linkedin.com/in/razz-sawhoney-2b1a05190/"><i class="fa fa-linkedin"></i></a>
