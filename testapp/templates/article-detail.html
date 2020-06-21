@@ -119,6 +119,20 @@
         }
     }
 
+
+    #main-content {
+        overflow: scroll;
+        height: 150vh;
+        scroll-behavior: smooth;
+        scroll-margin-left: 10px;
+        scroll-margin-top: 10px;
+        -ms-overflow-style: none !important;
+    }
+
+    #main-content::-webkit-scrollbar {
+        display: none;
+    }
+
 </style>
 
 
@@ -188,23 +202,6 @@
 </div>
 {% endblock %}
 
-
-
-<style>
-    #main-content {
-        overflow: scroll;
-        height: 150vh;
-        scroll-behavior: smooth;
-        scroll-margin-left: 10px;
-        scroll-margin-top: 10px;
-        -ms-overflow-style: none !important;
-    }
-
-    #main-content::-webkit-scrollbar {
-        display: none;
-    }
-
-</style>
 {% block js %}
 <!--====== Javascripts & Jquery ======-->
 <script src='{% static "js/jquery-3.2.1.min.js" %}'></script>
