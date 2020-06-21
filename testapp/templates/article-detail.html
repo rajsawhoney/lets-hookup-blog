@@ -139,13 +139,12 @@
 
 <!-- Article Description section   -->
 <div class="row my-4">
+    <h4 class="display-5 text-muted mb-3 ml-3">Hey there! I am {{post.author.user.username|capfirst}} in your
+        service.
+    </h4>
+    <hr>
     <div class="col col-lg-8 col-md-6 col-sm-12 my-3" id='main-content'>
-
         <div class="intro-text">
-            <h4 class="display-5 text-muted mb-3">Hey there! I am {{post.author.user.username|capfirst}} in your
-                service.
-            </h4>
-            <hr>
             <span class="pt-2">{{post.content|safe}}</span>
             <div class="mt-4">
                 <a href="{% if object %}
