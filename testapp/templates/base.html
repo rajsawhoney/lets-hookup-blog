@@ -119,12 +119,13 @@
                         <a class="nav-link float-right" style="cursor: pointer;" id='mode-toggler'
                             onclick="toggle_mode();">
                             {% if not request.session.dark_mode %}
-                            <i class="fa fa-2x fa-globe" aria-hidden="true"></i>
-                            <span style="font-size: large;">
+                            <i class="fa fa-2x fa-globe" style="color: gray;" aria-hidden="true"></i>
+                            <span style="font-size: large;color:gray">
                                 Enable Dark Mode
                             </span>
                             {% else %}
-                            <i class="fa fa-2x fa-globe" aria-hidden="true"></i> <span style="font-size: large;">
+                            <i class="fa fa-2x fa-globe" style="color: gray;" aria-hidden="true"></i> <span
+                                style="font-size: large;color:gray;">
                                 Enable Light Mode
                             </span>
                             {% endif %}
