@@ -1,5 +1,7 @@
 from accounts.models import UserModel
 
+from django.contrib.auth.models import User
+
 
 def save_profile(backend, user, response, *args, **kwargs):
     print("Responses grabed...from..", str(backend), user)
