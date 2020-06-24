@@ -2,17 +2,17 @@ from accounts.models import UserModel
 
 
 def save_profile(backend, user, response, *args, **kwargs):
-    print("Responses grabed...from..", backend, user)
+    print("Responses grabed...from..", str(backend), user)
     print(response)
 
-    if 'github' in backend:
+    if 'github' in str(backend):
         UserModel.objects.create(
             user=user,
             about_me=response['bio'],
             profile_pic=response['avatar_url']
             )
         print("GitHub User created!!")
-    elif 'linkedin' in backend:
+    elif 'linkedin' in str(backend):
         UserModel.objects.create(
             user=user,
             profile_pic=response['profilePicture']['displayImage']
@@ -21,7 +21,7 @@ def save_profile(backend, user, response, *args, **kwargs):
 
 
 
-    elif 'twitter' in backend:
+    elif 'twitter' in str(backend):
         UserModel.objects.create(
             user=user,
             about_me=response['description'],
@@ -30,7 +30,7 @@ def save_profile(backend, user, response, *args, **kwargs):
         print("twitter User created!!")
 
 
-    elif 'facebook' in backend:
+    elif 'facebook' in str(backend):
         UserModel.objects.create(
             user=user,
             profile_pic=response['picture']['data']['url']
