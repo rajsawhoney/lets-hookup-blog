@@ -480,13 +480,12 @@ function toggle_mode() {
 			dark_mode = response.status;
 			if (dark_mode) {
 				$('#toggle-mode').attr('href', 'https://lets-hookup.herokuapp.com/static/css/dark-mode.css');
-				$('#mode-toggler').html('<i class="fa fa-2x fa-globe" aria-hidden="true"></i><span style="font-size: large;"> Back To Light Mode</span>')
+				$('#mode-toggler').html('<i class="fa fa-2x fa-globe" style="color: gray;" aria-hidden="true"></i><span style="font-size: large;color:gray;"> Back To Light Mode</span>')
 
 			}
 			if (!dark_mode) {
 				$('#toggle-mode').attr('href', 'https://lets-hookup.herokuapp.com/static/css/light-mode.css');
-				$('#mode-toggler').html('<i class="fa fa-2x fa-globe" aria-hidden="true"></i><span style="font-size: large;"> Enable Dark Mode</span>')
-
+				$('#mode-toggler').html('<i class="fa fa-2x fa-globe" style="color: gray;" aria-hidden="true"></i><span style="font-size: large;color:gray;"> Enable Dark Mode</span>')
 
 			}
 
@@ -497,4 +496,18 @@ function toggle_mode() {
 
 		}
 	});
+}
+
+
+function contactUs(this_, btn_id) {
+	$(`#${btn_id}`).html(`<span class="spinner-border spinner-border-sm" role="status"></span> <span class="light">Submitting...</span>`);
+	setTimeout(() => {
+		$(`#${btn_id}`).html('Submit');
+		$(`#contact-response`).html(`<div class="alert alert-success alert-dismissible" role="alert">
+        <span style="font-size: larger; color:black !important" aria-hidden="true">&times;</span>
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Thanks for contacting us. We shall get back to you as soon as possible.</strong>
+      </div>`);
+	}, 5000);
 }
