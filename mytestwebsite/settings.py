@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'django.contrib.sites',
     'social_django',
+    'admin_honeypot',
     'gdstorage',
     'rest_framework',
     'corsheaders',

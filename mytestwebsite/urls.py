@@ -38,7 +38,8 @@ sitemaps = {
 
 urlpatterns = [
 
-    path('admin/', admin.site.urls),
+    url(r'^admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
+    path('adminrazz/', admin.site.urls),
     url('oauth/', include('social_django.urls', namespace='social')),
 
     path('google6cebc7472dd08059.html', TemplateView.as_view(
