@@ -106,12 +106,12 @@ def login_user(request):
             profile.user = user
             profile.save()
             # user= authenticate(username=user,password=user_form.clean_password2)
-            login(request, user)
+            login(request, user,backend='django.contrib.auth.backends.ModelBackend')
             return redirect('testapp:article-list')
 
         if form.is_valid():
             user = form.get_user()
-            login(request, user)
+            login(request, user,backend='django.contrib.auth.backends.ModelBackend')
             if 'next' in request.POST:
                 return redirect(request.POST.get('next'))
             else:
