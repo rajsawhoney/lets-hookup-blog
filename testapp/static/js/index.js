@@ -480,12 +480,12 @@ function toggle_mode() {
             dark_mode = response.status;
             if (dark_mode) {
                 $('#toggle-mode').attr('href', 'https://lets-hookup.herokuapp.com/static/css/dark-mode.css');
-                $('#mode-toggler').html('<i class="fa fa-2x fa-globe" aria-hidden="true"></i><span style="font-size: large;"> Back To Light Mode</span>')
+                $('#mode-toggler').html('<i class="fa fa-2x fa-globe" style="color: gray;" aria-hidden="true"></i><span style="font-size: large;color:gray;"> Back To Light Mode</span>')
 
             }
             if (!dark_mode) {
                 $('#toggle-mode').attr('href', 'https://lets-hookup.herokuapp.com/static/css/light-mode.css');
-                $('#mode-toggler').html('<i class="fa fa-2x fa-globe" aria-hidden="true"></i><span style="font-size: large;"> Enable Dark Mode</span>')
+                $('#mode-toggler').html('<i class="fa fa-2x fa-globe" style="color: gray;" aria-hidden="true"></i><span style="font-size: large;color:gray;"> Enable Dark Mode</span>')
 
 
             }
