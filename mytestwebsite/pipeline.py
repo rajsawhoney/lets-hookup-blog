@@ -4,3 +4,35 @@ from accounts.models import UserModel
 def save_profile(backend, user, response, *args, **kwargs):
     print("Responses grabed...from..", backend, user)
     print(response)
+
+    if 'github' in backend:
+        UserModel.objects.create(
+            user=user,
+            about_me=response['bio'],
+            profile_pic=response['avatar_url']
+            )
+        print("GitHub User created!!")
+    elif 'linkedin' in backend:
+        UserModel.objects.create(
+            user=user,
+            profile_pic=response['profilePicture']['displayImage']
+            )
+        print("linkedin User created!!")
+
+
+
+    elif 'twitter' in backend:
+        UserModel.objects.create(
+            user=user,
+            about_me=response['description'],
+            profile_pic=response['profile_banner_url']
+            )
+        print("twitter User created!!")
+
+
+    elif 'facebook' in backend:
+        UserModel.objects.create(
+            user=user,
+            profile_pic=response['picture']['data']['url']
+            )
+        print("facebook User created!!")
