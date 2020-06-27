@@ -119,14 +119,15 @@
         }
     }
 
-
-    #main-content {
-        overflow: scroll;
-        height: 150vh;
-        scroll-behavior: smooth;
-        scroll-margin-left: 10px;
-        scroll-margin-top: 10px;
-        -ms-overflow-style: none !important;
+    @media screen and (min-width: 768px) {
+        #main-content {
+            overflow: scroll;
+            height: 150vh;
+            scroll-behavior: smooth;
+            scroll-margin-left: 10px;
+            scroll-margin-top: 10px;
+            -ms-overflow-style: none !important;
+        }
     }
 
     #main-content::-webkit-scrollbar {
@@ -197,7 +198,9 @@
                     src="{% if post.author.profile_pic %}{{post.author.profile_pic.url}} {% else %} # {% endif %}"
                     alt="Profile-pic" style="margin-left: 16%;height: 130px; width: 70%;">
             </a>
-            <a href="{{post.author.get_absolute_url}}"><h4 style="text-align: center;">{{post.author.user.username|capfirst}}</h4></a>
+            <a href="{{post.author.get_absolute_url}}">
+                <h4 style="text-align: center;">{{post.author.user.username|capfirst}}</h4>
+            </a>
             <p class="title mt-2 pt-1 text-center">{{post.author.qualifications|safe}}</p>
             <!-- Custom filter used here -->
             <p class="text-center text-warning">Blogger At Lets-HookUp.com</p>
