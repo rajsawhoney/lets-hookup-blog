@@ -193,40 +193,14 @@
         <!-- About Me Section -->
         <div class="card">
             <h3 class="my-8 text-info text-center mb-2">About Me</h3>
-            <img src="{% if post.author.profile_pic %}{{post.author.profile_pic.url}} {% else %} # {% endif %}"
-                alt="Profile-pic" style="align-self: center;height: 130px; width: 70%;">
-            <h4 style="text-align: center;">{{post.author.user.username|capfirst}}</h4>
+            <a href="{{post.author.get_absolute_url}}"><img
+                    src="{% if post.author.profile_pic %}{{post.author.profile_pic.url}} {% else %} # {% endif %}"
+                    alt="Profile-pic" style="align-self: center;height: 130px; width: 70%;">
+            </a>
+            <a href="{{post.author.get_absolute_url}}"><h4 style="text-align: center;">{{post.author.user.username|capfirst}}</h4></a>
             <p class="title mt-2 pt-1 text-center">{{post.author.qualifications|safe}}</p>
             <!-- Custom filter used here -->
             <p class="text-center text-warning">Blogger At Lets-HookUp.com</p>
-            <div style="margin: 24px;">
-                <a href="https://twitter.com/rajsahani1819"><i class="fa fa-twitter"></i></a>
-                <a href="https://www.linkedin.com/in/razz-sawhoney-2b1a05190/"><i class="fa fa-linkedin"></i></a>
-                <a href="https://www.facebook.com/ex.fbuser.5"><i class="fa fa-facebook"></i></a>
-            </div>
-            <p>
-                {% if user.is_authenticated %}
-                <form action="." userid="{{object.id}}" class="follow-profile" method="post">
-                    {% csrf_token %}
-                    <button type="submit" id="follow-my-btn{{post.user.id}}" class=" btn-md btn-primary"
-                        style="color:white">
-                        <i class="fa fa-link" aria-hidden="true"></i>
-                        {% if post.author in user_object.followed_by.all %}
-                        Following {% else %}Follow
-                        {% endif %}
-                    </button>
-                </form>
-                {% else %}
-                <a class=" btn-md btn-primary btn-block" style="color:white;cursor: pointer;"
-                    onclick="$('#login-modal').modal('toggle')">
-                    <i class="fa fa-link" aria-hidden="true"></i>
-                    Login to Follow Me
-                </a>
-                {% include "accounts/includes/login_popup.html" %}
-                {% endif %}
-
-            </p>
-
         </div>
 
         <!-- End of about me section -->
