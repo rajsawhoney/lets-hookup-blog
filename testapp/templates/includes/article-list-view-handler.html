@@ -51,6 +51,7 @@ box-shadow: 1px 3px 4px gray;">
     </div>
 
 </div>
+{% endif %}
 
 <hr class="my-2">
 <div class="mt-5">
@@ -162,8 +163,7 @@ box-shadow: 1px 3px 4px gray;">
                 {% endfor %}
             </div>
         </div>
-        {% else %}
-
+        {% if not object_list %}
         <div class="row text-center">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <h3 class="display-5 text-center text-info mx-3">
