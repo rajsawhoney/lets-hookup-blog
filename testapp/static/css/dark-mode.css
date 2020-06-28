@@ -78,8 +78,7 @@ p {
 .card {
     background-color: transparent;
     border: 1px solid rgba(0, 0, 0, .125);
-    border-left: 1px solid currentColor;
-    box-shadow: -2px -2px 13p;
+    box-shadow: -2px -2px 13px;
 }
 
 .footer {
