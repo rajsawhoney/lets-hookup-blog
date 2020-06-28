@@ -190,7 +190,7 @@
             <h3 class="mt-5 text-info text-center mb-1">Related Articles</h3>
             <div class="row">
                 {% for rpost in related_posts %}
-                <div class="col-sm-6 col-lg-4 col-md-4 mb-2" style="box-shadow: 0px 0px 10px;">
+                <div class="col-sm-6 col-lg-4 col-md-4 mb-2" style="box-shadow: 0px 0px 1px;">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title text-white">{{rpost.title}}</h5>
@@ -206,51 +206,51 @@
         </div>
 
 
-
-
-        <div class="col col-lg-4 col-md-6 col-sm-12 my-3">
-
-            <!-- About Me Section -->
-            <div class="card">
-                <h3 class="my-8 text-info text-center mb-2">About Me</h3>
-                <a href="{{post.author.get_absolute_url}}"><img
-                        src="{% if post.author.profile_pic %}{{post.author.profile_pic.url}} {% else %} # {% endif %}"
-                        alt="Profile-pic" style="margin-left: 16%;height: 130px; width: 70%;">
-                </a>
-                <a href="{{post.author.get_absolute_url}}">
-                    <h4 style="text-align: center;">{{post.author.user.username|capfirst}}</h4>
-                </a>
-                <p class="title mt-2 pt-1 text-center">{{post.author.qualifications|safe}}</p>
-                <!-- Custom filter used here -->
-                <p class="text-center text-warning">Blogger At Lets-HookUp.com</p>
-            </div>
-
-            <!-- End of about me section -->
-
-            <!-- **********Trending Posts SECTION************ -->
-            {% include "includes/trending_posts_component.html" %}
-
-
-            <!-- **********WHO TO FOLLOW SECTION************ -->
-            {% include "includes/who-to-follow-component.html" %}
-
-
-        </div>
     </div>
-    {% endblock %}
 
-    {% block js %}
-    <!--====== Javascripts & Jquery ======-->
-    <script src='{% static "js/jquery-3.2.1.min.js" %}'></script>
-    <script src='{% static "js/bootstrap.min.js" %}'></script>
-    <script src='{% static "js/jquery.slicknav.min.js" %}'></script>
-    <script src='{% static "js/owl.carousel.min.js" %}'></script>
-    <script src='{% static "js/jquery.magnific-popup.min.js" %}'></script>
-    <script src='{% static "js/circle-progress.min.js" %}'></script>
-    <script src='{% static "js/mixitup.min.js" %}'></script>
-    <script src='{% static "js/instafeed.min.js" %}'></script>
-    <script src='{% static "js/masonry.pkgd.min.js" %}'></script>
-    <script src='{% static "js/main.js" %}'></script>
+    <div class="col col-lg-4 col-md-6 col-sm-12 my-3">
+
+        <!-- About Me Section -->
+        <div class="card">
+            <h3 class="my-8 text-info text-center mb-2">About Me</h3>
+            <a href="{{post.author.get_absolute_url}}"><img
+                    src="{% if post.author.profile_pic %}{{post.author.profile_pic.url}} {% else %} # {% endif %}"
+                    alt="Profile-pic" style="margin-left: 16%;height: 130px; width: 70%;">
+            </a>
+            <a href="{{post.author.get_absolute_url}}">
+                <h4 style="text-align: center;">{{post.author.user.username|capfirst}}</h4>
+            </a>
+            <p class="title mt-2 pt-1 text-center">{{post.author.qualifications|safe}}</p>
+            <!-- Custom filter used here -->
+            <p class="text-center text-warning">Blogger At Lets-HookUp.com</p>
+        </div>
+
+        <!-- End of about me section -->
+
+        <!-- **********Trending Posts SECTION************ -->
+        {% include "includes/trending_posts_component.html" %}
 
 
-    {% endblock  %}
+        <!-- **********WHO TO FOLLOW SECTION************ -->
+        {% include "includes/who-to-follow-component.html" %}
+
+
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<!--====== Javascripts & Jquery ======-->
+<script src='{% static "js/jquery-3.2.1.min.js" %}'></script>
+<script src='{% static "js/bootstrap.min.js" %}'></script>
+<script src='{% static "js/jquery.slicknav.min.js" %}'></script>
+<script src='{% static "js/owl.carousel.min.js" %}'></script>
+<script src='{% static "js/jquery.magnific-popup.min.js" %}'></script>
+<script src='{% static "js/circle-progress.min.js" %}'></script>
+<script src='{% static "js/mixitup.min.js" %}'></script>
+<script src='{% static "js/instafeed.min.js" %}'></script>
+<script src='{% static "js/masonry.pkgd.min.js" %}'></script>
+<script src='{% static "js/main.js" %}'></script>
+
+
+{% endblock  %}
