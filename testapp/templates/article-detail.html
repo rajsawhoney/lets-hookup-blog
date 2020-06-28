@@ -187,13 +187,13 @@
             {% include "includes/comment_section.html" %}
         </div>
         <div class="related-post">
-            <h3 class="mt-5 text-info text-center mb-1">Related Articles</h3>
+            <h3 class="mt-5 text-info text-center mb-1">Similar Articles</h3>
             <div class="row">
                 {% for rpost in related_posts %}
-                <div class="col-sm-6 col-lg-4 col-md-4 mb-2" style="box-shadow: 0px 0px 1px;">
+                <div class="col-sm-6 col-lg-4 col-md-4 mb-2 mr-1" style="box-shadow: 0px 0px 1px;">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title text-white">{{rpost.title}}</h5>
+                            <a href="{{rpost.get_absolute_url}}"><h5 class="card-title text-white">{{rpost.title}}</h5></a>
                             <span>By: {{rpost.author.user.username|capfirst}}</span>
                             <p class="card-text">{{rpost.content|slice:120|striptags}}</p>
                             <a href="{{rpost.get_absolute_url}}" class="float-right text-info btn">Continue Reading</a>
