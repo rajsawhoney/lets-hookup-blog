@@ -159,8 +159,9 @@
         </div>
         <div style="float: right;" class="intro-text mt-3">
             {% if request.user.is_authenticated %}
+            Favourite Button:
             <div id="fav-div{{post.id}}">
-                Favourite: {% include "includes/toggle-fav-article-snippet.html" %}
+                {% include "includes/toggle-fav-article-snippet.html" %}
             </div>
             {% endif %}
             <br><br>
