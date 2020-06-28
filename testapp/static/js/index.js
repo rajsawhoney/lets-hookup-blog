@@ -468,26 +468,26 @@ function triggerSpinner(this_, btnid, message1, message2) {
 }
 
 // NextPrev Page Handler
-$(document).on('click', '.mypagin', function (event) {
-    event.preventDefault();
-    url = $(this).attr('href');
-    console.log("url grabbed...", url);
+// $(document).on('click', '.mypagin', function (event) {
+// 	event.preventDefault();
+// 	url = $(this).attr('href');
+// 	console.log("url grabbed...", url);
 
-    $.ajax({
-        type: "get",
-        url: 'https://lets-hookup.herokuapp.com/testapp/articles/?page=2',
-        dataType: "json",
-        success: function (response) {
-            console.log("data received...", response);
-            $('.article-list-view-div').html(response);
-        },
-        error: (err) => {
-            console.log("Error occured...", err.responseText);
-            console.log(err.status);
-        }
-    });
+// 	$.ajax({
+// 		type: "get",
+// 		url: 'https://lets-hookup.herokuapp.com/testapp/articles/?page=2',
+// 		dataType: "json",
+// 		success: function (response) {
+// 			console.log("data received...", response);
+// 			$('.article-list-view-div').html(response);
+// 		},
+// 		error: (err) => {
+// 			console.log("Error occured...", err.responseText);
+// 			console.log(err.status);
+// 		}
+// 	});
 
-})
+// })
 
 
 
