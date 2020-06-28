@@ -5,13 +5,13 @@
     <span class="page-links">
         <ul class="pagination">
             {% if page_obj.has_previous %}
-            <li class="page-item"><a class="page-link mypagin"
+            <li class="page-item"><a class="page-link mypagin" onclick="turnPage(this)" url="{{ request.path }}?page={{ page_obj.previous_page_number }}"
                     href="{{ request.path }}?page={{ page_obj.previous_page_number }}">
                     <i class="fa fa-backward" aria-hidden="true"></i></a></li>
             {% endif %}
             {% for i in page_obj.paginator.num_pages|times %}
             <li class="page-item {% if request.GET.page == forloop.counter|stringformat:'s' %} active
-            {% endif %}"><a class="page-link mypagin"
+            {% endif %}"><a class="page-link mypagin" onclick="turnPage(this)" url="{{ request.path }}?page={{forloop.counter}}"
                     href="{{ request.path }}?page={{forloop.counter}}">{{forloop.counter}}</a></li>
 
             {% endfor %}

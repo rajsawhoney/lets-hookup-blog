@@ -463,7 +463,27 @@ function triggerSpinner(this_, btnid, message1, message2) {
 	$(`#${btnid}`).html(`<span class="spinner-border spinner-border-sm" role="status" style="color:white !important;"></span> <span class="light" style="color:white !important;">${message1}</span>`);
 	setTimeout(() => {
 		$(`#${btnid}`).html(`${message2}`);
-	}, 7000);
+	}, 10000);
+
+}
+
+
+function turnPage(this_) {
+	const url = this_.attr('url');
+	$.ajax({
+		type: "get",
+		url: url,
+		dataType: "json",
+		success: function (response) {
+			console.log("data received...", response);
+			$('.article-list-view-div').html(response);
+		},
+		error: (err) => {
+			console.log("Error occured...", err.responseText);
+			console.log(err.status);
+		}
+	});
+
 
 }
 

@@ -1,5 +1,4 @@
-<h3 class="mt-5 text-info text-center mb-1">Who To Follow?
-</h3>
+<h3 class="mt-5 text-info text-center mb-1">Who To Follow?</h3>
 <div class="card mb-2">
     {% for author in who_to_follow %}
     <div class="card-body" style="border:1px solid rgb(60, 168, 218);">
@@ -11,15 +10,12 @@
                     30);margin-top: 5%; font-style: oblique;">
                         @{{author.user.username|capfirst}}</a>
                 </span>
-
             </div>
-
 
             <div class="col col-8">
                 {% if user.is_authenticated %}
                 <form action="." userid="{{author.id}}" class="follow-profile" method="post">
                     {% csrf_token %}
-
                     <button type="submit" id="follow-my-btn{{author.id}}" class="btn-sm" style="background-color: rgb(218, 30,
                     171);color: white; box-shadow:2px 1px 10px 3px
                     rgb(30, 49, 223);margin-top: 4%;margin-left:20%;
