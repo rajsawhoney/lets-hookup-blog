@@ -165,11 +165,7 @@
     <hr>
     <div class="col col-lg-8 col-md-6 col-sm-12 my-3">
         <div class="intro-text" id='main-content'>
-            <marquee behavior="scroll" direction="up" id="mymarquee" scrollamount="1" onmouseover="this.stop();"
-                onmouseout="this.start();">
-                <span class="pt-2">{{post.content|safe}}</span>
-            </marquee>
-
+            <span class="pt-2">{{post.content|safe}}</span>
         </div>
         <div class="mt-4">
             <a href="{% if object %}
