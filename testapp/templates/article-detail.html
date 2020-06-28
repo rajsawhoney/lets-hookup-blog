@@ -129,6 +129,7 @@
             -ms-overflow-style: none !important;
             box-shadow: 1px 0px 12px;
             padding: 23px;
+
         }
 
         .related-posts {
@@ -164,7 +165,10 @@
     <hr>
     <div class="col col-lg-8 col-md-6 col-sm-12 my-3">
         <div class="intro-text" id='main-content'>
-            <span class="pt-2">{{post.content|safe}}</span>
+            <marquee behavior="scroll" direction="up" id="mymarquee" scrollamount="1" onmouseover="this.stop();"
+                onmouseout="this.start();">
+                <span class="pt-2">{{post.content|safe}}</span>
+            </marquee>
 
         </div>
         <div class="mt-4">
