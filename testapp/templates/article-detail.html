@@ -195,8 +195,8 @@
                         <div class="card-body">
                             <h5 class="card-title text-white">{{rpost.title}}</h5>
                             <span>By: {{rpost.author.user.username|capfirst}}</span>
-                            <p class="card-text">{{rpost.content|slice:200|striptags}}</p>
-                            <a href="{{rpost.get_absolute_url}}" style="float: right;">Continue Reading</a>
+                            <p class="card-text">{{rpost.content|slice:120|striptags}}</p>
+                            <a href="{{rpost.get_absolute_url}}" class="float-right text-info btn">Continue Reading</a>
                         </div>
                     </div>
                 </div>
