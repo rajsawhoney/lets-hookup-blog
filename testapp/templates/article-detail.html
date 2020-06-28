@@ -125,7 +125,7 @@
             height: 150vh;
             scroll-behavior: smooth;
             scroll-margin-left: 10px;
-            scroll-margin-top: 10px;
+            scroll-margin-top: 20px;
             -ms-overflow-style: none !important;
         }
     }
@@ -144,8 +144,8 @@
         service.
     </h4>
     <hr>
-    <div class="col col-lg-8 col-md-6 col-sm-12 my-3" id='main-content'>
-        <div class="intro-text">
+    <div class="col col-lg-8 col-md-6 col-sm-12 my-3">
+        <div class="intro-text" id='main-content'>
             <span class="pt-2">{{post.content|safe}}</span>
             <div class="mt-4">
                 <a href="{% if object %}
@@ -155,7 +155,6 @@
                 </a>
             </div>
         </div>
-        <div id="fav-error-div"></div>
         <div style="float: right;" class="intro-text mt-3">
             {% if request.user.is_authenticated %}
             <div id="fav-div{{post.id}}">
