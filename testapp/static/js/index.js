@@ -468,8 +468,9 @@ function triggerSpinner(this_, btnid, message1, message2) {
 }
 
 // NextPrev Page Handler
-function turnPage(this_) {
-    const url = this_.attr('url');
+$(document).on('click', '.mypagin', function (event) {
+    event.preventDefault();
+    url = $(this).attr('href');
     $.ajax({
         type: "get",
         url: url,
@@ -484,8 +485,8 @@ function turnPage(this_) {
         }
     });
 
+})
 
-}
 
 
 // Toggle-Appreance Mode Function
