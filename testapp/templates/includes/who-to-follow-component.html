@@ -1,7 +1,7 @@
 <h3 class="mt-5 text-info text-center mb-1">Who To Follow?</h3>
 <div class="card mb-2">
     {% for author in who_to_follow %}
-    <div class="card-body" style="border:1px solid rgb(60, 168, 218);">
+    <div class="card-body mb-1" style="border:1px solid rgb(60, 168, 218);">
         <div class="row">
             <div class="col col-4">
                 <img src="{% if author.profile_pic %} {{author.profile_pic.url}} {% else %}# {% endif %}" style="width:100px;height: 100px; border-radius:
@@ -44,6 +44,5 @@
 
         </div>
     </div>
-    <br>
     {% endfor %}
 </div>
