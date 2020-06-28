@@ -530,6 +530,8 @@ class CategoryDetailView(DetailView):
 @csrf_exempt
 def article_detail_view(request, slug):
     current_article = get_object_or_404(Article, slug=slug)
+    related_posts = Article.objects.filter(
+        category_in=current_article.category.all())
 
     # For num of Views handling
     client_ip_addr = request.META.get('REMOTE_ADDR')
@@ -600,6 +602,7 @@ def article_detail_view(request, slug):
         'form': form,
         'user_profile_form': user_profile_form,
         'user_form': user_form,
+        'related_posts': related_posts,
     }
 
     if request.is_ajax():
