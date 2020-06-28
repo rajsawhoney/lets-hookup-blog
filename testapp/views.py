@@ -531,7 +531,7 @@ class CategoryDetailView(DetailView):
 def article_detail_view(request, slug):
     current_article = get_object_or_404(Article, slug=slug)
     related_posts = Article.objects.filter(
-        category__in=current_article.category.all())
+        category__in=current_article.category.all()).exclude(title=current_article.title)
 
     # For num of Views handling
     client_ip_addr = request.META.get('REMOTE_ADDR')
