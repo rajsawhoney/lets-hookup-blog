@@ -127,6 +127,7 @@
             scroll-margin-left: 10px;
             scroll-margin-top: 20px;
             -ms-overflow-style: none !important;
+            box-shadow: 1px 0px 12px;
         }
     }
 
@@ -147,18 +148,19 @@
     <div class="col col-lg-8 col-md-6 col-sm-12 my-3">
         <div class="intro-text" id='main-content'>
             <span class="pt-2">{{post.content|safe}}</span>
-            <div class="mt-4">
-                <a href="{% if object %}
-                            {{object.get_absolute_url}} {% else %}#{% endif %}" class="sp-link text-primary">Take a
-                    look @my
-                    portfolio
-                </a>
-            </div>
+
+        </div>
+        <div class="mt-4">
+            <a href="{% if object %}
+                        {{object.get_absolute_url}} {% else %}#{% endif %}" class="sp-link text-primary">Take a
+                look @my
+                portfolio
+            </a>
         </div>
         <div style="float: right;" class="intro-text mt-3">
             {% if request.user.is_authenticated %}
             <div id="fav-div{{post.id}}">
-                {% include "includes/toggle-fav-article-snippet.html" %}
+                Favourite: {% include "includes/toggle-fav-article-snippet.html" %}
             </div>
             {% endif %}
             <br><br>
