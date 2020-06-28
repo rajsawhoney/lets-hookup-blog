@@ -172,14 +172,15 @@
                 document.getElementById('mymarquee').stop();
                 document.getElementById('mymarquee').start();
 
-            }, 5000);" class="btn-primary">Auto Scroll</button>
-            <marquee behavior="scroll" direction="up" id="mymarquee" scrollamount="0" onmouseover="this.stop();"
-                onmouseout="this.start();">
+            }, 5000);" class="btn-primary float-right">Auto Scroll</button>
+            <button onclick="document.getElementById('mymarquee').stop()" class="btn-primary float-right">Stop Auto Scroll</button>
+            <marquee behavior="scroll" direction="up" id="mymarquee" scrollamount="0">
                 <span class="pt-2">{{post.content|safe}}</span>
             </marquee>
         </div>
         <script>
             $
+
         </script>
         <div class="mt-4">
             <a href="{% if object %}
