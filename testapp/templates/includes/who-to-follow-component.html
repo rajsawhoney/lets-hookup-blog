@@ -28,12 +28,15 @@
                         Follow
                     </button>
                 </form>
-                {% else %}
-                <a style="color:white;cursor: pointer;" class="btn-sm btn-primary"
-                    onclick="$('#login-modal').modal('toggle')" style="color: white;"> Login to
-                    Follow
-                </a>
-                {% include "accounts/includes/login_popup.html" %}
+                {% endif %}
+                {% if not user.is_authenticated %}
+                <div>
+                    <a style="color:white;cursor: pointer;" class="btn-sm btn-primary"
+                        onclick="$('#login-modal').modal('toggle')" style="color: white;"> Login to
+                        Follow
+                    </a>
+                    {% include "accounts/includes/login_popup.html" %}
+                </div>
                 {% endif %}
                 <h6 class="card-subtitle my-2">{{author.qualifications|slice:44}}</h6>
                 <p class="card-text text-muted">{{author.about_me|slice:100}}
