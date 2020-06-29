@@ -145,7 +145,7 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.linkedin.LinkedinOAuth2',
-    'utils.authbackend.EmailOrUsernameModelBackend',
+    'mytestwebsite.authbackend.EmailOrUsernameModelBackend',
 
     'django.contrib.auth.backends.ModelBackend',
 )
