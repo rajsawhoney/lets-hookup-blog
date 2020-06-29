@@ -165,17 +165,15 @@
     <hr>
     <div class="col col-lg-8 col-md-6 col-sm-12 my-3">
         <div class="intro-text" id='main-content'>
-            <button onClick="document.getElementById('mymarquee').setAttribute('scrollamount', '10');
+            <!-- <button onClick="document.getElementById('mymarquee').setAttribute('scrollamount', '10');
             document.getElementById('mymarquee').start();" class="btn-primary float-right">Auto Scroll</button>
             <button onclick="document.getElementById('mymarquee').stop()" class="btn-danger float-right mr-2">Stop Auto Scroll</button>
             <marquee behavior="scroll" direction="up" id="mymarquee" scrollamount="0">
                 <span class="pt-2">{{post.content|safe}}</span>
-            </marquee>
+            </marquee> -->
+            <span class="pt-2">{{post.content|safe}}</span>
         </div>
-        <script>
-            $
 
-        </script>
         <div class="mt-4">
             <a href="{% if object %}
                         {{object.get_absolute_url}} {% else %}#{% endif %}" class="sp-link text-primary">Take a
