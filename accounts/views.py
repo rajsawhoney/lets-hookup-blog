@@ -198,7 +198,8 @@ class UserModelView(View):
             profile.user = user
             profile.save()
             # user= authenticate(username=user,password=user_form.clean_password2)
-            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            login(
+                request, user, backend='mytestwebsite.authbackend.EmailOrUsernameModelBackend')
             return redirect('testapp:article-list')
         context = {'user_form': user_form,
                    'user_profile_form': user_profile_form}
@@ -217,7 +218,8 @@ class UserModelView(View):
             profile = user_profile_form.save(commit=False)
             profile.user = new_user
             profile.save()
-            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            login(
+                request, user, backend='mytestwebsite.authbackend.EmailOrUsernameModelBackend')
             return redirect('testapp:article-list')
         context = {'user_form': user_form,
                    'user_profile_form': user_profile_form, }
