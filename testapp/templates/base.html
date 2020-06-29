@@ -27,9 +27,10 @@
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
-                aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"><i
-                    class="fa fa-bars" aria-hidden="true"></i>
+                aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars" aria-hidden="true"></i>
             </button>
+
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="background: none !important;">
                     <li class="nav-item {% if 'testapp/articles/' in request.path %} active {% endif %}">
@@ -44,10 +45,8 @@
                         {% else %}
 
                         <a class="nav-link" href="{% url 'testapp:article-list' %}"><i class="fa fa-newspaper-o"
-                                aria-hidden="true"></i> All
-                            Posts
+                                aria-hidden="true"></i> All Posts
                         </a>
-
                         {% endif %}
                     </li>
                     {% if user.is_superuser %}
@@ -139,22 +138,27 @@
 
 
 
-                <form action="{% url 'search:result_list' %}" class="form-inline my-2 my-lg-0">
-                    <div class="form-group">
-                        <select name="search_by" class="form-control" style="border-radius: 20px 0px 0px 20px;">
-                            <option>Search By</option>
-                            <option {% if request.GET.search_by == 'Author' %} selected {% endif %}>Author</option>
-                            <option {% if request.GET.search_by == 'Category' %} selected {% endif %}>Category</option>
-                            <option {% if request.GET.search_by == 'Article Tags' %} selected {% endif %}>Article Tags
-                            </option>
-                        </select>
-                    </div>
+                <form action="{% url 'search:result_list' %}" class="form-inline">
+                    <div class="input-group">
+                        <div class="form-group input-group-prepend ">
+                            <select name="search_by" class="form-control input-group-text"
+                                style="border-radius: 20px 0px 0px 20px;">
+                                <option>Search By</option>
+                                <option {% if request.GET.search_by == 'Author' %} selected {% endif %}>Author</option>
+                                <option {% if request.GET.search_by == 'Category' %} selected {% endif %}>Category
+                                </option>
+                                <option {% if request.GET.search_by == 'Article Tags' %} selected {% endif %}>Article Tags
+                                </option>
+                            </select>
+                        </div>
 
-                    <input class="form-control mr-sm-2" value="{{request.GET.q}}" id="myInput" name="q" type="text"
-                        placeholder="Search" style="border-radius: 0px 20px 20px 0px;" />
-                    <button class="btn btn-outline-success my-2 my-sm-0" style="border-radius: 20px" type="submit">
-                        Search
-                    </button>
+                        <input class="form-control" id="myInput" value="{{request.GET.q}}" name="q" type="text"
+                            placeholder="Search" />
+                        <div class="input-group-append">
+                            <button class="input-group-text" style="border-radius: 0px 20px 20px 0px;"><i
+                                    class="fa fa-search" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
                 </form>
 
             </div>
