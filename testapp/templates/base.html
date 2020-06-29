@@ -115,51 +115,51 @@
                     {% endif %}
 
                     <li>
-                        <a class="nav-link float-right" style="cursor: pointer;" id='mode-toggler'
-                            onclick="toggle_mode();">
-                            {% if not request.session.dark_mode %}
-                            <i class="fa fa-2x fa-globe" style="color: gray;" aria-hidden="true"></i>
-                            <span style="font-size: large;color:gray">
-                                Enable Dark Mode
-                            </span>
-                            {% else %}
-                            <i class="fa fa-2x fa-globe" style="color: gray;" aria-hidden="true"></i> <span
-                                style="font-size: large;color:gray;">
-                                Enable Light Mode
-                            </span>
-                            {% endif %}
-                            </span>
-                        </a>
-                    </li>
+                        <form action="{% url 'search:result_list' %}" class="form-inline">
+                            <div class="input-group">
+                                <div class="form-group input-group-prepend ">
+                                    <select name="search_by" class="form-control input-group-text"
+                                        style="border-radius: 20px 0px 0px 20px;">
+                                        <option>Search By</option>
+                                        <option {% if request.GET.search_by == 'Author' %} selected {% endif %}>Author
+                                        </option>
+                                        <option {% if request.GET.search_by == 'Category' %} selected {% endif %}>
+                                            Category
+                                        </option>
+                                        <option {% if request.GET.search_by == 'Article Tags' %} selected {% endif %}>
+                                            Article Tags
+                                        </option>
+                                    </select>
+                                </div>
 
+                                <input class="form-control" id="myInput" value="{{request.GET.q}}" name="q" type="text"
+                                    placeholder="Search" />
+                                <div class="input-group-append">
+                                    <button class="input-group-text" style="border-radius: 0px 20px 20px 0px;"><i
+                                            class="fa fa-search" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </li>
 
                 </ul>
 
 
 
-
-                <form action="{% url 'search:result_list' %}" class="form-inline">
-                    <div class="input-group">
-                        <div class="form-group input-group-prepend ">
-                            <select name="search_by" class="form-control input-group-text"
-                                style="border-radius: 20px 0px 0px 20px;">
-                                <option>Search By</option>
-                                <option {% if request.GET.search_by == 'Author' %} selected {% endif %}>Author</option>
-                                <option {% if request.GET.search_by == 'Category' %} selected {% endif %}>Category
-                                </option>
-                                <option {% if request.GET.search_by == 'Article Tags' %} selected {% endif %}>Article Tags
-                                </option>
-                            </select>
-                        </div>
-
-                        <input class="form-control" id="myInput" value="{{request.GET.q}}" name="q" type="text"
-                            placeholder="Search" />
-                        <div class="input-group-append">
-                            <button class="input-group-text" style="border-radius: 0px 20px 20px 0px;"><i
-                                    class="fa fa-search" aria-hidden="true"></i></button>
-                        </div>
-                    </div>
-                </form>
+                <a class="nav-link float-right" style="cursor: pointer;" id='mode-toggler' onclick="toggle_mode();">
+                    {% if not request.session.dark_mode %}
+                    <i class="fa fa-2x fa-globe" style="color: gray;" aria-hidden="true"></i>
+                    <span style="font-size: large;color:gray">
+                        Enable Dark Mode
+                    </span>
+                    {% else %}
+                    <i class="fa fa-2x fa-globe" style="color: gray;" aria-hidden="true"></i> <span
+                        style="font-size: large;color:gray;">
+                        Enable Light Mode
+                    </span>
+                    {% endif %}
+                    </span>
+                </a>
 
             </div>
         </nav>
