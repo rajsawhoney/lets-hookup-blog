@@ -1,5 +1,5 @@
 from accounts.forms import UserForm, UserProfileForm
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView, ListView, DetailView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import AuthenticationForm
@@ -9,6 +9,7 @@ from django.conf import settings
 from accounts.models import UserModel
 
 from .models import Contact, Subscriber
+
 
 # Create your views here.
 
