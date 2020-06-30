@@ -275,10 +275,10 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 EMAIL_HOST = 'smtp.zoho.com'
-EMAIL_HOST_USER='rajsahani1819@gmail.com'
-EMAIL_HOST_PASSWORD = '*Raj9817853174#'
-EMAIL_PORT =587
-EMAIL_USE_TLS=True
+EMAIL_HOST_USER = 'rajsahani1819@gmail.com'
+EMAIL_HOST_PASSWORD = '*Rj9817853174'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
