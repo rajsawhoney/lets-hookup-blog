@@ -16,6 +16,9 @@ from django.http.response import JsonResponse
 from testapp.models import Article
 from django.template.loader import render_to_string
 
+
+from django.core.mail import send_mail
+from django.conf import settings
 # Create your views here.
 
 
@@ -64,6 +67,18 @@ class ContactView(TemplateView):
                 UserModel, user=self.request.user)
         else:
             context["user_object"] = None
+
+        if self.request == "POST":
+            message = self.request.POST.get('message')
+            to_email = self.request.POST.get('to_email')
+            sender_name = self.request.POST.get('name')
+            print("FORM DATA: ", sender_name, to_email, message)
+            send_mail(
+                subject="Reply from Lets-HookUp Contact Form",
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[to_email, ], fail_silently=False,
+                html_message="<h1>Thanks for contacting us. Your message means a lot to us.</h1>"
+            )
         return context
 
 
