@@ -68,7 +68,7 @@ urlpatterns = [
 
     url(r'^contact/', ContactView.as_view(), name='contact'),
 
-    url(r'^contact/thanks/', Thanks.as_view(), name='thanks'),
+    url(r'^thanks/', Thanks.as_view(), name='thanks'),
 
     path('send_mail/', send_email, name='send-mail'),
 
