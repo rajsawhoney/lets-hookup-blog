@@ -19,7 +19,7 @@ from testapp.models import Article
 from django.template.loader import render_to_string
 
 
-from django.core.mail import send_mail
+from django.core.mail import send_mail,mail_admins
 from django.conf import settings
 # Create your views here.
 
@@ -74,6 +74,7 @@ def send_email(request):
                 to_email,
                 [from_email, ]
             )
+            mail_admins(subject,message)
         except BadHeaderError:
             return HttpResponse('Invalid header found.')
         return HttpResponseRedirect('/thanks/')
