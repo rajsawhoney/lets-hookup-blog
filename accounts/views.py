@@ -71,8 +71,8 @@ def send_email(request):
             send_mail(
                 subject,
                 message,
-                from_email,
-                [to_email, ]
+                to_email,
+                [from_email, ]
             )
         except BadHeaderError:
             return HttpResponse('Invalid header found.')
