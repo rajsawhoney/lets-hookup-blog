@@ -12,7 +12,7 @@ from .sitemaps import StaticViewSitemap, ArticleSiteMap, ArticleCategorySiteMap
 from django.contrib import admin
 from django.contrib.sites.models import Site
 from testapp.views import ArticleListView
-from accounts.views import AboutView, ContactView
+from accounts.views import AboutView, ContactView, send_email, Thanks
 
 
 admin.site.unregister(Site)
@@ -67,6 +67,10 @@ urlpatterns = [
     url(r'^about/', AboutView.as_view(), name='about'),
 
     url(r'^contact/', ContactView.as_view(), name='contact'),
+
+    url(r'^contact/thanks/', Thanks.as_view(), name='thanks'),
+
+    path('send_mail/', send_email, name='send-mail'),
 
 ]
 

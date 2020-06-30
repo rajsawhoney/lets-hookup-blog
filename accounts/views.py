@@ -1,3 +1,5 @@
+from django.core.mail import BadHeaderError, send_mail
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.forms import PasswordChangeForm, PasswordResetForm
 from django.contrib.auth import login, logout, update_session_auth_hash, authenticate
@@ -54,6 +56,31 @@ class AboutView(TemplateView):
         return context
 
 
+class Thanks(TemplateView):
+    template_name = "thanks.html"
+
+
+def send_email(request):
+    # subject = request.POST.get('subject', '')
+    subject = "Reply from Lets-HookUp Contact Form"
+    message = request.POST.get('message', '')
+    from_email = request.POST.get('to_email', '')
+    to_email = settings.EMAIL_HOST_USER
+    if subject and message and from_email:
+        try:
+            send_mail(subject, message, from_email,
+                      [to_email,],
+                    html_message="<h1>This is a test html message</h1>"
+                      )
+        except BadHeaderError:
+            return HttpResponse('Invalid header found.')
+        return HttpResponseRedirect('accounts:thanks')
+    else:
+        # In reality we'd use a form class
+        # to get proper validation errors.
+        return HttpResponse('Make sure all fields are entered and valid.')
+
+
 class ContactView(TemplateView):
     template_name = "accounts/contact.html"
 
@@ -68,17 +95,6 @@ class ContactView(TemplateView):
         else:
             context["user_object"] = None
 
-        if self.request == "POST":
-            message = self.request.POST.get('message')
-            to_email = self.request.POST.get('to_email')
-            sender_name = self.request.POST.get('name')
-            print("FORM DATA: ", sender_name, to_email, message)
-            send_mail(
-                subject="Reply from Lets-HookUp Contact Form",
-                from_email=settings.EMAIL_HOST_USER,
-                recipient_list=[to_email, ], fail_silently=False,
-                html_message="<h1>Thanks for contacting us. Your message means a lot to us.</h1>"
-            )
         return context
 
 

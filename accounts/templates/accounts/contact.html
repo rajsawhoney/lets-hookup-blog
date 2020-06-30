@@ -11,7 +11,7 @@
         hesitation.</p>
     </div>
     <div class="lg:w-1/2 md:w-2/3 mx-auto">
-      <form action="." method="POST">
+      <form action="{% url 'send-mail' %}" method="POST">
         {% csrf_token %}
         <div class="flex flex-wrap -m-2 md">
           <div class="p-2 w-1/2">
