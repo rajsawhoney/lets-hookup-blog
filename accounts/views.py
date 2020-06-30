@@ -72,11 +72,11 @@ def send_email(request):
                 subject,
                 message,
                 to_email,
-                [from_email,]
-                      )
+                [from_email, ]
+            )
         except BadHeaderError:
             return HttpResponse('Invalid header found.')
-        return HttpResponseRedirect('accounts:thanks')
+        return HttpResponseRedirect('thanks')
     else:
         # In reality we'd use a form class
         # to get proper validation errors.
