@@ -68,9 +68,11 @@ def send_email(request):
     to_email = settings.EMAIL_HOST_USER
     if subject and message and from_email:
         try:
-            send_mail(subject, message, to_email,
-                      [from_email,],
-                    html_message="<h1>This is a test html message</h1>"
+            send_mail(
+                subject,
+                message,
+                to_email,
+                [from_email,]
                       )
         except BadHeaderError:
             return HttpResponse('Invalid header found.')
