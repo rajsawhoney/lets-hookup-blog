@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'photos',
     'checkapp',
+    'contact',
 
 ]
 
@@ -220,35 +221,6 @@ TINYMCE_DEFAULT_CONFIG = {
 TINYMCE_JS_URL = 'http://debug.example.org/tiny_mce/tiny_mce_src.js'
 TINYMCE_SPELLCHECKER = True
 TINYMCE_COMPRESSOR = True
-
-# TINYMCE_DEFAULT_CONFIG = {
-#     'height': 360,
-#     'width': 1120,
-#     'cleanup_on_startup': False,
-#     'custom_undo_redo_levels': 20,
-#     'selector': 'textarea',
-#     'theme': 'modern',
-#     'plugins': '''
-#             textcolor save link image media preview codesample contextmenu
-#             table code lists fullscreen  insertdatetime  nonbreaking
-#             contextmenu directionality searchreplace wordcount visualblocks
-#             visualchars code fullscreen autolink lists  charmap print  hr
-#             anchor pagebreak emotions fullpage media
-#             ''',
-#     'toolbar1': '''
-#             fullscreen preview bold italic underline | fontselect,
-#             fontsizeselect  | forecolor backcolor | alignleft alignright |
-#             aligncenter alignjustify | indent outdent | bullist numlist table |
-#             | link image media | codesample |
-#             ''',
-#     'toolbar2': '''
-#             visualblocks visualchars |
-#             charmap hr pagebreak nonbreaking anchor |  code |
-#             ''',
-#     'contextmenu': 'formats | link image',
-#     'menubar': True,
-#     'statusbar': True,
-# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}
+<title>{{object.name|capfirst}} Message</title>
+{% endblock  %}
+{% block bodyblock %}
+<div class="container">
+    <h3 class="display-3 text-muted">{{object.name|capfirst}} message ({{object.email}})</h3>
+    <p class="float-right">{{object.sent_date|timesince}} ago</p>
+    <p class="text-msg">{{object.message}}
+        <span><button class="btn-sm btn-outline-primary"
+                onclick="$('#reply-form').toggle('display');$('#message-area').focus();">Reply</button></span>
+        <div class="form-group" id='reply-form' style="display: none;">
+            <form class="form-control" action="{% url 'reply-message' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="email" value="{{object.email}}">
+                <input type="text" id='subject' value="{{object.message|slice:100}}">
+                <textarea name="message" id="message-area" cols="55" rows="4"
+                    placeholder="Reply the user here"></textarea>
+                <button class="btn-primary" type="submit">Send</button>
+            </form>
+        </div>
+    </p>
+
+
+</div>
+{% endblock  %}
