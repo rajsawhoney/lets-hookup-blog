@@ -71,8 +71,8 @@ def send_email(request):
             send_mail(
                 subject,
                 message,
-                to_email,
-                [from_email, ]
+                from_email,
+                [to_email, ]
             )
         except BadHeaderError:
             return HttpResponse('Invalid header found.')
@@ -141,7 +141,7 @@ def login_user(request):
             # user= authenticate(username=user,password=user_form.clean_password2)
             login(
                 request, user, backend='mytestwebsite.authbackend.EmailOrUsernameModelBackend')
-            return redirect('testapp:article-list')
+            return redirect('/')
 
         if form.is_valid():
             user = form.get_user()
